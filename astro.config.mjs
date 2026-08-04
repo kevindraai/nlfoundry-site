@@ -1,9 +1,11 @@
 import { defineConfig } from 'astro/config';
+import sitemap from '@astrojs/sitemap';
 import starlight from '@astrojs/starlight';
 
 export default defineConfig({
   site: 'https://nlfoundry.dev',
   integrations: [
+    sitemap(),
     starlight({
       title: 'N/L Foundry',
       description: 'Practical software, forged for real environments.',
@@ -18,6 +20,43 @@ export default defineConfig({
           icon: 'github',
           label: 'GitHub',
           href: 'https://github.com/kevindraai',
+        },
+      ],
+      head: [
+        {
+          tag: 'meta',
+          attrs: { property: 'og:site_name', content: 'N/L Foundry' },
+        },
+        {
+          tag: 'meta',
+          attrs: { property: 'og:type', content: 'website' },
+        },
+        {
+          tag: 'meta',
+          attrs: {
+            property: 'og:image',
+            content: 'https://nlfoundry.dev/social-card.svg',
+          },
+        },
+        {
+          tag: 'meta',
+          attrs: { name: 'twitter:card', content: 'summary_large_image' },
+        },
+        {
+          tag: 'meta',
+          attrs: {
+            name: 'twitter:image',
+            content: 'https://nlfoundry.dev/social-card.svg',
+          },
+        },
+        {
+          tag: 'link',
+          attrs: {
+            rel: 'alternate',
+            type: 'application/rss+xml',
+            title: 'N/L Foundry Engineering Journal',
+            href: 'https://nlfoundry.dev/rss.xml',
+          },
         },
       ],
       customCss: ['./src/styles/custom.css'],
