@@ -1,0 +1,36 @@
+---
+interface Props {
+  product: 'exitlane' | 'clubpos';
+}
+
+const { product } = Astro.props;
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+const productDetails = {
+  exitlane: {
+    name: 'ExitLane',
+    eyebrow: 'Network VPN gateway',
+    summary: 'Whole-network routing with visible policy and safe failure behaviour.',
+    image: `${base}/products/exitlane/hero.svg`,
+    icon: `${base}/products/exitlane/icon.svg`,
+    imageAlt: 'ExitLane network topology illustration',
+  },
+  clubpos: {
+    name: 'ClubPOS',
+    eyebrow: 'Member point of sale',
+    summary: 'A focused checkout surface for the real pace of club operations.',
+    image: `${base}/products/clubpos/hero.svg`,
+    icon: `${base}/products/clubpos/icon.svg`,
+    imageAlt: 'ClubPOS member checkout illustration',
+  },
+} as const;
+const details = productDetails[product];
+---
+
+<aside class={`product-surface product-surface--${product}`} aria-label={`${details.name} product overview`}>
+  <div class="product-surface__copy">
+    <img src={details.icon} width="64" height="64" alt="" aria-hidden="true" />
+    <p class="product-surface__eyebrow">{details.eyebrow}</p>
+    <p class="product-surface__summary">{details.summary}</p>
+  </div>
+  <img class="product-surface__visual" src={details.image} width="760" height="360" alt={details.imageAlt} loading="lazy" decoding="async" />
+</aside>

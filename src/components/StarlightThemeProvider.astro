@@ -1,0 +1,16 @@
+<script is:inline>
+  window.StarlightThemeProvider = (() => {
+    const storedTheme =
+      typeof localStorage !== 'undefined' && localStorage.getItem('starlight-theme');
+    const theme = storedTheme === 'light' || storedTheme === 'dark' ? storedTheme : 'dark';
+    document.documentElement.dataset.theme = theme;
+
+    return {
+      updatePickers(selectedTheme = theme) {
+        document.querySelectorAll('starlight-theme-select select').forEach((select) => {
+          if (select instanceof HTMLSelectElement) select.value = selectedTheme;
+        });
+      },
+    };
+  })();
+</script>

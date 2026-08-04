@@ -4,28 +4,22 @@ head: []
 draft: false
 description: Practical software, forged for real environments.
 template: splash
-hero:
-  tagline: Practical software, forged for real environments.
-  # line breaks are preserved by Starlight's hero renderer
-  # while highlighting the final word keeps the approved emphasis.
-  actions:
-    - text: Explore our products
-      link: ./projects/exitlane/
-      icon: right-arrow
-    - text: Read the Journal
-      link: ./journal/
-      variant: minimal
 ---
 
-import { CardGrid, LinkCard } from '@astrojs/starlight/components';
 import ForgeHero from '../../components/ForgeHero.astro';
 import ProjectGrid from '../../components/ProjectGrid.astro';
+import ResourceGrid from '../../components/ResourceGrid.astro';
+import SiteFooter from '../../components/SiteFooter.astro';
 
 <div class="home-intro">
   <div>
     <p class="home-intro__eyebrow">Independent software studio · Netherlands</p>
     <h1 class="home-intro__title">Practical software,<br /> forged for real<br /> <span class="home-intro__title--accent">environments.</span></h1>
     <p class="home-intro__copy">We build reliable software for infrastructure, operations and the people who keep things running.</p>
+    <div class="home-intro__actions">
+      <a class="home-intro__button home-intro__button--primary" href="./projects/exitlane/">Explore our products <span aria-hidden="true">→</span></a>
+      <a class="home-intro__button home-intro__button--secondary" href="./journal/">Read the Journal</a>
+    </div>
   </div>
   <ForgeHero />
 </div>
@@ -38,11 +32,7 @@ import ProjectGrid from '../../components/ProjectGrid.astro';
 
 The software is supported by a repeatable engineering system: explicit problem boundaries, reviewable changes, automated quality gates and infrastructure that can be reproduced instead of remembered.
 
-<CardGrid>
-  <LinkCard title="How we work" href="./engineering/" description="Public principles behind the engineering process." />
-  <LinkCard title="Engineering Journal" href="./journal/" description="Decisions, trade-offs and lessons from active projects." />
-  <LinkCard title="Now" href="./now/" description="The current public focus across the N/L Foundry portfolio." />
-</CardGrid>
+<ResourceGrid />
 
 ## Built for the messy middle
 
@@ -50,27 +40,4 @@ Useful software has to survive contact with policy, people, infrastructure and d
 
 ---
 
-## Footer
-
-### Products
-
-- [ExitLane](/projects/exitlane/)
-- [ClubPOS](/projects/clubpos/)
-
-### Engineering
-
-- [How we work](/engineering/)
-- [Engineering Journal](/journal/)
-
-### Journal
-
-- [Building for real workflows, not idealised ones](/journal/building-for-real-workflows/)
-
-### About
-
-- [About N/L Foundry](/about/)
-- [Privacy](/about/#privacy)
-- [AI transparency](/about/#ai-transparency)
-
-[GitHub](https://github.com/kevindraai)  
-Built in the Netherlands · © N/L Foundry
+<SiteFooter />

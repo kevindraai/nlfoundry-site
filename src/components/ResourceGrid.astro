@@ -1,0 +1,35 @@
+---
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+const withBase = (href: string) => `${base}${href}`;
+
+const resources = [
+  {
+    icon: `${base}/icons/engineering.svg`,
+    title: 'How we work',
+    href: '/engineering/',
+    description: 'Public principles behind the engineering process.',
+  },
+  {
+    icon: `${base}/icons/journal.svg`,
+    title: 'Engineering Journal',
+    href: '/journal/',
+    description: 'Decisions, trade-offs and lessons from active projects.',
+  },
+  {
+    icon: `${base}/icons/docs.svg`,
+    title: 'Now',
+    href: '/now/',
+    description: 'The current public focus across the N/L Foundry portfolio.',
+  },
+];
+---
+
+<div class="resource-grid">
+  {resources.map((resource) => (
+    <a class="resource-card" href={withBase(resource.href)}>
+      <img src={resource.icon} width="64" height="64" alt="" aria-hidden="true" />
+      <span class="resource-card__title">{resource.title}<span aria-hidden="true"> →</span></span>
+      <span class="resource-card__description">{resource.description}</span>
+    </a>
+  ))}
+</div>

@@ -1,32 +1,8 @@
+---
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+const forgeIllustration = `${base}/illustrations/forge-dark.svg`;
+---
+
 <div class="forge-visual" aria-hidden="true">
-  <div class="forge-visual__grid"></div>
-  <svg viewBox="0 0 760 520" role="presentation">
-    <defs>
-      <linearGradient id="steel" x1="0" y1="0" x2="1" y2="1">
-        <stop offset="0" stop-color="#dceef8" stop-opacity=".94"/>
-        <stop offset=".42" stop-color="#3c6f8e" stop-opacity=".9"/>
-        <stop offset="1" stop-color="#07111d" stop-opacity=".96"/>
-      </linearGradient>
-      <linearGradient id="edge" x1="0" y1="0" x2="1" y2="0">
-        <stop offset="0" stop-color="#59b8df" stop-opacity="0"/>
-        <stop offset=".5" stop-color="#59b8df"/>
-        <stop offset="1" stop-color="#59b8df" stop-opacity="0"/>
-      </linearGradient>
-      <filter id="glow"><feGaussianBlur stdDeviation="8" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
-    </defs>
-    <g opacity=".28" fill="none" stroke="#2f9ed0" stroke-width="1.5">
-      <path d="M50 380 220 290 390 345 610 220"/><path d="M130 155 265 225 450 130 690 245"/><circle cx="220" cy="290" r="7"/><circle cx="450" cy="130" r="7"/><circle cx="610" cy="220" r="7"/>
-    </g>
-    <g transform="translate(135 96)">
-      <path d="M70 170 278 82 468 102 338 180 170 208Z" fill="url(#steel)" stroke="#a9d8ef" stroke-width="2"/>
-      <path d="M170 208 338 180 314 241 184 274 105 235Z" fill="#173247" stroke="#5eb8df" stroke-opacity=".55"/>
-      <path d="M184 274 314 241 348 325 278 354 133 332Z" fill="#0c1d2b" stroke="#4f96bd" stroke-opacity=".55"/>
-      <path d="M133 332 278 354 246 389 104 374Z" fill="#07111d" stroke="#2f9ed0" stroke-opacity=".5"/>
-      <path d="M83 159 286 68 485 91" fill="none" stroke="#d8f3ff" stroke-width="3" stroke-linecap="round"/>
-      <path d="M84 386h212" stroke="url(#edge)" stroke-width="5" filter="url(#glow)"/>
-      <g transform="translate(203 244) scale(.72)" fill="none" stroke="#59b8df" stroke-width="9" stroke-linejoin="miter">
-        <path d="M0 80V0l58 80V0"/><path d="M58 80h56"/><path d="M15 0l58 80" opacity=".45"/>
-      </g>
-    </g>
-  </svg>
+  <img src={forgeIllustration} width="720" height="540" alt="" decoding="async" />
 </div>

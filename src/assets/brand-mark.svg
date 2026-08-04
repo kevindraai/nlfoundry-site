@@ -1,9 +1,5 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 96" role="img" aria-labelledby="title desc">
-  <title id="title">N/L Foundry mark</title>
-  <desc id="desc">A continuous-line N and L monogram.</desc>
-  <g fill="none" stroke="currentColor" stroke-width="8" stroke-linecap="square" stroke-linejoin="miter">
-    <path d="M16 80V16l48 64V16"/>
-    <path d="M64 80h48"/>
-    <path d="M28 16l48 64" opacity=".42"/>
-  </g>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 96" role="img" aria-labelledby="title desc">
+<title id="title">N/L Foundry horizontal logo</title><desc id="desc">Continuous-line N/L monogram with N/L Foundry wordmark.</desc><rect id="background" width="520" height="96" rx="18" fill="#020914"/><g transform="translate(0 0)"><g id="nl-monogram" fill="none" stroke="#F7FAFE" stroke-width="3.3" stroke-linecap="square" stroke-linejoin="miter" opacity="1">
+  <path id="n-left" d="M9 83V13"/><path id="n-diagonal" d="M9 13h7l47 58V13"/><path id="n-inner" d="M30 83V13"/>
+  <path id="l-main" d="M63 13v70h27"/><path id="l-inner" d="M77 13v56"/>
+</g></g><g id="wordmark" fill="#F7FAFE" font-family="Inter, Arial, sans-serif"><text id="wordmark-nl" x="132" y="52" font-size="25" font-weight="600" letter-spacing="3">N/L</text><text id="wordmark-foundry" x="132" y="76" font-size="12" font-weight="600" letter-spacing="5.5">FOUNDRY</text></g></svg>

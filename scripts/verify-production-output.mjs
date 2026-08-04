@@ -5,7 +5,7 @@ import { join, resolve, relative } from 'node:path';
 
 const distDir = resolve(process.argv[2] || 'dist');
 const siteUrl = 'https://nlfoundry.dev';
-const socialImage = `${siteUrl}/social/social-card.png`;
+const socialImage = `${siteUrl}/social/og-image.png`;
 
 const requiredRoutes = [
   'index.html',
@@ -22,7 +22,7 @@ const requiredRoutes = [
   'site.webmanifest',
   '404.html',
   'social-card.svg',
-  'social/social-card.png',
+  'social/og-image.png',
   'favicons/favicon-16x16.png',
   'favicons/favicon-32x32.png',
   'favicons/apple-touch-icon.png',
@@ -43,7 +43,7 @@ const requiredHtmlRoutes = [
 ];
 
 const requiredSocial = [
-  'social/social-card.png',
+  'social/og-image.png',
   'social-card.svg',
 ];
 

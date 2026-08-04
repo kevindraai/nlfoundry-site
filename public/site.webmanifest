@@ -3,9 +3,15 @@
   "short_name": "N/L Foundry",
   "start_url": "/",
   "display": "standalone",
-  "theme_color": "#050b12",
-  "background_color": "#050b12",
+  "theme_color": "#020914",
+  "background_color": "#020914",
   "icons": [
+    {
+      "src": "/brand/app-icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    },
     {
       "src": "/favicons/favicon-16x16.png",
       "sizes": "16x16",
