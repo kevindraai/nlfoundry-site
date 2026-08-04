@@ -69,6 +69,7 @@ Panels use dark layered surfaces, thin steel borders, restrained glow and large 
 Homepage pattern:
 
 - Hero uses left-aligned statement and right-side technical illustration.
+- `public/illustrations/forge-anvil.svg` is the editable, vector-first homepage forge asset. Its anvil planes, N/L mark, perspective grid, circuit nodes and electric glow are independently named SVG groups. `public/illustrations/forge-anvil-raster-fallback.png` is retained only as an optional image fallback; it is never embedded in the SVG.
 - Product cards should be separated by sufficient spacing and support mobile stacking.
 - Footer includes products, engineering, journal, about, privacy/AI transparency, GitHub, and copyright.
 - No screenshot mockups are used; composition is structural and native in the DOM.

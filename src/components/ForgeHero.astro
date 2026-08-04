@@ -1,8 +1,37 @@
 ---
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
-const forgeIllustration = `${base}/illustrations/forge-dark.svg`;
+const forgeAnvil = `${base}/illustrations/forge-anvil.svg`;
+const forgeFallback = `${base}/illustrations/forge-anvil-raster-fallback.png`;
 ---
 
 <div class="forge-visual" aria-hidden="true">
-  <img src={forgeIllustration} width="720" height="540" alt="" decoding="async" />
+  <img
+    class="forge-visual__fallback"
+    data-forge-fallback
+    src={forgeFallback}
+    width="443"
+    height="366"
+    alt=""
+    decoding="async"
+    hidden
+  />
+  <img
+    class="forge-visual__anvil"
+    data-forge-anvil
+    src={forgeAnvil}
+    width="720"
+    height="540"
+    alt=""
+    decoding="async"
+    fetchpriority="high"
+  />
 </div>
+
+<script is:inline>
+  document.querySelectorAll('[data-forge-anvil]').forEach((asset) => {
+    asset.addEventListener('error', () => {
+      asset.hidden = true;
+      asset.parentElement?.querySelector('[data-forge-fallback]')?.removeAttribute('hidden');
+    });
+  });
+</script>
