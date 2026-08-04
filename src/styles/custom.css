@@ -42,7 +42,8 @@
   margin: 1.5rem 0 3rem;
 }
 
-.portfolio-status span {
+.portfolio-status span,
+.project-card__meta span {
   padding: 0.42rem 0.7rem;
   border: 1px solid color-mix(in srgb, var(--sl-color-gray-3) 34%, transparent);
   border-radius: 999px;
@@ -51,8 +52,53 @@
   letter-spacing: 0.025em;
 }
 
-:root[data-theme='light'] .portfolio-status span {
+:root[data-theme='light'] .portfolio-status span,
+:root[data-theme='light'] .project-card__meta span {
   color: var(--sl-color-gray-5);
+}
+
+.project-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 19rem), 1fr));
+  gap: 1rem;
+}
+
+.project-card {
+  display: flex;
+  min-height: 21rem;
+  flex-direction: column;
+  padding: clamp(1.25rem, 3vw, 1.8rem);
+  border: 1px solid color-mix(in srgb, var(--sl-color-gray-3) 32%, transparent);
+  border-radius: 0.9rem;
+  background: color-mix(in srgb, var(--sl-color-bg) 92%, var(--sl-color-accent-low));
+  transition: border-color 140ms ease, transform 140ms ease;
+}
+
+.project-card:hover {
+  border-color: var(--sl-color-accent);
+  transform: translateY(-2px);
+}
+
+.project-card__meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+}
+
+.project-card h3 {
+  margin-top: 1.5rem;
+  font-size: 1.65rem;
+  letter-spacing: -0.035em;
+}
+
+.project-card__focus {
+  color: var(--sl-color-gray-3);
+  font-size: 0.92rem;
+}
+
+.project-card a {
+  margin-top: auto;
+  font-weight: 650;
 }
 
 .card {
