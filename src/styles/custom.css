@@ -20,21 +20,55 @@
   --sl-color-text: #1f2937;
 }
 
+.hero {
+  padding-block: clamp(4rem, 9vw, 8rem);
+}
+
 .hero h1 {
-  letter-spacing: -0.045em;
+  max-width: 12ch;
+  letter-spacing: -0.055em;
+  line-height: 0.98;
 }
 
 .hero .tagline {
-  max-width: 44rem;
+  max-width: 42rem;
+  font-size: clamp(1.15rem, 2.4vw, 1.5rem);
+}
+
+.portfolio-status {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+  margin: 1.5rem 0 3rem;
+}
+
+.portfolio-status span {
+  padding: 0.42rem 0.7rem;
+  border: 1px solid color-mix(in srgb, var(--sl-color-gray-3) 34%, transparent);
+  border-radius: 999px;
+  color: var(--sl-color-gray-2);
+  font-size: 0.8rem;
+  letter-spacing: 0.025em;
+}
+
+:root[data-theme='light'] .portfolio-status span {
+  color: var(--sl-color-gray-5);
 }
 
 .card {
-  border-radius: 0.85rem;
+  border-radius: 0.9rem;
   border-color: color-mix(in srgb, var(--sl-color-gray-3) 32%, transparent);
+  transition: border-color 140ms ease, transform 140ms ease;
 }
 
 .card:hover {
   border-color: var(--sl-color-accent);
+  transform: translateY(-2px);
+}
+
+.sl-markdown-content h2 {
+  margin-top: 3.5rem;
+  letter-spacing: -0.035em;
 }
 
 .sl-markdown-content a:not([class]) {

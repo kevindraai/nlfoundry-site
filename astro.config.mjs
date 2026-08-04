@@ -7,19 +7,30 @@ export default defineConfig({
     starlight({
       title: 'N/L Foundry',
       description: 'Practical software, forged for real environments.',
-      social: {
-        github: 'https://github.com/kevindraai',
+      favicon: '/favicon.svg',
+      logo: {
+        src: './src/assets/brand-mark.svg',
+        alt: 'N/L Foundry',
+        replacesTitle: false,
       },
+      social: [
+        {
+          icon: 'github',
+          label: 'GitHub',
+          href: 'https://github.com/kevindraai',
+        },
+      ],
       customCss: ['./src/styles/custom.css'],
       sidebar: [
         { label: 'Home', link: '/' },
         {
-          label: 'Projects',
+          label: 'Products',
           items: [
             { label: 'ExitLane', link: '/projects/exitlane/' },
             { label: 'ClubPOS', link: '/projects/clubpos/' },
           ],
         },
+        { label: 'Now', link: '/now/' },
         {
           label: 'Engineering',
           items: [
@@ -29,9 +40,6 @@ export default defineConfig({
         },
         { label: 'About', link: '/about/' },
       ],
-      footer: {
-        copyright: '© 2026 N/L Foundry. Built in the Netherlands.',
-      },
     }),
   ],
 });
