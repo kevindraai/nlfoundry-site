@@ -1,6 +1,9 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-labelledby="title">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 96" role="img" aria-labelledby="title desc">
   <title id="title">N/L Foundry mark</title>
-  <rect width="64" height="64" rx="14" fill="#101214"/>
-  <path d="M15 45V19h6l14 17V19h7v26h-6L22 28v17z" fill="#f7f8f9"/>
-  <path d="M46 16h4L35 48h-4z" fill="#e67e22"/>
+  <desc id="desc">A continuous-line N and L monogram.</desc>
+  <g fill="none" stroke="currentColor" stroke-width="8" stroke-linecap="square" stroke-linejoin="miter">
+    <path d="M16 80V16l48 64V16"/>
+    <path d="M64 80h48"/>
+    <path d="M28 16l48 64" opacity=".42"/>
+  </g>
 </svg>
