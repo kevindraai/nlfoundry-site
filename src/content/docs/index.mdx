@@ -5,23 +5,24 @@ template: splash
 hero:
   tagline: Practical software, forged for real environments.
   actions:
-    - text: Explore the portfolio
+    - text: Explore our products
       link: /projects/exitlane/
       icon: right-arrow
-    - text: What we are building now
-      link: /now/
+    - text: Read the Journal
+      link: /journal/
       variant: minimal
 ---
 
 import { CardGrid, LinkCard } from '@astrojs/starlight/components';
+import ForgeHero from '../../components/ForgeHero.astro';
 import ProjectGrid from '../../components/ProjectGrid.astro';
 
-N/L Foundry designs focused software for the places where technology meets real operations. The portfolio includes open-source infrastructure tools, hosted products and selected engineering knowledge.
-
-<div class="portfolio-status" aria-label="Portfolio status">
-  <span>Independent software studio</span>
-  <span>Based in the Netherlands</span>
-  <span>Built around real workflows</span>
+<div class="home-intro">
+  <div>
+    <p class="home-intro__eyebrow">Independent software studio · Netherlands</p>
+    <p class="home-intro__copy">We build reliable software for infrastructure, operations and the people who keep things running.</p>
+  </div>
+  <ForgeHero />
 </div>
 
 ## Products

@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 96" role="img" aria-labelledby="title">
+  <title id="title">N/L Foundry</title>
+  <rect width="520" height="96" fill="#07111d"/>
+  <g transform="translate(18 8)" fill="none" stroke="#f5f8fb" stroke-width="7" stroke-linecap="square" stroke-linejoin="miter">
+    <path d="M8 72V8l48 64V8"/><path d="M56 72h48"/><path d="M20 8l48 64" opacity=".38"/>
+  </g>
+  <text x="148" y="58" fill="#f5f8fb" font-family="Inter, Arial, sans-serif" font-size="27" font-weight="650" letter-spacing="7">N/L FOUNDRY</text>
+</svg>
