@@ -1,9 +1,13 @@
 ---
 title: N/L Foundry
+head: []
+draft: false
 description: Practical software, forged for real environments.
 template: splash
 hero:
   tagline: Practical software, forged for real environments.
+  # line breaks are preserved by Starlight's hero renderer
+  # while highlighting the final word keeps the approved emphasis.
   actions:
     - text: Explore our products
       link: ./projects/exitlane/
@@ -20,6 +24,7 @@ import ProjectGrid from '../../components/ProjectGrid.astro';
 <div class="home-intro">
   <div>
     <p class="home-intro__eyebrow">Independent software studio · Netherlands</p>
+    <h1 class="home-intro__title">Practical software,<br /> forged for real<br /> <span class="home-intro__title--accent">environments.</span></h1>
     <p class="home-intro__copy">We build reliable software for infrastructure, operations and the people who keep things running.</p>
   </div>
   <ForgeHero />
@@ -42,3 +47,30 @@ The software is supported by a repeatable engineering system: explicit problem b
 ## Built for the messy middle
 
 Useful software has to survive contact with policy, people, infrastructure and day-to-day pressure. N/L Foundry focuses on that middle ground: practical systems that remain understandable, maintainable and dependable after they leave the lab.
+
+---
+
+## Footer
+
+### Products
+
+- [ExitLane](/projects/exitlane/)
+- [ClubPOS](/projects/clubpos/)
+
+### Engineering
+
+- [How we work](/engineering/)
+- [Engineering Journal](/journal/)
+
+### Journal
+
+- [Building for real workflows, not idealised ones](/journal/building-for-real-workflows/)
+
+### About
+
+- [About N/L Foundry](/about/)
+- [Privacy](/about/#privacy)
+- [AI transparency](/about/#ai-transparency)
+
+[GitHub](https://github.com/kevindraai)  
+Built in the Netherlands · © N/L Foundry

@@ -1,5 +1,7 @@
 ---
 title: About N/L Foundry
+head: []
+draft: false
 description: Practical software shaped by real environments.
 ---
 

@@ -1,5 +1,7 @@
 ---
 title: ClubPOS
+head: []
+draft: false
 description: A modern point-of-sale platform for clubs and associations.
 ---
 
