@@ -13,9 +13,13 @@ export default defineConfig({
         alt: 'N/L Foundry',
         replacesTitle: false,
       },
-      social: {
-        github: 'https://github.com/kevindraai',
-      },
+      social: [
+        {
+          icon: 'github',
+          label: 'GitHub',
+          href: 'https://github.com/kevindraai',
+        },
+      ],
       customCss: ['./src/styles/custom.css'],
       sidebar: [
         { label: 'Home', link: '/' },
@@ -36,9 +40,6 @@ export default defineConfig({
         },
         { label: 'About', link: '/about/' },
       ],
-      footer: {
-        copyright: '© 2026 N/L Foundry. Built in the Netherlands.',
-      },
     }),
   ],
 });
