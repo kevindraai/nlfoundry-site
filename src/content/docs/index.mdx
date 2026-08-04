@@ -13,7 +13,8 @@ hero:
       variant: minimal
 ---
 
-import { Card, CardGrid, LinkCard } from '@astrojs/starlight/components';
+import { CardGrid, LinkCard } from '@astrojs/starlight/components';
+import ProjectGrid from '../../components/ProjectGrid.astro';
 
 N/L Foundry designs focused software for the places where technology meets real operations. The portfolio includes open-source infrastructure tools, hosted products and selected engineering knowledge.
 
@@ -25,22 +26,7 @@ N/L Foundry designs focused software for the places where technology meets real 
 
 ## Products
 
-<CardGrid>
-  <Card title="ExitLane" icon="rocket">
-    **Open source · Active development**
-
-    A manageable whole-network VPN gateway for routing devices, services and VLANs through controlled exit locations.
-
-    [Explore ExitLane →](/projects/exitlane/)
-  </Card>
-  <Card title="ClubPOS" icon="document">
-    **Hosted product · In development**
-
-    A modern point-of-sale platform shaped around members, open tabs, vouchers, internal budgets and volunteer-run organisations.
-
-    [Explore ClubPOS →](/projects/clubpos/)
-  </Card>
-</CardGrid>
+<ProjectGrid />
 
 ## Engineering in the open
 
