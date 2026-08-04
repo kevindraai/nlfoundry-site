@@ -37,7 +37,7 @@ const organizationSchema = JSON.stringify(
       '@type': 'Organization',
       name: 'N/L Foundry',
       url: site,
-      logo: publicUrl('/social-card.svg'),
+      logo: publicUrl('/brand/nlf-monogram.svg'),
       sameAs: ['https://github.com/kevindraai'],
     },
     {
@@ -79,7 +79,7 @@ export default defineConfig({
       logo: {
         src: './src/assets/brand-mark.svg',
         alt: 'N/L Foundry',
-        replacesTitle: false,
+        replacesTitle: true,
       },
       social: [
         {
@@ -101,7 +101,7 @@ export default defineConfig({
           tag: 'meta',
           attrs: {
             property: 'og:image',
-            content: publicUrl('/social/social-card.png'),
+            content: publicUrl('/social/og-image.png'),
           },
         },
         {
@@ -112,7 +112,7 @@ export default defineConfig({
           tag: 'meta',
           attrs: {
             name: 'twitter:image',
-            content: publicUrl('/social/social-card.png'),
+            content: publicUrl('/social/og-image.png'),
           },
         },
         {
@@ -151,7 +151,7 @@ export default defineConfig({
           tag: 'meta',
           attrs: {
             name: 'theme-color',
-            content: '#050b12',
+            content: '#020914',
           },
         },
         {
@@ -170,6 +170,11 @@ export default defineConfig({
         },
       ],
       customCss: ['./src/styles/custom.css'],
+      components: {
+        PageTitle: './src/components/StarlightPageTitle.astro',
+        ThemeProvider: './src/components/StarlightThemeProvider.astro',
+        ThemeSelect: './src/components/StarlightThemeSelect.astro',
+      },
       sidebar: [
         { label: 'Home', link: '/' },
         {

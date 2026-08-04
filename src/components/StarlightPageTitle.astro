@@ -1,0 +1,7 @@
+---
+const { starlightRoute } = Astro.locals;
+const isHomePage = starlightRoute.entry.slug === '' || starlightRoute.entry.slug === 'index';
+const pageTitleId = '_top';
+---
+
+{!isHomePage && <h1 id={pageTitleId}>{starlightRoute.entry.data.title}</h1>}

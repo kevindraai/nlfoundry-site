@@ -1,0 +1,33 @@
+---
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+const withBase = (href: string) => `${base}${href}`;
+---
+
+<footer class="site-footer">
+  <div class="site-footer__brand">
+    <img src={`${base}/brand/nlf-monogram.svg`} width="96" height="96" alt="N/L Foundry" />
+    <p>Practical software, forged for real environments.</p>
+  </div>
+  <nav class="site-footer__links" aria-label="Footer navigation">
+    <section>
+      <h2>Products</h2>
+      <a href={withBase('/projects/exitlane/')}>ExitLane</a>
+      <a href={withBase('/projects/clubpos/')}>ClubPOS</a>
+    </section>
+    <section>
+      <h2>Engineering</h2>
+      <a href={withBase('/engineering/')}>How we work</a>
+      <a href={withBase('/journal/')}>Engineering Journal</a>
+    </section>
+    <section>
+      <h2>About</h2>
+      <a href={withBase('/about/')}>About N/L Foundry</a>
+      <a href={withBase('/about/#privacy')}>Privacy</a>
+      <a href={withBase('/about/#ai-transparency')}>AI transparency</a>
+    </section>
+  </nav>
+  <div class="site-footer__bottom">
+    <a href="https://github.com/kevindraai">GitHub</a>
+    <span>Built in the Netherlands · © N/L Foundry</span>
+  </div>
+</footer>
