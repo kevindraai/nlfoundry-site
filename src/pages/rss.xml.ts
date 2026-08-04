@@ -7,11 +7,11 @@ export function GET(context: { site?: URL }) {
     site: context.site ?? new URL('https://nlfoundry.dev'),
     items: [
       {
-        title: 'Engineering Journal',
+        title: 'Building for real workflows, not idealised ones',
         description:
-          'The public home for practical engineering notes about ExitLane, ClubPOS and the systems behind them.',
-        link: '/journal/',
-        pubDate: new Date('2026-08-04T00:00:00+02:00'),
+          'Why N/L Foundry starts with operational behaviour, awkward cases and responsibilities before choosing features or architecture.',
+        link: '/journal/building-for-real-workflows/',
+        pubDate: new Date('2026-08-04T11:00:00+02:00'),
       },
     ],
     customData: '<language>en</language>',
