@@ -1,5 +1,7 @@
 ---
 title: Building for real workflows, not idealised ones
+head: []
+draft: false
 description: Why N/L Foundry starts with operational behaviour before choosing features or architecture.
 ---
 

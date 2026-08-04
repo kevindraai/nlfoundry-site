@@ -1,5 +1,7 @@
 ---
 title: Engineering Journal
+head: []
+draft: false
 description: Technical decisions, trade-offs and lessons learned.
 ---
 
