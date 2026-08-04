@@ -3,15 +3,16 @@ title: Engineering Journal
 description: Technical decisions, trade-offs and lessons learned.
 ---
 
-This journal will contain concise, practical articles about building N/L Foundry products.
+The Engineering Journal contains practical notes about the decisions behind N/L Foundry products. It is not a marketing blog or a release feed. Articles focus on reusable lessons, operational constraints and the reasoning that shaped the software.
 
-Planned topics include:
+## Latest
 
-- why ExitLane exists;
-- reproducible Proxmox infrastructure;
-- designing ClubPOS around real bar workflows;
-- modernising a legacy PHP application;
-- choosing data boundaries and exact decimal arithmetic;
-- using AI inside a reviewable engineering process.
+### [Building for real workflows, not idealised ones](/journal/building-for-real-workflows/)
 
-The journal is not a release feed or a marketing blog. Articles will focus on decisions that may help other builders understand the trade-offs behind the software.
+Why product design should begin with interruptions, awkward cases and operational responsibilities rather than a generic feature list.
+
+## In preparation
+
+Future subjects include reproducible infrastructure, safe VPN failure behaviour, modernising legacy PHP, exact decimal arithmetic and AI inside a reviewable engineering process.
+
+[Subscribe via RSS](/rss.xml)

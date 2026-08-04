@@ -1,0 +1,20 @@
+---
+import { projects } from '../data/projects';
+---
+
+<div class="project-grid">
+  {projects.map((project) => (
+    <article class="project-card">
+      <div class="project-card__meta">
+        <span>{project.deliveryModel}</span>
+        <span>{project.status}</span>
+      </div>
+      <h3>{project.name}</h3>
+      <p>{project.summary}</p>
+      <p class="project-card__focus">{project.focus}</p>
+      <a href={project.href} aria-label={`Explore ${project.name}`}>
+        Explore {project.name} →
+      </a>
+    </article>
+  ))}
+</div>
