@@ -5,34 +5,53 @@ template: splash
 hero:
   tagline: Practical software, forged for real environments.
   actions:
-    - text: Explore our projects
+    - text: Explore the portfolio
       link: /projects/exitlane/
       icon: right-arrow
-    - text: View on GitHub
-      link: https://github.com/kevindraai
-      icon: external
+    - text: What we are building now
+      link: /now/
       variant: minimal
 ---
 
-import { Card, CardGrid } from '@astrojs/starlight/components';
+import { Card, CardGrid, LinkCard } from '@astrojs/starlight/components';
 
-N/L Foundry builds focused software for real operational environments. Some projects are open source, some are commercial products, and all are shaped by practical use rather than abstract feature lists.
+N/L Foundry designs focused software for the places where technology meets real operations. The portfolio includes open-source infrastructure tools, hosted products and selected engineering knowledge.
+
+<div class="portfolio-status" aria-label="Portfolio status">
+  <span>Independent software studio</span>
+  <span>Based in the Netherlands</span>
+  <span>Built around real workflows</span>
+</div>
+
+## Products
 
 <CardGrid>
-  <Card title="ExitLane" icon="seti:network">
-    A manageable whole-network VPN gateway with a clear operational interface.
+  <Card title="ExitLane" icon="rocket">
+    **Open source · Active development**
+
+    A manageable whole-network VPN gateway for routing devices, services and VLANs through controlled exit locations.
+
+    [Explore ExitLane →](/projects/exitlane/)
   </Card>
-  <Card title="ClubPOS" icon="seti:database">
-    A modern point-of-sale platform designed around how clubs and associations actually work.
+  <Card title="ClubPOS" icon="document">
+    **Hosted product · In development**
+
+    A modern point-of-sale platform shaped around members, open tabs, vouchers, internal budgets and volunteer-run organisations.
+
+    [Explore ClubPOS →](/projects/clubpos/)
   </Card>
-  <Card title="Engineering" icon="seti:config">
-    Reproducible infrastructure, explicit quality gates and a transparent development process.
-  </Card>
-  <Card title="Journal" icon="seti:markdown">
-    Technical notes about decisions, trade-offs and lessons learned while building the products.
-  </Card>
+</CardGrid>
+
+## Engineering in the open
+
+The software is supported by a repeatable engineering system: explicit problem boundaries, reviewable changes, automated quality gates and infrastructure that can be reproduced instead of remembered.
+
+<CardGrid>
+  <LinkCard title="How we work" href="/engineering/" description="Public principles behind the engineering process." />
+  <LinkCard title="Engineering Journal" href="/journal/" description="Decisions, trade-offs and lessons from active projects." />
+  <LinkCard title="Now" href="/now/" description="The current public focus across the N/L Foundry portfolio." />
 </CardGrid>
 
 ## Built for the messy middle
 
-Useful software lives between policy, people, infrastructure and day-to-day operations. N/L Foundry focuses on that middle ground: tools that are understandable, maintainable and dependable when they leave the lab.
+Useful software has to survive contact with policy, people, infrastructure and day-to-day pressure. N/L Foundry focuses on that middle ground: practical systems that remain understandable, maintainable and dependable after they leave the lab.
