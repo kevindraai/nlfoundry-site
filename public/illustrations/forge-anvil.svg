@@ -1,0 +1,141 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 540" fill="none" role="img" aria-labelledby="forge-title forge-desc">
+  <title id="forge-title">Forged N/L Foundry anvil</title>
+  <desc id="forge-desc">A steel-blue anvil with an N/L mark, set above a technical perspective grid.</desc>
+  <defs>
+    <g id="steel-gradients">
+      <linearGradient id="steel-face" x1="183" y1="296" x2="485" y2="206" gradientUnits="userSpaceOnUse">
+        <stop stop-color="#74C7EE"/>
+        <stop offset=".3" stop-color="#2C6387"/>
+        <stop offset=".61" stop-color="#183A56"/>
+        <stop offset="1" stop-color="#84CAE9"/>
+      </linearGradient>
+      <linearGradient id="steel-horn" x1="164" y1="275" x2="310" y2="301" gradientUnits="userSpaceOnUse">
+        <stop stop-color="#9DD8F4"/>
+        <stop offset=".42" stop-color="#3C7396"/>
+        <stop offset="1" stop-color="#102B42"/>
+      </linearGradient>
+      <linearGradient id="steel-body" x1="300" y1="278" x2="452" y2="390" gradientUnits="userSpaceOnUse">
+        <stop stop-color="#245779"/>
+        <stop offset=".45" stop-color="#102B43"/>
+        <stop offset="1" stop-color="#081B2D"/>
+      </linearGradient>
+      <linearGradient id="steel-waist" x1="306" y1="310" x2="409" y2="416" gradientUnits="userSpaceOnUse">
+        <stop stop-color="#1D4D6D"/>
+        <stop offset=".58" stop-color="#0A2033"/>
+        <stop offset="1" stop-color="#34769A"/>
+      </linearGradient>
+      <linearGradient id="steel-base-top" x1="246" y1="390" x2="448" y2="372" gradientUnits="userSpaceOnUse">
+        <stop stop-color="#3B83AA"/>
+        <stop offset=".5" stop-color="#153A57"/>
+        <stop offset="1" stop-color="#06192A"/>
+      </linearGradient>
+      <linearGradient id="steel-base-front" x1="266" y1="403" x2="429" y2="464" gradientUnits="userSpaceOnUse">
+        <stop stop-color="#1A4B6B"/>
+        <stop offset=".58" stop-color="#07192A"/>
+        <stop offset="1" stop-color="#316D91"/>
+      </linearGradient>
+      <linearGradient id="steel-edge" x1="292" y1="242" x2="413" y2="350" gradientUnits="userSpaceOnUse">
+        <stop stop-color="#C2ECFF"/>
+        <stop offset=".4" stop-color="#4FA6D4"/>
+        <stop offset="1" stop-color="#16496D"/>
+      </linearGradient>
+      <radialGradient id="forge-glow-gradient" cx="0" cy="0" r="1" gradientTransform="translate(355 452) rotate(90) scale(54 145)" gradientUnits="userSpaceOnUse">
+        <stop stop-color="#69D6FF" stop-opacity=".8"/>
+        <stop offset=".35" stop-color="#2189C7" stop-opacity=".28"/>
+        <stop offset="1" stop-color="#2189C7" stop-opacity="0"/>
+      </radialGradient>
+      <filter id="electric-blur" x="142" y="397" width="426" height="132" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+        <feGaussianBlur stdDeviation="11"/>
+      </filter>
+      <filter id="mark-glow" x="307" y="333" width="96" height="96" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+        <feGaussianBlur stdDeviation="4"/>
+      </filter>
+      <filter id="anvil-shadow" x="125" y="176" width="407" height="323" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+        <feDropShadow dx="0" dy="13" stdDeviation="10" flood-color="#000A12" flood-opacity=".72"/>
+      </filter>
+    </g>
+  </defs>
+
+  <rect width="720" height="540" fill="#06111D"/>
+
+  <g id="grid" opacity=".72" stroke="#176390" stroke-width="1">
+    <path d="M67 378 355 526 653 378" opacity=".38"/>
+    <path d="M98 353 355 486 622 353" opacity=".5"/>
+    <path d="M129 328 355 446 591 328" opacity=".58"/>
+    <path d="M160 303 355 406 560 303" opacity=".66"/>
+    <path d="M191 278 355 366 529 278" opacity=".7"/>
+    <path d="M222 253 355 326 498 253" opacity=".74"/>
+    <path d="M67 378 222 253M128 410 269 270M190 442 307 289M254 475 336 306M355 526V326M456 475 374 306M520 442 403 289M582 410 441 270M653 378 498 253" opacity=".65"/>
+    <path d="M205 213 355 151 515 213" opacity=".34"/>
+    <path d="M245 188 355 143 475 188" opacity=".25"/>
+  </g>
+
+  <g id="nodes" stroke="#287FB3" stroke-width="1.4" opacity=".9">
+    <path d="M93 303 169 261 253 269M93 303l58 36M169 261l45-41M253 269l48-36M469 236l79 43 77-39M469 236l-45 35M548 279l-7 54M615 240l-37-31" opacity=".65"/>
+    <g fill="#081928">
+      <circle cx="93" cy="303" r="5.5"/><circle cx="169" cy="261" r="4.5"/><circle cx="253" cy="269" r="4.5"/>
+      <circle cx="151" cy="339" r="4"/><circle cx="214" cy="220" r="4"/><circle cx="301" cy="233" r="4"/>
+      <circle cx="469" cy="236" r="4"/><circle cx="548" cy="279" r="5"/><circle cx="615" cy="240" r="4"/>
+      <circle cx="424" cy="271" r="4"/><circle cx="541" cy="333" r="4"/><circle cx="578" cy="209" r="4"/>
+    </g>
+    <g fill="#49B8E9" stroke="none">
+      <circle cx="93" cy="303" r="1.5"/><circle cx="169" cy="261" r="1.2"/><circle cx="253" cy="269" r="1.2"/>
+      <circle cx="469" cy="236" r="1.2"/><circle cx="548" cy="279" r="1.4"/><circle cx="615" cy="240" r="1.2"/>
+    </g>
+  </g>
+
+  <g id="glow">
+    <ellipse cx="355" cy="454" rx="142" ry="50" fill="url(#forge-glow-gradient)" filter="url(#electric-blur)"/>
+    <path d="m355 475-86-48 86-47 87 47-87 48Z" fill="#1376B5" fill-opacity=".11" stroke="#3DB9F2" stroke-opacity=".46"/>
+    <path d="m355 475-86-48M355 475l87-48" stroke="#74D5FA" stroke-opacity=".72"/>
+    <circle cx="355" cy="475" r="4" fill="#89E0FF"/>
+  </g>
+
+  <g filter="url(#anvil-shadow)">
+    <g id="anvil-face" stroke="#9DDBF6" stroke-linejoin="round">
+      <path d="m174 282 95-58 140-41 78 44-96 69-116 24-101-38Z" fill="url(#steel-face)" stroke-width="1.8"/>
+      <path d="m269 224 22 18 120-35 76 20-78-44-140 41Z" fill="#90D3EF" fill-opacity=".25"/>
+      <path d="m291 242 100 54M322 208l92 61M368 195l92 61" opacity=".3" stroke-width=".8"/>
+      <path d="m193 272 80 34 108-23" opacity=".55" stroke-width="1"/>
+    </g>
+
+    <g id="anvil-horn" stroke="#8CD3F1" stroke-linejoin="round">
+      <path d="m174 282 101 38-10 48-99-50c-15-8-12-23 8-36Z" fill="url(#steel-horn)" stroke-width="1.6"/>
+      <path d="m174 282 95-58 6 96-101-38Z" fill="#4A87AA" fill-opacity=".35"/>
+      <path d="m166 318 99 50 8-62-80-34" fill="#0B2539" stroke="#4C9AC6" stroke-opacity=".72"/>
+    </g>
+
+    <g id="anvil-body" stroke="#77C4E8" stroke-linejoin="round">
+      <path d="m275 320 116-24 2 88-40 36-69-28-9-72Z" fill="url(#steel-body)" stroke-width="1.6"/>
+      <path d="m391 296 96-69-3 87-50 48-41 22-2-88Z" fill="#0B2740" stroke="#4D9BC8" stroke-opacity=".85"/>
+      <path d="m284 392 69 28 81-58-41 22-40 36-69-28Z" fill="#061A2B" stroke="#2A709A" stroke-opacity=".85"/>
+      <path d="m299 331 67-16M299 350l67-16" stroke="#4E91B7" stroke-opacity=".32"/>
+    </g>
+
+    <g id="anvil-waist" stroke="#8AD5F3" stroke-linejoin="round">
+      <path d="m284 392 69 28 81-58 9 44c-3 17 6 30 22 39l-74 38-109-50c21-17 28-31 20-48l-18-43Z" fill="url(#steel-waist)" stroke-width="1.6"/>
+      <path d="m302 433 89 50 74-38-22-13-81 29-60-28Z" fill="#0A263A" stroke="#397BA2"/>
+      <path d="m353 420 9 41 81-29-9-70" stroke="url(#steel-edge)" stroke-width="1.4"/>
+    </g>
+
+    <g id="anvil-base" stroke="#8BD5F4" stroke-linejoin="round">
+      <path d="m282 433 109 50 74-38 55 26-103 57-136-61 1-34Z" fill="url(#steel-base-top)" stroke-width="1.7"/>
+      <path d="m281 467 136 61 103-57v31l-103 61-136-63v-33Z" fill="url(#steel-base-front)" stroke="#4B9BC6" stroke-width="1.5"/>
+      <path d="m417 528v35M465 445l55 26M391 483l26 45" opacity=".6"/>
+    </g>
+
+    <g id="anvil-feet" stroke="#80CFF0" stroke-linejoin="round">
+      <path d="m281 500 43 20v39l-43-20v-39Z" fill="#0A263A" stroke-width="1.4"/>
+      <path d="m324 520 38 17v39l-38-17v-39Z" fill="#123A54" stroke-width="1.4"/>
+      <path d="m417 528 45-25v39l-45 25v-39Z" fill="#0A263A" stroke-width="1.4"/>
+      <path d="m462 503 58-32v31l-58 40v-39Z" fill="#174662" stroke-width="1.4"/>
+    </g>
+
+    <g id="nl-mark" stroke="#5BC8F6" stroke-width="4" stroke-linecap="square" stroke-linejoin="miter" filter="url(#mark-glow)">
+      <path d="M325 351v42l22-24v42M356 351l28 41v-42M356 351l28 17" opacity=".36"/>
+    </g>
+    <g id="nl-mark-detail" stroke="#7DDCFF" stroke-width="2.2" stroke-linecap="square" stroke-linejoin="miter">
+      <path d="M325 351v42l22-24v42M356 351l28 41v-42M356 351l28 17"/>
+    </g>
+  </g>
+</svg>
