@@ -9,7 +9,7 @@ export default defineConfig({
       description: 'Practical software, forged for real environments.',
       favicon: '/favicon.svg',
       logo: {
-        src: './public/brand-mark.svg',
+        src: './src/assets/brand-mark.svg',
         alt: 'N/L Foundry',
         replacesTitle: false,
       },
