@@ -7,6 +7,12 @@ export default defineConfig({
     starlight({
       title: 'N/L Foundry',
       description: 'Practical software, forged for real environments.',
+      favicon: '/favicon.svg',
+      logo: {
+        src: './public/brand-mark.svg',
+        alt: 'N/L Foundry',
+        replacesTitle: false,
+      },
       social: {
         github: 'https://github.com/kevindraai',
       },
@@ -14,12 +20,13 @@ export default defineConfig({
       sidebar: [
         { label: 'Home', link: '/' },
         {
-          label: 'Projects',
+          label: 'Products',
           items: [
             { label: 'ExitLane', link: '/projects/exitlane/' },
             { label: 'ClubPOS', link: '/projects/clubpos/' },
           ],
         },
+        { label: 'Now', link: '/now/' },
         {
           label: 'Engineering',
           items: [
