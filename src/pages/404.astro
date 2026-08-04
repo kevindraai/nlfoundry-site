@@ -1,0 +1,33 @@
+---
+const home = '/';
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="robots" content="noindex" />
+    <title>Page not found | N/L Foundry</title>
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <style>
+      :root { color-scheme: light dark; font-family: Inter, ui-sans-serif, system-ui, sans-serif; }
+      body { min-height: 100vh; margin: 0; display: grid; place-items: center; background: #101214; color: #fff; }
+      main { width: min(42rem, calc(100% - 3rem)); }
+      .mark { width: 5rem; height: .55rem; background: #e67e22; margin-bottom: 2rem; }
+      .code { color: #e67e22; font-weight: 750; letter-spacing: .12em; }
+      h1 { margin: .6rem 0 1rem; font-size: clamp(2.6rem, 8vw, 5.4rem); line-height: .98; letter-spacing: -.055em; }
+      p { max-width: 36rem; color: #c8cdd2; font-size: 1.12rem; line-height: 1.65; }
+      a { display: inline-block; margin-top: 1.25rem; padding: .8rem 1.1rem; border: 1px solid #5aa4e6; border-radius: .65rem; color: #fff; text-decoration: none; font-weight: 700; }
+      a:hover { background: #1e4e79; }
+    </style>
+  </head>
+  <body>
+    <main>
+      <div class="mark"></div>
+      <div class="code">404 / NOT FOUND</div>
+      <h1>This route left the foundry.</h1>
+      <p>The page may have moved, never existed, or is not ready for public use. The product portfolio and current work remain available from the homepage.</p>
+      <a href={home}>Return to N/L Foundry</a>
+    </main>
+  </body>
+</html>
