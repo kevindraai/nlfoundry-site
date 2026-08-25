@@ -36,4 +36,11 @@
   --nlf-radius-lg: 1.125rem;
   --nlf-content-gutter: 1rem;
   --nlf-content-gutter-large: 1.5rem;
+  --nlf-space-section: clamp(3rem, 8vw, 6.5rem);
+  --nlf-prose-width: 72ch;
+  --nlf-text-sm: clamp(0.875rem, 0.84rem + 0.15vw, 0.95rem);
+  --nlf-text-base: clamp(1rem, 0.96rem + 0.2vw, 1.08rem);
+  --nlf-text-lg: clamp(1.125rem, 1.05rem + 0.35vw, 1.3rem);
+  --nlf-text-xl: clamp(1.35rem, 1.1rem + 1vw, 1.9rem);
+  --nlf-control-height: 2.875rem;
 }

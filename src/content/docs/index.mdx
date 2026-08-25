@@ -4,9 +4,12 @@ head: []
 draft: false
 description: Practical software, forged for real environments.
 template: splash
+prev: false
+next: false
 ---
 
 import ForgeHero from '../../components/ForgeHero.astro';
+import LatestWriting from '../../components/LatestWriting.astro';
 import ProjectGrid from '../../components/ProjectGrid.astro';
 import ResourceGrid from '../../components/ResourceGrid.astro';
 import SiteFooter from '../../components/SiteFooter.astro';
@@ -28,6 +31,12 @@ import SiteFooter from '../../components/SiteFooter.astro';
 
 <ProjectGrid />
 
+## Latest writing
+
+Notes on engineering decisions, trade-offs and work that has to survive outside a clean demo.
+
+<LatestWriting />
+
 ## Engineering in the open
 
 The software is supported by a repeatable engineering system: explicit problem boundaries, reviewable changes, automated quality gates and infrastructure that can be reproduced instead of remembered.
@@ -37,6 +46,15 @@ The software is supported by a repeatable engineering system: explicit problem b
 ## Built for the messy middle
 
 Useful software has to survive contact with policy, people, infrastructure and day-to-day pressure. N/L Foundry focuses on that middle ground: practical systems that remain understandable, maintainable and dependable after they leave the lab.
+
+<section class="contact-teaser">
+  <div>
+    <p class="contact-teaser__eyebrow">Have a practical problem?</p>
+    <h2>Bring the messy context.</h2>
+    <p>Start with the environment, constraints and outcome. The first conversation does not need a polished brief.</p>
+  </div>
+  <a class="contact-teaser__link" href="./contact/">Contact N/L Foundry <span aria-hidden="true">→</span></a>
+</section>
 
 ---
 

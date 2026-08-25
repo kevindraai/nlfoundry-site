@@ -1,0 +1,26 @@
+---
+import StarlightPage from '@astrojs/starlight/components/StarlightPage.astro';
+import ContactForm from '../components/ContactForm.astro';
+---
+
+<StarlightPage
+  frontmatter={{
+    title: 'Contact N/L Foundry',
+    description: 'Start a focused conversation about practical software, infrastructure or engineering work.',
+    prev: false,
+    next: false,
+  }}
+>
+  <p class="page-intro">
+    N/L Foundry works best on problems where software meets real operations, existing constraints
+    and clear responsibility.
+  </p>
+  <ContactForm />
+
+  <h2>Form delivery options</h2>
+  <p>
+    This static foundation deliberately has no database or server-side CMS. Form delivery can later
+    use a Cloudflare Pages Function with Turnstile, a reviewed form service, or a small endpoint on
+    existing infrastructure.
+  </p>
+</StarlightPage>

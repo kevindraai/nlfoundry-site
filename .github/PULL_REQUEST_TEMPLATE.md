@@ -16,8 +16,14 @@ Briefly describe what this PR changes and why.
 - [ ] `npm run verify:build`
 - [ ] Route smoke checks for required pages pass
 
+## Content safety
+
+- [ ] New or changed frontmatter passes collection validation.
+- [ ] Draft/publication status is intentional.
+- [ ] No secrets, private information, uncontrolled scripts or tracking were added.
+- [ ] External links and image alternative text were reviewed.
+
 ## Visual and QA notes
 
 - Screenshots or artifact links for desktop + mobile layouts.
 - Accessibility and SEO updates made.
-

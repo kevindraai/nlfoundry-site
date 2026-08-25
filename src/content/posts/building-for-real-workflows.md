@@ -1,8 +1,12 @@
 ---
 title: Building for real workflows, not idealised ones
-head: []
-draft: false
 description: Why N/L Foundry starts with operational behaviour before choosing features or architecture.
+date: 2026-08-04
+updated: 2026-08-04
+draft: false
+tags:
+  - engineering
+  - product-design
 ---
 
 Software projects often begin with a list of features. N/L Foundry starts one step earlier: with the behaviour that already exists around the problem.

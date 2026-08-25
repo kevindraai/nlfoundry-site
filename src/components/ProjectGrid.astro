@@ -1,29 +1,42 @@
 ---
-import { projects } from '../data/projects';
+import { getCollection } from 'astro:content';
 
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 const withBase = (href: string) => `${base}${href}`;
+const entrySlug = (id: string) => id.replace(/\.(md|mdx)$/u, '');
 const productAssets = {
   exitlane: `${base}/products/exitlane/badge.svg`,
   clubpos: `${base}/products/clubpos/badge.svg`,
 };
+const statusLabels = {
+  active: 'Active development',
+  'in-development': 'In development',
+  maintenance: 'Maintenance',
+  archived: 'Archived',
+};
+const deliveryLabels = {
+  'open-source': 'Open source',
+  'hosted-product': 'Hosted product',
+};
+const projects = (await getCollection('projects', ({ data }) => !data.draft && data.featured))
+  .sort((a, b) => b.data.startDate.valueOf() - a.data.startDate.valueOf());
 ---
 
 <div class="project-grid">
   {projects.map((project) => (
-    <article class={`project-card project-card--${project.slug}`}>
+    <article class={`project-card project-card--${project.data.product}`}>
       <div class="project-card__heading">
-        <img class="project-card__icon" src={productAssets[project.slug as keyof typeof productAssets]} width="64" height="64" alt="" aria-hidden="true" />
+        <img class="project-card__icon" src={productAssets[project.data.product]} width="64" height="64" alt="" aria-hidden="true" />
         <div class="project-card__meta">
-          <span>{project.deliveryModel}</span>
-          <span>{project.status}</span>
+          <span>{deliveryLabels[project.data.deliveryModel]}</span>
+          <span>{statusLabels[project.data.status]}</span>
         </div>
       </div>
-      <h3>{project.name}</h3>
-      <p>{project.summary}</p>
-      <p class="project-card__focus">{project.focus}</p>
-      <a href={withBase(project.href)} aria-label={`Explore ${project.name}`}>
-        Explore {project.name}<span aria-hidden="true"> →</span>
+      <h3>{project.data.title}</h3>
+      <p>{project.data.description}</p>
+      <p class="project-card__focus">{project.data.focus}</p>
+      <a href={withBase(`/projects/${entrySlug(project.id)}/`)} aria-label={`Explore ${project.data.title}`}>
+        Explore {project.data.title}<span aria-hidden="true"> →</span>
       </a>
     </article>
   ))}

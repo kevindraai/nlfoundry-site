@@ -1,19 +1,23 @@
 import rss from '@astrojs/rss';
+import { getCollection } from 'astro:content';
 
-export function GET(context: { site?: URL }) {
+const entrySlug = (id: string) => id.replace(/\.(md|mdx)$/u, '');
+
+export async function GET(context: { site?: URL }) {
+  const posts = (await getCollection('posts', ({ data }) => !data.draft))
+    .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+
   return rss({
     title: 'N/L Foundry Engineering Journal',
     description: 'Engineering decisions, trade-offs and lessons from N/L Foundry products.',
     site: context.site ?? new URL('https://nlfoundry.dev'),
-    items: [
-      {
-        title: 'Building for real workflows, not idealised ones',
-        description:
-          'Why N/L Foundry starts with operational behaviour, awkward cases and responsibilities before choosing features or architecture.',
-        link: '/journal/building-for-real-workflows/',
-        pubDate: new Date('2026-08-04T11:00:00+02:00'),
-      },
-    ],
+    items: posts.map((post) => ({
+      title: post.data.title,
+      description: post.data.description,
+      link: `/journal/${entrySlug(post.id)}/`,
+      pubDate: post.data.date,
+      categories: post.data.tags,
+    })),
     customData: '<language>en</language>',
   });
 }

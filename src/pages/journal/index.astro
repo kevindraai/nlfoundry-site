@@ -1,0 +1,43 @@
+---
+import { getCollection } from 'astro:content';
+import StarlightPage from '@astrojs/starlight/components/StarlightPage.astro';
+
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+const withBase = (href: string) => `${base}${href}`;
+const entrySlug = (id: string) => id.replace(/\.(md|mdx)$/u, '');
+const dateFormatter = new Intl.DateTimeFormat('en-GB', {
+  day: 'numeric',
+  month: 'long',
+  year: 'numeric',
+});
+const posts = (await getCollection('posts', ({ data }) => !data.draft))
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+---
+
+<StarlightPage
+  frontmatter={{
+    title: 'Engineering Journal',
+    description: 'Technical decisions, trade-offs and lessons learned at N/L Foundry.',
+    template: 'splash',
+    prev: false,
+    next: false,
+  }}
+>
+  <p class="page-intro">
+    Practical notes about decisions behind N/L Foundry products. Articles focus on reusable lessons,
+    operational constraints and the reasoning that shaped the software.
+  </p>
+  <div class="writing-list writing-list--index">
+    {posts.map((post) => (
+      <article class="writing-card">
+        <p class="writing-card__meta">
+          <time datetime={post.data.date.toISOString()}>{dateFormatter.format(post.data.date)}</time>
+          {post.data.tags.map((tag) => <span>{tag}</span>)}
+        </p>
+        <h2><a href={withBase(`/journal/${entrySlug(post.id)}/`)}>{post.data.title}</a></h2>
+        <p>{post.data.description}</p>
+      </article>
+    ))}
+  </div>
+  <p><a href={withBase('/rss.xml')}>Subscribe via RSS</a></p>
+</StarlightPage>
