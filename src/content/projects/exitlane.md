@@ -1,13 +1,21 @@
 ---
 title: ExitLane
-head: []
-draft: false
 description: A manageable whole-network VPN gateway.
+status: active
+startDate: 2026-01-01
+tags:
+  - networking
+  - vpn
+  - open-source
+links:
+  - label: GitHub
+    url: https://github.com/kevindraai/exitlane
+featured: true
+draft: false
+product: exitlane
+deliveryModel: open-source
+focus: Operational clarity, safe failure behaviour and reproducible deployment.
 ---
-
-import ProductHero from '../../../components/ProductHero.astro';
-
-<ProductHero product="exitlane" />
 
 ExitLane is a self-hosted VPN gateway for networks that need policy-based routing without turning everyday operation into a command-line exercise.
 

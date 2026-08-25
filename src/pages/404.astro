@@ -1,4 +1,6 @@
 ---
+import '../styles/tokens.css';
+
 const base = import.meta.env.BASE_URL;
 const home = base === '/' ? '/' : base.replace(/\/$/, '');
 const favicon = `${base}favicon.svg`;
@@ -14,7 +16,7 @@ const favicon = `${base}favicon.svg`;
   <style>
       :root {
         color-scheme: light dark;
-        font-family: Sora, Inter, ui-sans-serif, system-ui, sans-serif;
+        font-family: var(--nl-font-display);
       }
 
       .skip {
@@ -32,8 +34,8 @@ const favicon = `${base}favicon.svg`;
         margin: 0;
         display: grid;
         place-items: center;
-        background: #020914;
-        color: #F7FAFE;
+        background: var(--nl-night);
+        color: var(--nl-ice);
       }
 
       main {
@@ -43,12 +45,12 @@ const favicon = `${base}favicon.svg`;
       .mark {
         width: 5rem;
         height: 0.55rem;
-        background: #63C4FF;
+        background: var(--nl-electric_blue);
         margin-bottom: 2rem;
       }
 
       .code {
-        color: #63C4FF;
+        color: var(--nl-electric_blue);
         font-weight: 750;
         letter-spacing: 0.12em;
       }
@@ -75,20 +77,20 @@ const favicon = `${base}favicon.svg`;
         display: inline-block;
         margin-top: 1.25rem;
         padding: 0.8rem 1.1rem;
-        border: 1px solid #63C4FF;
+        border: 1px solid var(--nl-electric_blue);
         border-radius: 0.5rem;
-        color: #020914;
-        background: #63C4FF;
+        color: var(--nl-night);
+        background: var(--nl-electric_blue);
         text-decoration: none;
         font-weight: 700;
       }
 
       a:hover {
-        background: #F7FAFE;
+        background: var(--nl-ice);
       }
 
       a:focus-visible {
-        outline: 3px solid #63C4FF;
+        outline: 3px solid var(--nl-electric_blue);
         outline-offset: 3px;
       }
   </style>

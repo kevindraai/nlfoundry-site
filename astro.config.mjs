@@ -1,5 +1,4 @@
 import { defineConfig } from 'astro/config';
-import { astroExpressiveCode } from 'astro-expressive-code';
 import mdx from '@astrojs/mdx';
 import sitemap from '@astrojs/sitemap';
 import starlight from '@astrojs/starlight';
@@ -69,7 +68,6 @@ export default defineConfig({
   site,
   base,
   integrations: [
-    astroExpressiveCode(),
     sitemap(),
     starlight({
       title: 'N/L Foundry',
@@ -188,6 +186,7 @@ export default defineConfig({
         { label: 'Journal', link: '/journal/' },
         { label: 'Now', link: '/now/' },
         { label: 'About', link: '/about/' },
+        { label: 'Contact', link: '/contact/' },
       ],
     }),
     mdx(),

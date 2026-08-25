@@ -1,0 +1,74 @@
+---
+const parseHttpsUrl = (value: string | undefined, variableName: string) => {
+  const normalized = value?.trim();
+  if (!normalized) return undefined;
+
+  const url = new URL(normalized);
+  if (url.protocol !== 'https:') {
+    throw new Error(`${variableName} must use HTTPS.`);
+  }
+  return url.toString();
+};
+
+const parseEmail = (value: string | undefined) => {
+  const normalized = value?.trim();
+  if (!normalized) return undefined;
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/u.test(normalized)) {
+    throw new Error('PUBLIC_CONTACT_EMAIL must be a valid email address.');
+  }
+  return normalized;
+};
+
+const formAction = parseHttpsUrl(import.meta.env.PUBLIC_CONTACT_FORM_ACTION, 'PUBLIC_CONTACT_FORM_ACTION');
+const contactEmail = parseEmail(import.meta.env.PUBLIC_CONTACT_EMAIL);
+---
+
+<section class="contact-panel" aria-labelledby="contact-form-title">
+  <div class="contact-panel__intro">
+    <p class="contact-panel__eyebrow">Direct and intentional</p>
+    <h2 id="contact-form-title">Start a conversation</h2>
+    <p>
+      Share the context, the problem and what a useful outcome would look like. No tracking or
+      account is required.
+    </p>
+    {!formAction && contactEmail && (
+      <p><a class="contact-panel__fallback" href={`mailto:${contactEmail}`}>Email {contactEmail}</a></p>
+    )}
+    {!formAction && !contactEmail && (
+      <p class="contact-panel__notice">
+        Form delivery is not configured yet. Public project conversations can start on
+        <a href="https://github.com/kevindraai"> GitHub</a>.
+      </p>
+    )}
+  </div>
+
+  <form class="contact-form" action={formAction} method="post">
+    <div class="contact-form__field">
+      <label for="contact-name">Name</label>
+      <input id="contact-name" name="name" type="text" autocomplete="name" maxlength="120" required />
+    </div>
+    <div class="contact-form__field">
+      <label for="contact-email">Email</label>
+      <input id="contact-email" name="email" type="email" autocomplete="email" maxlength="254" required />
+    </div>
+    <div class="contact-form__field">
+      <label for="contact-subject">Subject</label>
+      <input id="contact-subject" name="subject" type="text" maxlength="160" required />
+    </div>
+    <div class="contact-form__field">
+      <label for="contact-message">Message</label>
+      <textarea id="contact-message" name="message" rows="7" maxlength="5000" required></textarea>
+    </div>
+    <div class="contact-form__honeypot" aria-hidden="true">
+      <label for="contact-company">Company website</label>
+      <input id="contact-company" name="company" type="text" tabindex="-1" autocomplete="off" />
+    </div>
+    <p class="contact-form__privacy">
+      Your details are used only to respond to this message. Configure a reviewed form backend
+      before enabling submission.
+    </p>
+    <button type="submit" disabled={!formAction}>
+      {formAction ? 'Send message' : 'Form delivery not configured'}
+    </button>
+  </form>
+</section>

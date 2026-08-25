@@ -1,4 +1,4 @@
-# N/L Foundry Brand System v1
+# N/L Foundry Brand System v2
 
 This package translates the approved website mockup into a maintainable visual system.
 
@@ -36,22 +36,22 @@ The N/L Foundry master brand is blue, steel and ice. Orange is reserved as a pro
 
 Core tokens live in `src/styles/tokens.css`.
 
-- Night 950: `#050b12`
-- Night 900: `#07111d`
-- Steel 700: `#23364a`
-- Steel 500: `#4e6478`
-- Ice 100: `#dceef8`
-- Electric blue: `#2f9ed0`
-- Light blue: `#59b8df`
-- ClubPOS orange: `#f07a32`
+- Night: `#020914`
+- Night 2: `#071523`
+- Steel: `#0B1A2A`
+- Steel 2: `#21384A`
+- Ice: `#F7FAFE`
+- Electric blue: `#63C4FF`
+- ExitLane blue: `#4CB4E8`
+- ClubPOS copper: `#FF7A21`
 
 ## Typography
 
-Use the system Inter stack for both display and body copy. This keeps the site fast and avoids an external font dependency. Headings use tight tracking and strong weight; body text remains neutral and readable.
+Use a system-first stack and do not fetch fonts from a third party. Sora may be used for display copy when it is available locally; Inter and platform fonts provide the deterministic fallback. Headings use tight tracking and strong weight; body text remains neutral and readable.
 
 Preferred stacks:
 
-- Display: `Inter`, `ui-sans-serif`, `system-ui`, `-apple-system`, `BlinkMacSystemFont`, `Segoe UI`, `sans-serif`
+- Display: `Sora`, `Inter`, `ui-sans-serif`, `system-ui`, `sans-serif`
 - Body: `Inter`, `ui-sans-serif`, `system-ui`, `-apple-system`, `BlinkMacSystemFont`, `Segoe UI`, `sans-serif`
 
 Use the same stack in light and dark themes for visual stability.

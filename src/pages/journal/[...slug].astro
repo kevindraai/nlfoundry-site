@@ -1,0 +1,42 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import { getCollection, render } from 'astro:content';
+import StarlightPage from '@astrojs/starlight/components/StarlightPage.astro';
+
+interface Props {
+  post: CollectionEntry<'posts'>;
+}
+
+export async function getStaticPaths() {
+  const entrySlug = (id: string) => id.replace(/\.(md|mdx)$/u, '');
+  const posts = await getCollection(
+    'posts',
+    ({ data }) => import.meta.env.DEV || !data.draft,
+  );
+  return posts.map((post) => ({ params: { slug: entrySlug(post.id) }, props: { post } }));
+}
+
+const { post } = Astro.props;
+const { Content, headings } = await render(post);
+const dateFormatter = new Intl.DateTimeFormat('en-GB', {
+  day: 'numeric',
+  month: 'long',
+  year: 'numeric',
+});
+---
+
+<StarlightPage
+  frontmatter={{
+    title: post.data.title,
+    description: post.data.description,
+    lastUpdated: post.data.updated,
+  }}
+  headings={headings}
+>
+  <p class="content-meta">
+    <time datetime={post.data.date.toISOString()}>{dateFormatter.format(post.data.date)}</time>
+    {post.data.tags.map((tag) => <span>{tag}</span>)}
+    {post.data.draft && <strong>Draft preview</strong>}
+  </p>
+  <Content />
+</StarlightPage>

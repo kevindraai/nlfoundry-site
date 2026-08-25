@@ -10,9 +10,11 @@ const socialImage = `${siteUrl}/social/og-image.png`;
 const requiredRoutes = [
   'index.html',
   'about/index.html',
+  'contact/index.html',
   'engineering/index.html',
   'journal/index.html',
   'now/index.html',
+  'projects/index.html',
   'projects/exitlane/index.html',
   'projects/clubpos/index.html',
   'journal/building-for-real-workflows/index.html',
@@ -35,9 +37,12 @@ const missingPathErrors = [];
 const requiredHtmlRoutes = [
   'index.html',
   'about/index.html',
+  'contact/index.html',
   'engineering/index.html',
   'journal/index.html',
+  'journal/building-for-real-workflows/index.html',
   'now/index.html',
+  'projects/index.html',
   'projects/exitlane/index.html',
   'projects/clubpos/index.html',
 ];
