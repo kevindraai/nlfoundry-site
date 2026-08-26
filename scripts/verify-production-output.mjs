@@ -156,6 +156,63 @@ if (!index.includes('application/ld+json') || !/"@type"\s*:\s*"Organization"/u.t
   errors.push('Structured data (Organization schema) missing from homepage');
 }
 
+const contact = readFileSync(join(distDir, 'contact/index.html'), 'utf8');
+const contactForm = contact.match(/<form\b[^>]*class="contact-form"[^>]*>/u)?.[0];
+const contactEndpoint = process.env.PUBLIC_CONTACT_FORM_ACTION?.trim();
+
+if (!contactForm) {
+  errors.push('Contact form missing from contact page');
+} else {
+  if (!contactForm.includes('method="post"')) {
+    errors.push('Contact form is not configured for POST submission');
+  }
+  if (!contactForm.includes('enctype="application/x-www-form-urlencoded"')) {
+    errors.push('Contact form is not using URL-encoded HTML submission');
+  }
+}
+
+if (!contact.includes('name="company"')) {
+  errors.push('Contact form honeypot field is missing');
+}
+
+if (contactEndpoint) {
+  let endpoint;
+  try {
+    endpoint = new URL(contactEndpoint);
+  } catch {
+    errors.push('PUBLIC_CONTACT_FORM_ACTION is not an absolute URL');
+  }
+
+  if (endpoint) {
+    if (endpoint.protocol !== 'https:') {
+      errors.push('PUBLIC_CONTACT_FORM_ACTION is not HTTPS');
+    }
+    if (endpoint.username || endpoint.password) {
+      errors.push('PUBLIC_CONTACT_FORM_ACTION contains credentials');
+    }
+    if (!endpoint.pathname.endsWith('/form')) {
+      errors.push('PUBLIC_CONTACT_FORM_ACTION does not point to a Stalwart /form endpoint');
+    }
+    if (endpoint.search || endpoint.hash) {
+      errors.push('PUBLIC_CONTACT_FORM_ACTION contains a query string or fragment');
+    }
+    if (contactForm && !contactForm.includes(`action="${endpoint.toString()}"`)) {
+      errors.push('Configured Stalwart endpoint is missing from the contact form action');
+    }
+  }
+
+  if (contact.includes('class="contact-form__fields" disabled')) {
+    errors.push('Contact form remains disabled with a configured endpoint');
+  }
+} else {
+  if (contactForm?.includes(' action=')) {
+    errors.push('Contact form action is present without a configured endpoint');
+  }
+  if (!contact.includes('class="contact-form__fields" disabled')) {
+    errors.push('Contact form fallback is not disabled without an endpoint');
+  }
+}
+
 if (!hasRouteFile('site.webmanifest')) {
   errors.push('Missing site.webmanifest');
 } else {

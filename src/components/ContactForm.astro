@@ -1,12 +1,31 @@
 ---
-const parseHttpsUrl = (value: string | undefined, variableName: string) => {
+const parseStalwartFormUrl = (value: string | undefined, variableName: string) => {
   const normalized = value?.trim();
   if (!normalized) return undefined;
 
-  const url = new URL(normalized);
+  let url: URL;
+  try {
+    url = new URL(normalized);
+  } catch {
+    throw new Error(`${variableName} must be an absolute URL.`);
+  }
+
   if (url.protocol !== 'https:') {
     throw new Error(`${variableName} must use HTTPS.`);
   }
+
+  if (url.username || url.password) {
+    throw new Error(`${variableName} must not contain credentials.`);
+  }
+
+  if (!url.pathname.endsWith('/form')) {
+    throw new Error(`${variableName} must point to the Stalwart /form endpoint.`);
+  }
+
+  if (url.search || url.hash) {
+    throw new Error(`${variableName} must not contain a query string or fragment.`);
+  }
+
   return url.toString();
 };
 
@@ -19,8 +38,14 @@ const parseEmail = (value: string | undefined) => {
   return normalized;
 };
 
-const formAction = parseHttpsUrl(import.meta.env.PUBLIC_CONTACT_FORM_ACTION, 'PUBLIC_CONTACT_FORM_ACTION');
+const formAction = parseStalwartFormUrl(
+  import.meta.env.PUBLIC_CONTACT_FORM_ACTION,
+  'PUBLIC_CONTACT_FORM_ACTION',
+);
 const contactEmail = parseEmail(import.meta.env.PUBLIC_CONTACT_EMAIL);
+const privacyMessage = formAction
+  ? 'Your details are used only to deliver this message to the configured local mailbox and reply to you. No account or tracking is used.'
+  : 'Submission is unavailable until a reviewed Stalwart endpoint is configured.';
 ---
 
 <section class="contact-panel" aria-labelledby="contact-form-title">
@@ -42,33 +67,40 @@ const contactEmail = parseEmail(import.meta.env.PUBLIC_CONTACT_EMAIL);
     )}
   </div>
 
-  <form class="contact-form" action={formAction} method="post">
-    <div class="contact-form__field">
-      <label for="contact-name">Name</label>
-      <input id="contact-name" name="name" type="text" autocomplete="name" maxlength="120" required />
-    </div>
-    <div class="contact-form__field">
-      <label for="contact-email">Email</label>
-      <input id="contact-email" name="email" type="email" autocomplete="email" maxlength="254" required />
-    </div>
-    <div class="contact-form__field">
-      <label for="contact-subject">Subject</label>
-      <input id="contact-subject" name="subject" type="text" maxlength="160" required />
-    </div>
-    <div class="contact-form__field">
-      <label for="contact-message">Message</label>
-      <textarea id="contact-message" name="message" rows="7" maxlength="5000" required></textarea>
-    </div>
-    <div class="contact-form__honeypot" aria-hidden="true">
-      <label for="contact-company">Company website</label>
-      <input id="contact-company" name="company" type="text" tabindex="-1" autocomplete="off" />
-    </div>
-    <p class="contact-form__privacy">
-      Your details are used only to respond to this message. Configure a reviewed form backend
-      before enabling submission.
-    </p>
-    <button type="submit" disabled={!formAction}>
-      {formAction ? 'Send message' : 'Form delivery not configured'}
-    </button>
+  <form
+    class="contact-form"
+    action={formAction}
+    method="post"
+    enctype="application/x-www-form-urlencoded"
+    accept-charset="UTF-8"
+  >
+    <fieldset class="contact-form__fields" disabled={!formAction}>
+      <div class="contact-form__field">
+        <label for="contact-name">Name</label>
+        <input id="contact-name" name="name" type="text" autocomplete="name" maxlength="120" required />
+      </div>
+      <div class="contact-form__field">
+        <label for="contact-email">Email</label>
+        <input id="contact-email" name="email" type="email" autocomplete="email" maxlength="254" required />
+      </div>
+      <div class="contact-form__field">
+        <label for="contact-subject">Subject</label>
+        <input id="contact-subject" name="subject" type="text" maxlength="160" required />
+      </div>
+      <div class="contact-form__field">
+        <label for="contact-message">Message</label>
+        <textarea id="contact-message" name="message" rows="7" maxlength="5000" required></textarea>
+      </div>
+      <div class="contact-form__honeypot" aria-hidden="true">
+        <label for="contact-company">Company website</label>
+        <input id="contact-company" name="company" type="text" tabindex="-1" autocomplete="off" />
+      </div>
+      <p id="contact-form-privacy" class="contact-form__privacy">
+        {privacyMessage}
+      </p>
+      <button type="submit" aria-describedby="contact-form-privacy">
+        {formAction ? 'Send message' : 'Form delivery not configured'}
+      </button>
+    </fieldset>
   </form>
 </section>

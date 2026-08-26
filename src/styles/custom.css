@@ -649,6 +649,15 @@ h4,
   gap: 1rem;
 }
 
+.contact-form__fields {
+  display: grid;
+  gap: 1rem;
+  min-inline-size: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
 .contact-form__field {
   display: grid;
   gap: 0.4rem;
