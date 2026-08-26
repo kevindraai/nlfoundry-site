@@ -1,52 +1,29 @@
 <div class="forge-visual" aria-hidden="true">
   <svg class="forge-visual__drawing" viewBox="0 0 720 540" fill="none" focusable="false">
     <defs>
-      <filter id="nlf-hero-blur" x="95" y="350" width="520" height="170" color-interpolation-filters="sRGB">
-        <feGaussianBlur stdDeviation="18" />
+      <filter id="nlf-forge-shadow" x="120" y="410" width="480" height="80" color-interpolation-filters="sRGB">
+        <feGaussianBlur stdDeviation="9" />
       </filter>
     </defs>
 
-    <g class="forge-visual__frame">
-      <path d="M76 146V92h54M590 92h54v54M76 394v54h54M590 448h54v-54" />
-      <path d="M96 122h96M528 122h96M96 418h96M528 418h96" />
+    <g class="forge-visual__calibration">
+      <path d="M72 172h142M506 172h142M72 430h576" />
     </g>
 
-    <g class="forge-visual__grid">
-      <path d="m95 389 260 132 270-132M126 365l229 116 239-116M158 341l197 100 207-100M190 317l165 84 175-84M222 293l133 68 143-68" />
-      <path d="M95 389 222 293M160 422l109-105M225 455l82-119M290 488l44-137M355 521V361M420 488l-44-137M485 455l-82-119M550 422 441 317M625 389 498 293" />
-    </g>
+    <ellipse class="forge-visual__shadow" cx="362" cy="448" rx="188" ry="15" filter="url(#nlf-forge-shadow)" />
 
-    <g class="forge-visual__network">
-      <path d="m102 262 83-43 80 32 74-68 97 48 88-66 92 49" />
-      <path d="m185 219 14-61M436 231l35 70M524 165l-12-62" />
-      <circle cx="102" cy="262" r="5" />
-      <circle cx="185" cy="219" r="5" />
-      <circle cx="265" cy="251" r="4" />
-      <circle cx="339" cy="183" r="5" />
-      <circle cx="436" cy="231" r="4" />
-      <circle cx="524" cy="165" r="5" />
-      <circle cx="616" cy="214" r="4" />
-    </g>
+    <path
+      class="forge-visual__silhouette"
+      d="M88 183h350c58 0 116-27 184-78l-22 63c-15 43-54 70-116 80l-57 9c1 42 15 76 43 105l39 40h54l29 29-39 22H165l-37-22 29-29h60l39-43c27-30 40-63 41-101H181l-58-31H88v-44Z"
+    />
 
-    <ellipse class="forge-visual__halo" cx="358" cy="438" rx="190" ry="46" filter="url(#nlf-hero-blur)" />
+    <path class="forge-visual__facet" d="M297 258h130c1 42 15 76 43 104l-135 29-79-32c27-30 40-63 41-101Z" />
 
-    <g class="forge-visual__anvil">
-      <path class="forge-visual__plane forge-visual__plane--top" d="m171 262 119-64 151-26 104 55-131 69-137 22-106-56Z" />
-      <path class="forge-visual__plane" d="m171 262 106 56-10 57-105-55c-20-11-16-38 9-58Z" />
-      <path class="forge-visual__plane" d="m277 318 137-22 1 83-47 42-82-31-9-72Z" />
-      <path class="forge-visual__plane forge-visual__plane--muted" d="m414 296 131-69-7 91-79 63-44-2-1-83Z" />
-      <path class="forge-visual__plane" d="m286 390 82 31 91-40 10 44c4 17 14 30 29 40l-94 45-131-54c20-17 28-33 22-50l-9-16Z" />
-      <path class="forge-visual__plane forge-visual__plane--base" d="m273 446 131 54 94-45 59 27-127 58-162-58 5-36Z" />
-      <path class="forge-visual__detail" d="m290 198 24 23 127-27 104 33M277 318l137-22 131-69M286 390l82 31 91-40M404 500l26 40M498 455l59 27M268 482l162 58" />
-      <path class="forge-visual__detail forge-visual__detail--fine" d="m212 251 84 43 119-19M309 327l76-13M306 347l76-13M320 407l61 23M459 381l-55 129" />
-    </g>
-
-    <g class="forge-visual__mark" transform="translate(326 327) scale(.52)">
-      <path d="M9 83V13" />
-      <path d="M9 13h7l47 58V13" />
-      <path d="M30 83V13" />
-      <path d="M63 13v70h27" />
-      <path d="M77 13v56" />
+    <g class="forge-visual__contours">
+      <path d="M106 207h334c59 0 111-23 158-65" />
+      <path d="M297 258h130" />
+      <path d="m256 359 79 32 135-29" />
+      <path d="M157 402h352M128 431h464" />
     </g>
   </svg>
 </div>

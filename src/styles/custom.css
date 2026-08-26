@@ -42,11 +42,11 @@
   --sl-color-text-on-blue: var(--nl-night);
   --nlf-logo-foreground: var(--nl-night);
   --nlf-logo-accent: var(--nl-steel_2);
-  --nlf-hero-surface: color-mix(in srgb, var(--nl-neutral_100) 72%, transparent);
   --nlf-hero-line: var(--nl-steel_2);
-  --nlf-hero-line-muted: color-mix(in srgb, var(--nl-steel_2) 28%, transparent);
-  --nlf-hero-fill: color-mix(in srgb, var(--nl-electric_blue) 8%, transparent);
-  --nlf-hero-glow: color-mix(in srgb, var(--nl-electric_blue) 12%, transparent);
+  --nlf-hero-line-muted: color-mix(in srgb, var(--nl-steel_2) 14%, transparent);
+  --nlf-hero-fill: color-mix(in srgb, var(--nl-electric_blue) 5%, transparent);
+  --nlf-hero-facet: color-mix(in srgb, var(--nl-steel_2) 3%, transparent);
+  --nlf-hero-shadow: color-mix(in srgb, var(--nl-steel_2) 10%, transparent);
   --nlf-focus-ring: var(--nl-steel_2);
   color-scheme: light;
 }
@@ -305,21 +305,6 @@ h4,
   position: relative;
   aspect-ratio: 4 / 3;
   overflow: hidden;
-  border: 1px solid var(--nlf-hero-line-muted);
-  border-radius: var(--nlf-radius-lg);
-  background:
-    radial-gradient(circle at 52% 78%, var(--nlf-hero-glow), transparent 34%),
-    linear-gradient(145deg, var(--nlf-hero-surface), transparent 72%);
-  box-shadow: 0 20px 56px color-mix(in srgb, var(--nl-night) 26%, transparent);
-}
-
-.forge-visual::after {
-  position: absolute;
-  inset: 0;
-  content: '';
-  pointer-events: none;
-  border: 1px solid color-mix(in srgb, var(--nlf-hero-line) 18%, transparent);
-  border-radius: inherit;
 }
 
 .forge-visual__drawing {
@@ -329,76 +314,37 @@ h4,
   color: var(--nlf-hero-line);
 }
 
-.forge-visual__frame,
-.forge-visual__grid,
-.forge-visual__network {
+.forge-visual__calibration,
+.forge-visual__contours {
   fill: none;
   stroke: var(--nlf-hero-line-muted);
   stroke-linecap: round;
   stroke-linejoin: round;
 }
 
-.forge-visual__frame {
-  stroke-width: 1.2;
-}
-
-.forge-visual__grid {
-  opacity: 0.72;
+.forge-visual__calibration {
   stroke-width: 1;
 }
 
-.forge-visual__network {
-  opacity: 0.82;
-  stroke-width: 1.35;
+.forge-visual__shadow {
+  fill: var(--nlf-hero-shadow);
 }
 
-.forge-visual__network circle {
-  fill: var(--nlf-hero-surface);
-  stroke: var(--nlf-hero-line);
-}
-
-.forge-visual__halo {
-  fill: var(--nlf-hero-glow);
-}
-
-.forge-visual__plane {
+.forge-visual__silhouette {
   fill: var(--nlf-hero-fill);
   stroke: var(--nlf-hero-line);
+  stroke-linecap: round;
   stroke-linejoin: round;
-  stroke-width: 1.8;
+  stroke-width: 2.7;
 }
 
-.forge-visual__plane--top {
-  fill: color-mix(in srgb, var(--nlf-hero-line) 13%, transparent);
+.forge-visual__facet {
+  fill: var(--nlf-hero-facet);
+  stroke: none;
 }
 
-.forge-visual__plane--muted {
-  fill: color-mix(in srgb, var(--nlf-hero-line) 5%, transparent);
-  stroke: var(--nlf-hero-line-muted);
-}
-
-.forge-visual__plane--base {
-  fill: color-mix(in srgb, var(--nlf-hero-line) 10%, transparent);
-}
-
-.forge-visual__detail {
-  fill: none;
-  stroke: var(--nlf-hero-line-muted);
-  stroke-linejoin: round;
-  stroke-width: 1.2;
-}
-
-.forge-visual__detail--fine {
-  opacity: 0.72;
-  stroke-width: 0.9;
-}
-
-.forge-visual__mark {
-  fill: none;
-  stroke: var(--nlf-hero-line);
-  stroke-linecap: square;
-  stroke-linejoin: miter;
-  stroke-width: 3.5;
+.forge-visual__contours {
+  stroke-width: 1.35;
 }
 
 .project-grid,
@@ -1071,15 +1017,6 @@ button:focus-visible,
   color: var(--nl-night);
 }
 
-:root[data-theme='light'] .forge-visual {
-  border-color: var(--nlf-hero-line-muted);
-  box-shadow: 0 16px 42px color-mix(in srgb, var(--nl-steel_2) 10%, transparent);
-}
-
-:root[data-theme='light'] .forge-visual__halo {
-  opacity: 0.45;
-}
-
 :root[data-theme='light'] .home-intro__button--secondary {
   color: var(--nl-night);
 }
@@ -1181,7 +1118,7 @@ button:focus-visible,
 
 @media (max-width: 420px) {
   .home-intro__title {
-    font-size: clamp(2.45rem, 13vw, 3.2rem);
+    font-size: clamp(2.35rem, 12vw, 3rem);
   }
 
   .project-card__heading {
