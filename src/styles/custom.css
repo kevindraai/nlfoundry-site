@@ -43,10 +43,15 @@
   --nlf-logo-foreground: var(--nl-night);
   --nlf-logo-accent: var(--nl-steel_2);
   --nlf-hero-line: var(--nl-steel_2);
-  --nlf-hero-line-muted: color-mix(in srgb, var(--nl-steel_2) 14%, transparent);
-  --nlf-hero-fill: color-mix(in srgb, var(--nl-electric_blue) 5%, transparent);
-  --nlf-hero-facet: color-mix(in srgb, var(--nl-steel_2) 3%, transparent);
-  --nlf-hero-shadow: color-mix(in srgb, var(--nl-steel_2) 10%, transparent);
+  --nlf-hero-line-soft: color-mix(in srgb, var(--nl-steel_2) 40%, transparent);
+  --nlf-hero-line-muted: color-mix(in srgb, var(--nl-steel_2) 13%, transparent);
+  --nlf-hero-plane-highlight: color-mix(in srgb, var(--nl-electric_blue) 12%, var(--nl-ice));
+  --nlf-hero-plane-top: color-mix(in srgb, var(--nl-electric_blue) 9%, var(--nl-ice));
+  --nlf-hero-plane-mid: color-mix(in srgb, var(--nl-electric_blue) 5%, var(--nl-ice));
+  --nlf-hero-plane-deep: color-mix(in srgb, var(--nl-steel_2) 3%, var(--nl-ice));
+  --nlf-hero-glow: color-mix(in srgb, var(--nl-electric_blue) 7%, transparent);
+  --nlf-hero-shadow: color-mix(in srgb, var(--nl-steel_2) 13%, transparent);
+  --nlf-hero-haze: color-mix(in srgb, var(--nl-electric_blue) 4%, transparent);
   --nlf-focus-ring: var(--nl-steel_2);
   color-scheme: light;
 }
@@ -305,6 +310,7 @@ h4,
   position: relative;
   aspect-ratio: 4 / 3;
   overflow: hidden;
+  background: radial-gradient(circle at 53% 58%, var(--nlf-hero-haze), transparent 62%);
 }
 
 .forge-visual__drawing {
@@ -314,37 +320,97 @@ h4,
   color: var(--nlf-hero-line);
 }
 
-.forge-visual__calibration,
-.forge-visual__contours {
+.forge-visual__construction,
+.forge-visual__corners,
+.forge-visual__network,
+.forge-visual__facets {
   fill: none;
-  stroke: var(--nlf-hero-line-muted);
   stroke-linecap: round;
   stroke-linejoin: round;
+  vector-effect: non-scaling-stroke;
 }
 
-.forge-visual__calibration {
+.forge-visual__construction,
+.forge-visual__corners,
+.forge-visual__network {
+  stroke: var(--nlf-hero-line-muted);
+  stroke-width: 0.85;
+}
+
+.forge-visual__corners {
   stroke-width: 1;
 }
 
-.forge-visual__shadow {
-  fill: var(--nlf-hero-shadow);
+.forge-visual__node-ring {
+  fill: var(--sl-color-bg);
+  stroke: var(--nlf-hero-line-soft);
 }
 
-.forge-visual__silhouette {
-  fill: var(--nlf-hero-fill);
-  stroke: var(--nlf-hero-line);
-  stroke-linecap: round;
-  stroke-linejoin: round;
-  stroke-width: 2.7;
-}
-
-.forge-visual__facet {
-  fill: var(--nlf-hero-facet);
+.forge-visual__node-core {
+  fill: var(--nlf-hero-line);
   stroke: none;
 }
 
-.forge-visual__contours {
-  stroke-width: 1.35;
+.forge-visual__ground {
+  fill: var(--nlf-hero-shadow);
+}
+
+.forge-visual__anvil {
+  filter: drop-shadow(0 10px 18px var(--nlf-hero-glow));
+}
+
+.forge-visual__plane {
+  stroke: var(--nlf-hero-line-muted);
+  stroke-linejoin: round;
+  stroke-width: 0.85;
+  vector-effect: non-scaling-stroke;
+}
+
+.forge-visual__plane--top {
+  fill: url('#nlf-forge-top');
+}
+
+.forge-visual__plane--side,
+.forge-visual__plane--base {
+  fill: var(--nlf-hero-plane-top);
+}
+
+.forge-visual__plane--core {
+  fill: url('#nlf-forge-core');
+}
+
+.forge-visual__plane--far {
+  fill: var(--nlf-hero-plane-deep);
+}
+
+.forge-visual__stop--highlight {
+  stop-color: var(--nlf-hero-plane-highlight);
+}
+
+.forge-visual__stop--top {
+  stop-color: var(--nlf-hero-plane-top);
+}
+
+.forge-visual__stop--mid {
+  stop-color: var(--nlf-hero-plane-mid);
+}
+
+.forge-visual__stop--deep {
+  stop-color: var(--nlf-hero-plane-deep);
+}
+
+.forge-visual__outline {
+  fill: none;
+  stroke: var(--nlf-hero-line);
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 1.85;
+  vector-effect: non-scaling-stroke;
+}
+
+.forge-visual__facets {
+  stroke: var(--nlf-hero-line-soft);
+  stroke-width: 1.05;
 }
 
 .project-grid,
@@ -1056,7 +1122,8 @@ button:focus-visible,
   }
 
   .forge-visual {
-    max-width: 44rem;
+    width: min(100%, 40rem);
+    margin-inline: auto;
   }
 
   .product-surface__visual {
@@ -1119,6 +1186,15 @@ button:focus-visible,
 @media (max-width: 420px) {
   .home-intro__title {
     font-size: clamp(2.35rem, 12vw, 3rem);
+  }
+
+  .forge-visual__chevron--outer,
+  .forge-visual__node--secondary {
+    display: none;
+  }
+
+  .forge-visual__corners {
+    opacity: 0.55;
   }
 
   .project-card__heading {

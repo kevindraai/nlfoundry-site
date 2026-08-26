@@ -1,29 +1,68 @@
 <div class="forge-visual" aria-hidden="true">
   <svg class="forge-visual__drawing" viewBox="0 0 720 540" fill="none" focusable="false">
     <defs>
-      <filter id="nlf-forge-shadow" x="120" y="410" width="480" height="80" color-interpolation-filters="sRGB">
-        <feGaussianBlur stdDeviation="9" />
+      <linearGradient id="nlf-forge-top" x1="224" y1="164" x2="482" y2="294" gradientUnits="userSpaceOnUse">
+        <stop class="forge-visual__stop--highlight" />
+        <stop class="forge-visual__stop--top" offset="1" />
+      </linearGradient>
+      <linearGradient id="nlf-forge-core" x1="326" y1="314" x2="438" y2="462" gradientUnits="userSpaceOnUse">
+        <stop class="forge-visual__stop--mid" />
+        <stop class="forge-visual__stop--deep" offset="1" />
+      </linearGradient>
+      <filter id="nlf-forge-ground-blur" x="140" y="448" width="450" height="70" color-interpolation-filters="sRGB">
+        <feGaussianBlur stdDeviation="11" />
       </filter>
     </defs>
 
-    <g class="forge-visual__calibration">
-      <path d="M72 172h142M506 172h142M72 430h576" />
+    <g class="forge-visual__construction">
+      <path class="forge-visual__guides" d="M72 180H648M72 330H648M72 458H648" />
+      <path class="forge-visual__chevron forge-visual__chevron--outer" d="m108 408 252 110 272-110" />
+      <path class="forge-visual__chevron" d="m170 385 190 85 208-85" />
     </g>
 
-    <ellipse class="forge-visual__shadow" cx="362" cy="448" rx="188" ry="15" filter="url(#nlf-forge-shadow)" />
+    <path class="forge-visual__corners" d="M72 134V94h40M608 446h40v-40" />
 
-    <path
-      class="forge-visual__silhouette"
-      d="M88 183h350c58 0 116-27 184-78l-22 63c-15 43-54 70-116 80l-57 9c1 42 15 76 43 105l39 40h54l29 29-39 22H165l-37-22 29-29h60l39-43c27-30 40-63 41-101H181l-58-31H88v-44Z"
-    />
+    <g class="forge-visual__network">
+      <path d="m82 326 58-32" />
+      <path d="m510 154 66-36 70 40" />
+      <g class="forge-visual__node">
+        <circle class="forge-visual__node-ring" cx="82" cy="326" r="4" />
+        <circle class="forge-visual__node-core" cx="82" cy="326" r="1.15" />
+      </g>
+      <g class="forge-visual__node">
+        <circle class="forge-visual__node-ring" cx="140" cy="294" r="4" />
+        <circle class="forge-visual__node-core" cx="140" cy="294" r="1.15" />
+      </g>
+      <g class="forge-visual__node forge-visual__node--secondary">
+        <circle class="forge-visual__node-ring" cx="510" cy="154" r="4" />
+        <circle class="forge-visual__node-core" cx="510" cy="154" r="1.15" />
+      </g>
+      <g class="forge-visual__node">
+        <circle class="forge-visual__node-ring" cx="646" cy="158" r="4" />
+        <circle class="forge-visual__node-core" cx="646" cy="158" r="1.15" />
+      </g>
+    </g>
 
-    <path class="forge-visual__facet" d="M297 258h130c1 42 15 76 43 104l-135 29-79-32c27-30 40-63 41-101Z" />
+    <ellipse class="forge-visual__ground" cx="374" cy="486" rx="176" ry="13" filter="url(#nlf-forge-ground-blur)" />
 
-    <g class="forge-visual__contours">
-      <path d="M106 207h334c59 0 111-23 158-65" />
-      <path d="M297 258h130" />
-      <path d="m256 359 79 32 135-29" />
-      <path d="M157 402h352M128 431h464" />
+    <g class="forge-visual__anvil">
+      <g class="forge-visual__planes">
+        <path class="forge-visual__plane forge-visual__plane--top" d="m78 242 196-74 164-23 156 66-144 76-174 29-126-34-72-40Z" />
+        <path class="forge-visual__plane forge-visual__plane--side" d="m78 242 72 40 126 34-10 44-108-39c-37-15-67-44-80-79Z" />
+        <path class="forge-visual__plane forge-visual__plane--core" d="m276 316 174-29-2 78 52-1 8 35c3 17 15 30 34 40l-113 37-154-43c21-15 28-34 15-58l-24-15 10-44Z" />
+        <path class="forge-visual__plane forge-visual__plane--far" d="m450 287 144-76-16 99-78 54-52 1 2-78Z" />
+        <path class="forge-visual__plane forge-visual__plane--base" d="m275 433 154 43 113-37 54 24v18l-142 40-204-36v-19l25-33Z" />
+      </g>
+
+      <path class="forge-visual__outline" d="m78 242 196-74 164-23 156 66-16 99-78 54 8 35c3 17 15 30 34 40l54 24v18l-142 40-204-36v-19l25-33c21-15 28-34 15-58l-24-15-108-39c-37-15-67-44-80-79Z" />
+
+      <g class="forge-visual__facets">
+        <path d="m130 263 158-56 149-23 105 43" />
+        <path d="m150 282 126 34 174-29 144-76" />
+        <path d="M450 287v78" />
+        <path d="m290 375 99 30 111-41" />
+        <path d="m250 466 204 38 142-41" />
+      </g>
     </g>
   </svg>
 </div>
