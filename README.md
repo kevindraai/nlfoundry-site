@@ -88,17 +88,22 @@ are not part of the content workflow.
 
 ## Contact integration
 
-The contact UI is static and safe by default. Submission stays disabled until a reviewed HTTPS
-endpoint is supplied at build time:
+The contact UI posts native HTML form data directly to Stalwart's `/form` endpoint. Submission stays
+disabled until the public endpoint is supplied at build time:
 
 ```bash
-PUBLIC_CONTACT_FORM_ACTION=https://forms.example.test/endpoint
+PUBLIC_CONTACT_FORM_ACTION=https://mail.example.test/form
 PUBLIC_CONTACT_EMAIL=hello@example.test
 ```
 
-Both variables are public build configuration, never secret storage. `PUBLIC_CONTACT_EMAIL` only
-enables a mail link; `PUBLIC_CONTACT_FORM_ACTION` enables the form. Suitable later backends include
-a Cloudflare Pages Function with Turnstile, a reviewed form service or a small existing endpoint.
+`PUBLIC_CONTACT_FORM_ACTION` must be an absolute HTTPS URL ending in `/form`, without credentials,
+a query string or a fragment. Both variables are public build configuration, never secret storage.
+`PUBLIC_CONTACT_EMAIL` only enables the fallback mail link; `PUBLIC_CONTACT_FORM_ACTION` enables the
+form. Configure both as GitHub Actions repository variables for the deployed build.
+
+The required Stalwart-side settings, field mapping, proxy safeguards and test procedure are in
+[`docs/stalwart-contact-form.md`](docs/stalwart-contact-form.md). Those operational changes are
+applied on the Stalwart host, not by this repository.
 
 ## Hosting
 

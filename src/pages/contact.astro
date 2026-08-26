@@ -17,10 +17,10 @@ import ContactForm from '../components/ContactForm.astro';
   </p>
   <ContactForm />
 
-  <h2>Form delivery options</h2>
+  <h2>Form delivery</h2>
   <p>
-    This static foundation deliberately has no database or server-side CMS. Form delivery can later
-    use a Cloudflare Pages Function with Turnstile, a reviewed form service, or a small endpoint on
-    existing infrastructure.
+    This static site submits the form directly to a reviewed Stalwart endpoint. Delivery stays
+    disabled when that public HTTPS endpoint is not configured, and the site still has no database,
+    CMS, account requirement or tracking.
   </p>
 </StarlightPage>
