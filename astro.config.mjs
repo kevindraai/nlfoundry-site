@@ -74,11 +74,6 @@ export default defineConfig({
       description: 'Practical software, forged for real environments.',
       disable404Route: true,
       favicon: withBasePath('/favicon.svg'),
-      logo: {
-        src: './src/assets/brand-mark.svg',
-        alt: 'N/L Foundry',
-        replacesTitle: true,
-      },
       social: [
         {
           icon: 'github',
@@ -170,6 +165,7 @@ export default defineConfig({
       customCss: ['./src/styles/custom.css'],
       components: {
         PageTitle: './src/components/StarlightPageTitle.astro',
+        SiteTitle: './src/components/StarlightSiteTitle.astro',
         ThemeProvider: './src/components/StarlightThemeProvider.astro',
         ThemeSelect: './src/components/StarlightThemeSelect.astro',
       },
