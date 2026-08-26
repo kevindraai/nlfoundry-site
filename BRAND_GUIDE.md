@@ -16,6 +16,12 @@ Assets:
 - `public/brand/nlf-wordmark-dark.svg`
 - `public/brand/nlf-wordmark-light.svg`
 
+Website application roles are deliberately provisional rather than a new brand decision:
+
+- `src/components/BrandLockup.astro` applies the primary wordmark in the header and footer with theme-aware CSS tokens.
+- `public/brand/nlf-monogram.svg` and `public/favicon.svg` remain the compact mark for icons and very small contexts.
+- The forge/anvil is an illustrative homepage accent, not a second primary logo.
+
 Maintain clear space equal to the width of the monogram's vertical stroke. At small sizes use the monogram only.
 
 ### Minimum sizes
@@ -69,7 +75,7 @@ Panels use dark layered surfaces, thin steel borders, restrained glow and large 
 Homepage pattern:
 
 - Hero uses left-aligned statement and right-side technical illustration.
-- `public/illustrations/forge-anvil.svg` is the editable, vector-first homepage forge asset. Its anvil planes, N/L mark, perspective grid, circuit nodes and electric glow are independently named SVG groups. `public/illustrations/forge-anvil-raster-fallback.png` is retained only as an optional image fallback; it is never embedded in the SVG.
+- `src/components/ForgeHero.astro` is the live, vector-first homepage forge illustration. Its anvil planes, N/L mark, perspective grid and circuit nodes are inline so the active Starlight theme can style them through semantic tokens. The older public SVG and raster fallback remain reference assets only and are not rendered by the homepage.
 - Product cards should be separated by sufficient spacing and support mobile stacking.
 - Footer includes products, engineering, journal, about, privacy/AI transparency, GitHub, and copyright.
 - No screenshot mockups are used; composition is structural and native in the DOM.

@@ -40,6 +40,14 @@
   --sl-color-text: var(--nl-night);
   --sl-color-text-accent: var(--nl-night);
   --sl-color-text-on-blue: var(--nl-night);
+  --nlf-logo-foreground: var(--nl-night);
+  --nlf-logo-accent: var(--nl-steel_2);
+  --nlf-hero-surface: color-mix(in srgb, var(--nl-neutral_100) 72%, transparent);
+  --nlf-hero-line: var(--nl-steel_2);
+  --nlf-hero-line-muted: color-mix(in srgb, var(--nl-steel_2) 28%, transparent);
+  --nlf-hero-fill: color-mix(in srgb, var(--nl-electric_blue) 8%, transparent);
+  --nlf-hero-glow: color-mix(in srgb, var(--nl-electric_blue) 12%, transparent);
+  --nlf-focus-ring: var(--nl-steel_2);
   color-scheme: light;
 }
 
@@ -94,18 +102,50 @@ h4,
 }
 
 .site-title {
-  min-width: 10.5rem;
+  display: inline-flex;
+  min-width: 9rem;
+  align-items: center;
+  color: var(--nlf-logo-foreground);
   font-weight: 700;
-  letter-spacing: 0.08em;
+  text-decoration: none;
+  white-space: nowrap;
 }
 
-.site-title img {
-  display: block;
-  width: clamp(10.5rem, 15vw, 14.5rem);
-  height: auto;
-  max-height: 2.7rem;
-  object-fit: contain;
-  object-position: left center;
+.site-title:hover {
+  color: var(--nlf-logo-foreground);
+}
+
+.nlf-brand-lockup {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+  color: var(--nlf-logo-foreground);
+}
+
+.nlf-brand-lockup__mark {
+  width: 2.2rem;
+  height: 2.2rem;
+  flex: none;
+  color: var(--nlf-logo-accent);
+}
+
+.nlf-brand-lockup__wordmark {
+  display: grid;
+  gap: 0.05rem;
+  line-height: 1;
+}
+
+.nlf-brand-lockup__name {
+  font-size: 0.92rem;
+  font-weight: 750;
+  letter-spacing: 0.12em;
+}
+
+.nlf-brand-lockup__foundry {
+  font-size: 0.56rem;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
 }
 
 .sidebar-pane,
@@ -265,10 +305,12 @@ h4,
   position: relative;
   aspect-ratio: 4 / 3;
   overflow: hidden;
-  border: 1px solid var(--nl-steel_2);
+  border: 1px solid var(--nlf-hero-line-muted);
   border-radius: var(--nlf-radius-lg);
-  background: var(--nl-night);
-  box-shadow: var(--nlf-shadow-panel);
+  background:
+    radial-gradient(circle at 52% 78%, var(--nlf-hero-glow), transparent 34%),
+    linear-gradient(145deg, var(--nlf-hero-surface), transparent 72%);
+  box-shadow: 0 20px 56px color-mix(in srgb, var(--nl-night) 26%, transparent);
 }
 
 .forge-visual::after {
@@ -276,29 +318,87 @@ h4,
   inset: 0;
   content: '';
   pointer-events: none;
-  border: 1px solid color-mix(in srgb, var(--nl-electric_blue) 28%, transparent);
+  border: 1px solid color-mix(in srgb, var(--nlf-hero-line) 18%, transparent);
   border-radius: inherit;
 }
 
-.forge-visual img {
+.forge-visual__drawing {
   display: block;
-}
-
-.forge-visual__fallback,
-.forge-visual__anvil {
-  position: absolute;
-  inset: 0;
   width: 100%;
   height: 100%;
-  object-fit: contain;
+  color: var(--nlf-hero-line);
 }
 
-.forge-visual__anvil {
-  z-index: 1;
+.forge-visual__frame,
+.forge-visual__grid,
+.forge-visual__network {
+  fill: none;
+  stroke: var(--nlf-hero-line-muted);
+  stroke-linecap: round;
+  stroke-linejoin: round;
 }
 
-.forge-visual__fallback {
-  z-index: 2;
+.forge-visual__frame {
+  stroke-width: 1.2;
+}
+
+.forge-visual__grid {
+  opacity: 0.72;
+  stroke-width: 1;
+}
+
+.forge-visual__network {
+  opacity: 0.82;
+  stroke-width: 1.35;
+}
+
+.forge-visual__network circle {
+  fill: var(--nlf-hero-surface);
+  stroke: var(--nlf-hero-line);
+}
+
+.forge-visual__halo {
+  fill: var(--nlf-hero-glow);
+}
+
+.forge-visual__plane {
+  fill: var(--nlf-hero-fill);
+  stroke: var(--nlf-hero-line);
+  stroke-linejoin: round;
+  stroke-width: 1.8;
+}
+
+.forge-visual__plane--top {
+  fill: color-mix(in srgb, var(--nlf-hero-line) 13%, transparent);
+}
+
+.forge-visual__plane--muted {
+  fill: color-mix(in srgb, var(--nlf-hero-line) 5%, transparent);
+  stroke: var(--nlf-hero-line-muted);
+}
+
+.forge-visual__plane--base {
+  fill: color-mix(in srgb, var(--nlf-hero-line) 10%, transparent);
+}
+
+.forge-visual__detail {
+  fill: none;
+  stroke: var(--nlf-hero-line-muted);
+  stroke-linejoin: round;
+  stroke-width: 1.2;
+}
+
+.forge-visual__detail--fine {
+  opacity: 0.72;
+  stroke-width: 0.9;
+}
+
+.forge-visual__mark {
+  fill: none;
+  stroke: var(--nlf-hero-line);
+  stroke-linecap: square;
+  stroke-linejoin: miter;
+  stroke-width: 3.5;
 }
 
 .project-grid,
@@ -835,11 +935,24 @@ footer a:hover {
   color: var(--nlf-text-body);
 }
 
-.site-footer__brand img {
-  display: block;
-  width: 3.5rem;
-  height: 3.5rem;
+.site-footer__brand {
+  --nlf-logo-foreground: var(--nl-ice);
+  --nlf-logo-accent: var(--nl-electric_blue);
+}
+
+.site-footer__brand-link {
+  display: inline-flex;
   margin-bottom: 1rem;
+  text-decoration: none;
+}
+
+.site-footer__brand-link .nlf-brand-lockup__mark {
+  width: 2.8rem;
+  height: 2.8rem;
+}
+
+.site-footer__brand-link .nlf-brand-lockup__name {
+  font-size: 1rem;
 }
 
 .site-footer__brand p {
@@ -902,6 +1015,7 @@ footer a:hover {
 .project-card a:focus-visible,
 .resource-card:focus-visible,
 .sl-link-button:focus-visible,
+.site-title:focus-visible,
 button:focus-visible,
 .main-frame a:focus-visible,
 #starlight__mobile-toc summary#starlight__on-this-page--mobile:focus-visible,
@@ -958,7 +1072,12 @@ button:focus-visible,
 }
 
 :root[data-theme='light'] .forge-visual {
-  border-color: var(--nl-steel_2);
+  border-color: var(--nlf-hero-line-muted);
+  box-shadow: 0 16px 42px color-mix(in srgb, var(--nl-steel_2) 10%, transparent);
+}
+
+:root[data-theme='light'] .forge-visual__halo {
+  opacity: 0.45;
 }
 
 :root[data-theme='light'] .home-intro__button--secondary {
@@ -1026,12 +1145,20 @@ button:focus-visible,
   }
 
   .site-title {
-    min-width: 8.5rem;
+    min-width: 7.5rem;
   }
 
-  .site-title img {
-    width: 9.5rem;
-    max-height: 2.2rem;
+  .site-title .nlf-brand-lockup__mark {
+    width: 1.85rem;
+    height: 1.85rem;
+  }
+
+  .site-title .nlf-brand-lockup__name {
+    font-size: 0.82rem;
+  }
+
+  .site-title .nlf-brand-lockup__foundry {
+    font-size: 0.5rem;
   }
 
   .project-card {
