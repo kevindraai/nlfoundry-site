@@ -323,7 +323,7 @@ h4,
 .forge-visual__construction,
 .forge-visual__corners,
 .forge-visual__network,
-.forge-visual__facets {
+.forge-visual__details {
   fill: none;
   stroke-linecap: round;
   stroke-linejoin: round;
@@ -339,6 +339,10 @@ h4,
 
 .forge-visual__corners {
   stroke-width: 1;
+}
+
+.forge-visual__dimension {
+  stroke-dasharray: 4 7;
 }
 
 .forge-visual__node-ring {
@@ -366,20 +370,21 @@ h4,
   vector-effect: non-scaling-stroke;
 }
 
-.forge-visual__plane--top {
-  fill: url('#nlf-forge-top');
+.forge-visual__plane--face {
+  fill: url('#nlf-forge-face');
 }
 
-.forge-visual__plane--side,
-.forge-visual__plane--base {
+.forge-visual__plane--horn,
+.forge-visual__plane--base-top {
   fill: var(--nlf-hero-plane-top);
 }
 
-.forge-visual__plane--core {
-  fill: url('#nlf-forge-core');
+.forge-visual__plane--body {
+  fill: url('#nlf-forge-body');
 }
 
-.forge-visual__plane--far {
+.forge-visual__plane--heel,
+.forge-visual__plane--base-front {
   fill: var(--nlf-hero-plane-deep);
 }
 
@@ -408,9 +413,23 @@ h4,
   vector-effect: non-scaling-stroke;
 }
 
-.forge-visual__facets {
+.forge-visual__details {
   stroke: var(--nlf-hero-line-soft);
   stroke-width: 1.05;
+}
+
+.forge-visual__face-edge {
+  stroke: var(--nlf-hero-line-soft);
+}
+
+.forge-visual__body-edge {
+  stroke: var(--nlf-hero-line-muted);
+}
+
+.forge-visual__hardy-hole,
+.forge-visual__pritchel-hole {
+  fill: var(--sl-color-bg);
+  stroke: var(--nlf-hero-line);
 }
 
 .project-grid,
