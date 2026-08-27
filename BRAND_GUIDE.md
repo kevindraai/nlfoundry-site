@@ -75,7 +75,7 @@ Panels use dark layered surfaces, thin steel borders, restrained glow and large 
 Homepage pattern:
 
 - Hero uses left-aligned statement and right-side technical illustration.
-- `src/components/ForgeHero.astro` is the live, vector-first homepage forge illustration. Its anvil planes, N/L mark, perspective grid and circuit nodes are inline so the active Starlight theme can style them through semantic tokens. The older public SVG and raster fallback remain reference assets only and are not rendered by the homepage.
+- `src/components/ForgeHero.astro` uses paired, theme-aware N/L anvil assets from `src/assets/brand/`. They are SVG wrappers around embedded raster imagery: a pragmatic hero improvement, not a pure-vector logo or final brand mark. The active Starlight theme selects the matching light or dark asset; the illustration remains decorative and subordinate to the homepage statement. The primary lockup stays authoritative. Hand-vectorisation, social-card work and a final logo family remain a separate brand sprint.
 - Product cards should be separated by sufficient spacing and support mobile stacking.
 - Footer includes products, engineering, journal, about, privacy/AI transparency, GitHub, and copyright.
 - No screenshot mockups are used; composition is structural and native in the DOM.
