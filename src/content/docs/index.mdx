@@ -11,51 +11,80 @@ next: false
 import ForgeHero from '../../components/ForgeHero.astro';
 import LatestWriting from '../../components/LatestWriting.astro';
 import ProjectGrid from '../../components/ProjectGrid.astro';
-import ResourceGrid from '../../components/ResourceGrid.astro';
 import SiteFooter from '../../components/SiteFooter.astro';
 
-<div class="home-intro">
-  <div>
-    <p class="home-intro__eyebrow">Independent software studio · Netherlands</p>
-    <h1 class="home-intro__title">Practical software,<br /> forged for real<br /> <span class="home-intro__title--accent">environments.</span></h1>
-    <p class="home-intro__copy">We build reliable software for infrastructure, operations and the people who keep things running.</p>
+<section class="home-intro" aria-labelledby="home-intro-title">
+  <div class="home-intro__statement">
+    <p class="home-intro__eyebrow">Independent software foundry · Netherlands</p>
+    <h1 id="home-intro-title" class="home-intro__title">Software for systems that need to keep running.</h1>
+    <p class="home-intro__copy">Small, practical software built close to the operational problem.</p>
     <div class="home-intro__actions">
-      <a class="home-intro__button home-intro__button--primary" href="./projects/exitlane/">Explore our products <span aria-hidden="true">→</span></a>
-      <a class="home-intro__button home-intro__button--secondary" href="./journal/">Read the Journal</a>
+      <a class="home-intro__button" href="#current-builds"><span>View current builds</span><span aria-hidden="true">→</span></a>
+      <a class="home-intro__text-link" href="./engineering/">How we work</a>
     </div>
   </div>
-  <ForgeHero />
-</div>
-
-## Products
-
-<ProjectGrid />
-
-## Latest writing
-
-Notes on engineering decisions, trade-offs and work that has to survive outside a clean demo.
-
-<LatestWriting />
-
-## Engineering in the open
-
-The software is supported by a repeatable engineering system: explicit problem boundaries, reviewable changes, automated quality gates and infrastructure that can be reproduced instead of remembered.
-
-<ResourceGrid />
-
-## Built for the messy middle
-
-Useful software has to survive contact with policy, people, infrastructure and day-to-day pressure. N/L Foundry focuses on that middle ground: practical systems that remain understandable, maintainable and dependable after they leave the lab.
-
-<section class="contact-teaser">
-  <div>
-    <p class="contact-teaser__eyebrow">Have a practical problem?</p>
-    <h2>Bring the messy context.</h2>
-    <p>Start with the environment, constraints and outcome. The first conversation does not need a polished brief.</p>
+  <div class="home-intro__visual">
+    <ForgeHero />
+    <p class="home-intro__visual-note"><span>Studio focus</span> Operational software · Built in the Netherlands</p>
   </div>
-  <a class="contact-teaser__link" href="./contact/">Contact N/L Foundry <span aria-hidden="true">→</span></a>
 </section>
 
----
+<section id="current-builds" class="home-section home-builds" aria-labelledby="current-builds-title">
+  <header class="home-section__header">
+    <p class="home-section__index">01 / Current builds</p>
+    <div>
+      <h2 id="current-builds-title">Software shaped around the work.</h2>
+      <p>Two focused products, each built around operational details generic software tends to miss.</p>
+    </div>
+  </header>
+  <ProjectGrid />
+</section>
+
+<section class="home-section home-method" aria-labelledby="studio-method-title">
+  <header class="home-section__header">
+    <p class="home-section__index">02 / How the studio works</p>
+    <div>
+      <h2 id="studio-method-title">The awkward parts are part of the brief.</h2>
+      <p>Failures, handovers, policy and day-to-day pressure are treated as product requirements—not edge cases.</p>
+    </div>
+  </header>
+  <dl class="method-list">
+    <div>
+      <dt>Boundaries</dt>
+      <dd>Define the operational problem.</dd>
+    </div>
+    <div>
+      <dt>Review</dt>
+      <dd>Make changes inspectable.</dd>
+    </div>
+    <div>
+      <dt>Reproducibility</dt>
+      <dd>Preserve how the system is operated.</dd>
+    </div>
+  </dl>
+  <nav class="home-method__links" aria-label="Studio working method">
+    <a href="./engineering/">How we work <span aria-hidden="true">→</span></a>
+    <a href="./now/">What we’re working on <span aria-hidden="true">→</span></a>
+  </nav>
+</section>
+
+<section class="home-section home-field-notes" aria-labelledby="field-notes-title">
+  <header class="home-section__header">
+    <p class="home-section__index">03 / Field notes</p>
+    <div>
+      <h2 id="field-notes-title">Decisions from the workbench.</h2>
+      <p>Engineering decisions, trade-offs and lessons from software that has to survive outside a clean demo.</p>
+    </div>
+  </header>
+  <LatestWriting />
+</section>
+
+<section class="home-contact" aria-labelledby="home-contact-title">
+  <div>
+    <h2 id="home-contact-title">Have a concrete operational problem?</h2>
+    <p>Send the environment, constraints and desired outcome.</p>
+  </div>
+  <a href="./contact/">Start a conversation <span aria-hidden="true">→</span></a>
+</section>
 
 <SiteFooter />

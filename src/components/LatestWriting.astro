@@ -14,15 +14,19 @@ const posts = (await getCollection('posts', ({ data }) => !data.draft))
   .slice(0, 3);
 ---
 
-<div class="writing-list">
+<div class="field-notes-list">
   {posts.map((post) => (
-    <article class="writing-card">
-      <p class="writing-card__meta">
+    <article class="field-note">
+      <div class="field-note__meta">
         <time datetime={post.data.date.toISOString()}>{dateFormatter.format(post.data.date)}</time>
-        {post.data.tags[0] && <span>{post.data.tags[0]}</span>}
-      </p>
-      <h3><a href={withBase(`/journal/${entrySlug(post.id)}/`)}>{post.data.title}</a></h3>
-      <p>{post.data.description}</p>
+        {post.data.tags.slice(0, 2).map((tag) => <span>{tag}</span>)}
+      </div>
+      <div class="field-note__body">
+        <h3><a href={withBase(`/journal/${entrySlug(post.id)}/`)}>{post.data.title}</a></h3>
+        <p>{post.data.description}</p>
+      </div>
     </article>
   ))}
 </div>
+
+<a class="field-notes__all" href={withBase('/journal/')}>All field notes <span aria-hidden="true">→</span></a>
