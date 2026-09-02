@@ -18,26 +18,63 @@ const deliveryLabels = {
   'open-source': 'Open source',
   'hosted-product': 'Hosted product',
 };
+const domainLabels = {
+  exitlane: 'Networking / VPN',
+  clubpos: 'Point of sale / clubs',
+};
+const productOrder = {
+  exitlane: 0,
+  clubpos: 1,
+};
 const projects = (await getCollection('projects', ({ data }) => !data.draft && data.featured))
-  .sort((a, b) => b.data.startDate.valueOf() - a.data.startDate.valueOf());
+  .sort((a, b) => productOrder[a.data.product] - productOrder[b.data.product]);
 ---
 
-<div class="project-grid">
-  {projects.map((project) => (
-    <article class={`project-card project-card--${project.data.product}`}>
-      <div class="project-card__heading">
-        <img class="project-card__icon" src={productAssets[project.data.product]} width="64" height="64" alt="" aria-hidden="true" />
-        <div class="project-card__meta">
-          <span>{deliveryLabels[project.data.deliveryModel]}</span>
-          <span>{statusLabels[project.data.status]}</span>
+<div class="build-list">
+  {projects.map((project, index) => {
+    const repositoryLink = project.data.links.find(({ label }) => label.toLowerCase() === 'github');
+
+    return (
+      <article class={`build-record build-record--${project.data.product}`}>
+        <p class="build-record__number">
+          <span>Build</span>
+          <strong>{String(index + 1).padStart(2, '0')}</strong>
+        </p>
+        <div class="build-record__body">
+          <header class="build-record__heading">
+            <img class="build-record__icon" src={productAssets[project.data.product]} width="64" height="64" alt="" aria-hidden="true" />
+            <h3>{project.data.title}</h3>
+          </header>
+          <p class="build-record__outcome">{project.data.description}</p>
+          <div class="build-record__why">
+            <p class="build-record__label">Why it exists</p>
+            <p>{project.data.focus}</p>
+          </div>
+          <a class="build-record__product-link" href={withBase(`/projects/${entrySlug(project.id)}/`)}>
+            View {project.data.title}<span aria-hidden="true"> →</span>
+          </a>
         </div>
-      </div>
-      <h3>{project.data.title}</h3>
-      <p>{project.data.description}</p>
-      <p class="project-card__focus">{project.data.focus}</p>
-      <a href={withBase(`/projects/${entrySlug(project.id)}/`)} aria-label={`Explore ${project.data.title}`}>
-        Explore {project.data.title}<span aria-hidden="true"> →</span>
-      </a>
-    </article>
-  ))}
+        <dl class="build-record__meta">
+          <div>
+            <dt>Status</dt>
+            <dd>{statusLabels[project.data.status]}</dd>
+          </div>
+          <div>
+            <dt>Delivery</dt>
+            <dd>{deliveryLabels[project.data.deliveryModel]}</dd>
+          </div>
+          <div>
+            <dt>Domain</dt>
+            <dd>{domainLabels[project.data.product]}</dd>
+          </div>
+          {repositoryLink && (
+            <div>
+              <dt>Repository</dt>
+              <dd><a href={repositoryLink.url}>GitHub <span aria-hidden="true">↗</span></a></dd>
+            </div>
+          )}
+        </dl>
+      </article>
+    );
+  })}
 </div>

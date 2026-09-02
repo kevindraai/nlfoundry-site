@@ -1,6 +1,9 @@
 ---
 const { starlightRoute } = Astro.locals;
-const isHomePage = starlightRoute.slug === '' || starlightRoute.slug === 'index';
+const basePath = import.meta.env.BASE_URL.endsWith('/')
+  ? import.meta.env.BASE_URL
+  : `${import.meta.env.BASE_URL}/`;
+const isHomePage = starlightRoute.id === 'index' || Astro.url.pathname === basePath;
 const pageTitleId = '_top';
 ---
 
