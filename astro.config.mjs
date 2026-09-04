@@ -162,8 +162,9 @@ export default defineConfig({
           href: publicUrl('/rss.xml'),
         },
       ],
-      customCss: ['./src/styles/custom.css'],
+      customCss: ['./src/styles/custom.css', './src/styles/foundry.css'],
       components: {
+        Header: './src/components/FoundryHeader.astro',
         PageTitle: './src/components/StarlightPageTitle.astro',
         SiteTitle: './src/components/StarlightSiteTitle.astro',
         ThemeProvider: './src/components/StarlightThemeProvider.astro',

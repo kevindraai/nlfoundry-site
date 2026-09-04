@@ -1,4 +1,4 @@
-/* N/L Foundry Brand Package v2 — authoritative digital tokens. */
+/* N/L Foundry Brand Package v3 — authoritative digital tokens. */
 :root {
   --nl-night: #020914;
   --nl-night_2: #071523;
@@ -7,7 +7,8 @@
   --nl-ice: #F7FAFE;
   --nl-electric_blue: #63C4FF;
   --nl-exitlane_blue: #4CB4E8;
-  --nl-clubpos_copper: #FF7A21;
+  --nl-clubpos_coral: #FF6757;
+  --nl-clubpos_copper: var(--nl-clubpos_coral); /* Compatibility alias for existing product components. */
   --nl-neutral_900: #142232;
   --nl-neutral_700: #5E7284;
   --nl-neutral_300: #C7D3DD;

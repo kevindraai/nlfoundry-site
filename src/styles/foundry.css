@@ -1,0 +1,128 @@
+@font-face { font-family: Inter; src: url("../../public/fonts/InterVariable.woff2") format("woff2"); font-weight: 100 900; font-style: normal; font-display: swap; }
+/* Approved identity: letter study 03; optical weight refinement, September 2026. */
+:root { --nl-font-display: Inter, ui-sans-serif, system-ui, sans-serif; --nlf-radius-sm: 0; --nlf-radius-md: 0; --nlf-radius-lg: 0; --nlf-logo-accent: var(--nlf-logo-foreground); }
+:root { --nlf-surface-canvas: var(--nl-ice); --nlf-surface-raised: #fff; --nlf-surface-panel: var(--nl-neutral_100); --nlf-surface-panel-strong: var(--nl-neutral_300); --nlf-text-heading: var(--nl-night); --nlf-text-body: var(--nl-neutral_900); --nlf-text-muted: var(--nl-steel_2); --nlf-accent: #215E86; --nlf-border: #728496; --nlf-border-subtle: var(--nl-neutral_300); --nlf-logo-foreground: var(--nl-night); --nlf-logo-accent: var(--nl-night); --nlf-shadow-panel: none; }
+body { background: var(--nlf-surface-canvas); }
+body::before { display: none; }
+.header { background: var(--nlf-surface-canvas); backdrop-filter: none; border: 0; }
+.nlf-brand-lockup { gap: .7rem; color: var(--nlf-logo-foreground); white-space: nowrap; }
+.nlf-brand-lockup__mark { width: 2.7rem; height: auto; color: currentColor; }
+.nlf-brand-lockup__wordmark { display: inline; font-size: 1.2rem; font-weight: 600; letter-spacing: -.045em; line-height: 1.1; }
+.site-footer__brand { --nlf-logo-foreground: var(--nlf-text-heading); --nlf-logo-accent: var(--nlf-text-heading); }
+.sl-markdown-content :is(h1,h2,h3,h4), .site-footer__links h2 { color: var(--nlf-text-heading); }
+.sl-markdown-content a:not([class]):hover { color: var(--nlf-text-heading); }
+:root .sidebar a[aria-current='page'] { background: var(--nl-night); color: var(--nl-ice); }
+:root .sidebar a[aria-current='page']:hover { color: var(--nl-ice); }
+.collection-card, .writing-card, .resource-card, .card, .product-surface, .contact-panel { border-radius: 0; box-shadow: none; }
+.contact-panel { background: var(--nlf-surface-raised); }
+.contact-form input, .contact-form textarea { border: 1px solid var(--nlf-border); border-radius: 0; background: var(--nlf-surface-canvas); color: var(--nlf-text-heading); font-size: 1rem; }
+.contact-form label { color: var(--nlf-text-heading); font-size: .875rem; }
+.contact-form button { border-radius: 0; }
+.contact-form :disabled { cursor: not-allowed; }
+.contact-form__privacy { color: var(--nlf-text-muted); }
+:focus-visible { outline: 2px solid var(--nlf-focus-ring); outline-offset: 5px; }
+
+/* Homepage uses the existing Starlight document shell, with its own editorial grid. */
+html:has(.foundry-home) { --sl-content-width: 76rem; --sl-nav-height: 6rem; --sl-content-pad-x: clamp(1.25rem, 4vw, 4rem); }
+body:has(.foundry-home) .content-panel:has(#_top):not(:has(.foundry-home)) { display: none; }
+body:has(.foundry-home) .content-panel:has(.foundry-home) { padding-top: 0; border-top: 0; }
+body:has(.foundry-home) main { padding-top: 0; }
+body:has(.foundry-home) .sl-markdown-content + footer { display: none; }
+body:has(.foundry-home) header.header { border-bottom: 0; background: var(--nlf-surface-canvas); }
+.foundry-header { display: flex; align-items: center; gap: 1.75rem; width: 100%; max-width: 76rem; margin: 0 auto; height: 100%; }
+.foundry-header__brand { display: inline-flex; text-decoration: none; margin-right: auto; }
+.foundry-header__nav { display: flex; align-items: center; gap: 2rem; }
+.foundry-header__nav a { font-size: .875rem; color: var(--nlf-text-heading); text-decoration: none; }
+.foundry-header__nav a:hover { text-decoration: underline; text-underline-offset: .3rem; }
+.foundry-header__theme select { min-height: 2.75rem; font-size: .875rem; border: 1px solid var(--nlf-border-subtle); border-radius: 0; padding: .25rem; background: var(--nlf-surface-canvas); color: var(--nlf-text-heading); }
+.foundry-menu { display: none; }
+.foundry-home { color: var(--nlf-text-body); }
+.foundry-home :is(p,h1,h2,h3,div,section,article,header,a,img,footer,nav,dl,dt,dd,form,fieldset,label,input,textarea,button) { margin-top: 0; }
+.foundry-home :is(h1,h2,h3) { font-family: var(--nl-font-display); font-weight: 600; }
+.foundry-home p { line-height: 1.6; }
+.foundry-home .foundry-eyebrow { margin: 0; font-family: var(--nl-font-sans); font-size: .8125rem; line-height: 1.5; letter-spacing: .065em; font-weight: 500; text-transform: uppercase; color: var(--nlf-text-heading); }
+.foundry-hero { display: grid; grid-template-columns: 1fr 1.12fr; gap: clamp(2rem, 5vw, 5rem); align-items: center; padding: 2.75rem 0 4rem; }
+.foundry-home .foundry-hero h1 { font-size: clamp(3.6rem, 6.4vw, 6.25rem); line-height: .99; letter-spacing: -.065em; margin: 1.1rem 0 1.75rem; }
+.foundry-home .foundry-hero__description { font-size: clamp(1rem, 1.4vw, 1.125rem); line-height: 1.6; margin-bottom: 1.75rem; max-width: 29rem; }
+.foundry-hero__image { display: block; width: 100%; height: auto; aspect-ratio: 4 / 3; object-fit: cover; }
+.foundry-button, .foundry-header__nav .foundry-button { display: inline-flex; gap: 2rem; align-items: center; justify-content: space-between; padding: .875rem 1.25rem; min-height: 2.875rem; background: var(--nlf-text-heading); color: var(--nlf-surface-canvas); border: 1px solid var(--nlf-text-heading); font-size: .875rem; line-height: 1.25; font-weight: 550; text-decoration: none; transition: background .15s, color .15s; }
+.foundry-button:hover, .foundry-header__nav .foundry-button:hover { background: var(--nl-electric_blue); color: var(--nl-night); text-decoration: none; border-color: var(--nl-electric_blue); }
+.foundry-work, .foundry-studio, .foundry-journal { padding: 1.25rem 0 3.5rem; border-top: 1px solid var(--nlf-border-subtle); scroll-margin-top: 7rem; }
+.foundry-projects { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: clamp(2rem, 5vw, 5rem); margin-top: 1.75rem !important; }
+.foundry-home .foundry-project h3 { font-size: clamp(1.8rem, 3vw, 2.5rem); letter-spacing: -.055em; line-height: 1.2; margin: 0 0 .25rem; }
+.foundry-project__type { font-size: .75rem; letter-spacing: .065em; text-transform: uppercase; margin-bottom: 1.5rem; }
+.foundry-project__visual { display: block; background: var(--nl-night); aspect-ratio: 8 / 5; overflow: hidden; }
+.foundry-project__visual img { display: block; width: 100%; height: 100%; object-fit: cover; }
+.foundry-project__description { font-size: 1rem; margin: 1.1rem 0 1rem !important; }
+.foundry-project__bottom { display: flex; gap: 1rem; flex-wrap: wrap; justify-content: space-between; align-items: center; }
+.foundry-link, .foundry-home .foundry-link { display: inline-flex; gap: 1.5rem; align-items: center; padding-block: .25rem; color: var(--nlf-text-heading); border-bottom: 1px solid var(--nlf-accent); font-size: .875rem; text-decoration: none; }
+.foundry-link:hover { border-bottom-color: currentColor; }
+.foundry-project__status { font-size: .8125rem; color: var(--nlf-text-muted); }
+.foundry-studio__columns { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(2rem,5vw,5rem); margin-top: 1.75rem !important; }
+.foundry-home .foundry-studio h2 { font-size: clamp(2rem,3.5vw,3rem); line-height: 1.12; letter-spacing: -.05em; }
+.foundry-studio p:not(.foundry-eyebrow) { margin-bottom: 1rem; max-width: 33rem; font-size: 1.0625rem; }
+.foundry-studio__links { display: flex; gap: 1.75rem; flex-wrap: wrap; margin-top: 1.5rem !important; }
+.foundry-journal .field-notes-list { margin-top: 1.75rem; }
+.foundry-journal .field-note { border-color: var(--nlf-border-subtle); padding: 1rem 0; }
+.foundry-journal .field-note__meta, .foundry-journal .field-note__body p { color: var(--nlf-text-muted); }
+.foundry-journal .field-note h3 { font-size: 1.5rem; }
+.foundry-journal .field-note a, .foundry-journal .field-notes__all { color: var(--nlf-text-heading); }
+.foundry-contact { padding: clamp(2rem,5vw,4rem); margin-inline: calc(-1 * var(--sl-content-pad-x)); background: var(--nl-night); color: var(--nl-ice); scroll-margin-top: 6rem;
+ --nlf-text-heading: var(--nl-ice); --nlf-text-body: var(--nl-neutral_300); --nlf-text-muted: var(--nl-neutral_300); --nlf-surface-canvas: var(--nl-night); --nlf-surface-raised: var(--nl-night); --nlf-accent: var(--nl-electric_blue); --nlf-focus-ring: var(--nl-electric_blue); --nlf-border: #728496;
+}
+.foundry-home .foundry-contact .contact-panel { display: grid; grid-template-columns: .85fr 1.15fr; gap: 3rem; padding: 0; border: 0; background: transparent; box-shadow: none; color: var(--nl-ice); }
+.foundry-home .foundry-contact .contact-panel h2 { color: var(--nl-ice); font-size: clamp(2rem,3.5vw,3rem); line-height: 1.08; letter-spacing: -.05em; max-width: 9em; margin: 1rem 0; }
+.foundry-home .foundry-contact .contact-panel__intro p { color: var(--nl-neutral_300); font-size: .9375rem; }
+.foundry-home .foundry-contact .contact-panel__eyebrow { text-transform: uppercase; letter-spacing: .065em; font-size: .8125rem; }
+.foundry-contact .contact-form__fields { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; border: 0; padding: 0; margin: 0; min-width: 0; }
+.foundry-contact .contact-form__field:nth-child(n+3), .foundry-contact .contact-form__privacy { grid-column: 1 / -1; }
+.foundry-home .foundry-contact .contact-form label { color: var(--nl-ice); }
+.foundry-home .foundry-contact .contact-form input, .foundry-home .foundry-contact .contact-form textarea { background: var(--nl-night); border-color: #728496; color: var(--nl-ice); width: 100%; padding: .65rem; }
+.foundry-contact .contact-form textarea { min-height: 7rem; height: 7rem; }
+.foundry-contact .contact-form__privacy { font-size: .8125rem; margin: 0; color: var(--nl-neutral_300); }
+.foundry-contact .contact-form button { background: var(--nl-electric_blue); color: var(--nl-night); padding: .875rem 1.25rem; border: 0; width: fit-content; min-height: 2.875rem; font-size: .875rem; }
+.foundry-contact .contact-form button:disabled { opacity: .7; }
+.foundry-home .site-footer { padding-block: 3rem 1rem; }
+.foundry-home .site-footer__brand p { margin-top: .75rem; }
+.foundry-home .site-footer__links h2 { font-size: .8125rem; letter-spacing: .06em; }
+@media (max-width: 60rem) {
+ .foundry-header { gap: 1rem; } .foundry-header__nav { gap: 1.25rem; }
+ .foundry-hero { gap: 2rem; } .wide-break { display: none; }
+ .foundry-home .foundry-contact .contact-panel { gap: 2rem; }
+}
+@media (max-width: 47rem) {
+ html:has(.foundry-home) { --sl-nav-height: 5rem; }
+ .foundry-header__nav { display: none; } .foundry-header__theme { margin-left: auto; }
+ .foundry-header__brand { margin-right: 0; } .foundry-header .nlf-brand-lockup__wordmark { font-size: 1rem; }
+ .foundry-header .nlf-brand-lockup__mark { width: 2rem; }
+ .foundry-menu { display: block; position: relative; }
+ .foundry-menu summary { padding: .75rem 0 .75rem .25rem; cursor: pointer; list-style: none; font-size: .875rem; }
+ .foundry-menu summary::-webkit-details-marker { display: none; }
+ .foundry-menu summary span { margin-left: .4rem; }
+ .foundry-menu nav { position: absolute; right: 0; top: 100%; width: min(20rem,85vw); background: var(--nlf-surface-canvas); border: 1px solid var(--nlf-border); padding: .75rem; box-shadow: 0 10px 24px #0209141a; }
+ .foundry-menu nav a { display: block; padding: .875rem; color: var(--nlf-text-heading); text-decoration: none; }
+ .foundry-hero { grid-template-columns: 1fr; padding: 1.5rem 0 2.75rem; gap: 2rem; }
+ .foundry-home .foundry-hero h1 { font-size: clamp(3.5rem, 14vw, 5.5rem); }
+ .foundry-home .foundry-eyebrow { font-size: .75rem; }
+ .foundry-hero__image { width: 100%; }
+ .foundry-projects, .foundry-studio__columns { grid-template-columns: 1fr; gap: 2.5rem; }
+ .foundry-work, .foundry-studio, .foundry-journal { padding-bottom: 2.5rem; }
+ .foundry-home .foundry-contact .contact-panel { grid-template-columns: 1fr; }
+ .foundry-home .site-footer { grid-template-columns: 1fr; }
+ .foundry-home .site-footer__links { grid-template-columns: repeat(2,minmax(0,1fr)); }
+}
+@media (max-width: 24rem) {
+ .foundry-header { gap: .6rem; } .foundry-header__theme select { width: 3.75rem; font-size: .75rem; }
+ .foundry-menu summary { font-size: 0; } .foundry-menu summary span { font-size: 1rem; }
+ .foundry-contact .contact-form__fields { grid-template-columns: 1fr; }
+ .foundry-header .nlf-brand-lockup { gap: .4rem; }
+}
+@media (prefers-reduced-motion: reduce) { .foundry-button { transition: none; } }
+body:has(.foundry-home) main > .content-panel:not(:has(.foundry-home)) { display: none; }
+:root :is(.collection-card,.writing-card,.resource-card,.card,.product-surface,.contact-panel) { box-shadow: none; }
+:root .contact-form input, :root .contact-form textarea { border-color: #728496; }
+:root .product-surface--clubpos .product-surface__eyebrow { color: #172B3A; }
+:root .product-surface--exitlane .product-surface__eyebrow { color: #215E86; }
+
+.foundry-menu { margin-left: auto; }
+.header .social-icons::after { display: none; }

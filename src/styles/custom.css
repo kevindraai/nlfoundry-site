@@ -22,7 +22,7 @@
   color-scheme: dark;
 }
 
-:root[data-theme='light'] {
+:root {
   --sl-color-accent-low: var(--nl-neutral_100);
   --sl-color-accent: var(--nl-night);
   --sl-color-accent-high: var(--nl-night);
@@ -337,11 +337,11 @@ h4,
   display: none;
 }
 
-:root[data-theme='light'] .forge-visual__image--dark {
+:root .forge-visual__image--dark {
   display: none;
 }
 
-:root[data-theme='light'] .forge-visual__image--light {
+:root .forge-visual__image--light {
   display: block;
 }
 
@@ -1227,125 +1227,125 @@ button:focus-visible,
   color: var(--nl-ice);
 }
 
-:root[data-theme='light'] body {
+:root body {
   background: var(--nl-ice);
 }
 
-:root[data-theme='light'] body::before {
+:root body::before {
   opacity: 0.16;
 }
 
-:root[data-theme='light'] .home-intro__title,
-:root[data-theme='light'] .sl-markdown-content h1,
-:root[data-theme='light'] .sl-markdown-content h2,
-:root[data-theme='light'] .sl-markdown-content h3,
-:root[data-theme='light'] .resource-card__title {
+:root .home-intro__title,
+:root .sl-markdown-content h1,
+:root .sl-markdown-content h2,
+:root .sl-markdown-content h3,
+:root .resource-card__title {
   color: var(--nl-night);
 }
 
-:root[data-theme='light'] .home-intro__copy,
-:root[data-theme='light'] .resource-card__description,
-:root[data-theme='light'] .product-surface__summary {
+:root .home-intro__copy,
+:root .resource-card__description,
+:root .product-surface__summary {
   color: var(--nl-neutral_900);
 }
 
-:root[data-theme='light'] .resource-card,
-:root[data-theme='light'] .product-surface,
-:root[data-theme='light'] .writing-card,
-:root[data-theme='light'] .collection-card,
-:root[data-theme='light'] .contact-panel,
-:root[data-theme='light'] .card {
+:root .resource-card,
+:root .product-surface,
+:root .writing-card,
+:root .collection-card,
+:root .contact-panel,
+:root .card {
   border-color: var(--nl-neutral_300);
   background: var(--nl-ice);
   box-shadow: 0 16px 42px rgb(2 9 20 / 0.08);
 }
 
-:root[data-theme='light'] .sl-link-button.minimal {
+:root .sl-link-button.minimal {
   color: var(--nl-night);
 }
 
-:root[data-theme='light'] .writing-card h2,
-:root[data-theme='light'] .writing-card h3,
-:root[data-theme='light'] .collection-card h2,
-:root[data-theme='light'] .contact-panel h2,
-:root[data-theme='light'] .contact-form label {
+:root .writing-card h2,
+:root .writing-card h3,
+:root .collection-card h2,
+:root .contact-panel h2,
+:root .contact-form label {
   color: var(--nl-night);
 }
 
-:root[data-theme='light'] .writing-card > p:last-child,
-:root[data-theme='light'] .collection-card > p,
-:root[data-theme='light'] .contact-panel__intro > p {
+:root .writing-card > p:last-child,
+:root .collection-card > p,
+:root .contact-panel__intro > p {
   color: var(--nl-neutral_900);
 }
 
-:root[data-theme='light'] .home-section__index {
+:root .home-section__index {
   background: var(--nl-ice);
 }
 
-:root[data-theme='light'] .home-intro__eyebrow,
-:root[data-theme='light'] .home-section__index,
-:root[data-theme='light'] .build-record__label,
-:root[data-theme='light'] .home-intro__visual-note span,
-:root[data-theme='light'] .build-record__number strong,
-:root[data-theme='light'] .method-list dt,
-:root[data-theme='light'] .build-record__meta a,
-:root[data-theme='light'] .field-notes__all,
-:root[data-theme='light'] .home-method__links a,
-:root[data-theme='light'] .home-contact > a {
+:root .home-intro__eyebrow,
+:root .home-section__index,
+:root .build-record__label,
+:root .home-intro__visual-note span,
+:root .build-record__number strong,
+:root .method-list dt,
+:root .build-record__meta a,
+:root .field-notes__all,
+:root .home-method__links a,
+:root .home-contact > a {
   color: var(--nl-steel_2);
 }
 
-:root[data-theme='light'] .build-record--exitlane .build-record__product-link {
+:root .build-record--exitlane .build-record__product-link {
   color: color-mix(in srgb, var(--nlf-accent-exitlane) 55%, var(--nl-night));
 }
 
-:root[data-theme='light'] .build-record--clubpos .build-record__product-link {
+:root .build-record--clubpos .build-record__product-link {
   color: color-mix(in srgb, var(--nlf-accent-clubpos) 55%, var(--nl-night));
 }
 
-:root[data-theme='light'] .build-record,
-:root[data-theme='light'] .field-note,
-:root[data-theme='light'] .method-list > div {
+:root .build-record,
+:root .field-note,
+:root .method-list > div {
   border-color: var(--nl-neutral_300);
 }
 
-:root[data-theme='light'] .home-intro__text-link,
-:root[data-theme='light'] .home-intro__visual-note,
-:root[data-theme='light'] .home-section__header div > p,
-:root[data-theme='light'] .build-record__number,
-:root[data-theme='light'] .build-record__why p:last-child,
-:root[data-theme='light'] .field-note__meta,
-:root[data-theme='light'] .field-note__body > p,
-:root[data-theme='light'] .home-contact p,
-:root[data-theme='light'] .site-footer,
-:root[data-theme='light'] .site-footer__brand p,
-:root[data-theme='light'] .site-footer a,
-:root[data-theme='light'] .site-footer__bottom {
+:root .home-intro__text-link,
+:root .home-intro__visual-note,
+:root .home-section__header div > p,
+:root .build-record__number,
+:root .build-record__why p:last-child,
+:root .field-note__meta,
+:root .field-note__body > p,
+:root .home-contact p,
+:root .site-footer,
+:root .site-footer__brand p,
+:root .site-footer a,
+:root .site-footer__bottom {
   color: var(--nl-neutral_700);
 }
 
-:root[data-theme='light'] .build-record__heading h3,
-:root[data-theme='light'] .build-record__outcome,
-:root[data-theme='light'] .build-record__meta dd,
-:root[data-theme='light'] .field-note__meta time,
-:root[data-theme='light'] .field-note__body h3 a,
-:root[data-theme='light'] .method-list dd,
-:root[data-theme='light'] .home-contact h2,
-:root[data-theme='light'] .site-footer__links h2 {
+:root .build-record__heading h3,
+:root .build-record__outcome,
+:root .build-record__meta dd,
+:root .field-note__meta time,
+:root .field-note__body h3 a,
+:root .method-list dd,
+:root .home-contact h2,
+:root .site-footer__links h2 {
   color: var(--nl-night);
 }
 
-:root[data-theme='light'] .site-footer__brand {
+:root .site-footer__brand {
   --nlf-logo-foreground: var(--nl-night);
   --nlf-logo-accent: var(--nl-steel_2);
 }
 
-:root[data-theme='light'] .site-footer__bottom a {
+:root .site-footer__bottom a {
   color: var(--nl-night);
 }
 
-:root[data-theme='light'] .contact-form input,
-:root[data-theme='light'] .contact-form textarea {
+:root .contact-form input,
+:root .contact-form textarea {
   border-color: var(--nl-neutral_300);
   background: var(--nl-ice);
   color: var(--nl-night);
