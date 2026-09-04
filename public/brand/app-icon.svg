@@ -1,4 +1,1 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-labelledby="title desc"><title>N/L Foundry app icon</title><desc>Night square with electric blue line monogram.</desc><rect width="512" height="512" rx="112" fill="#020914"/><g transform="translate(208 156) scale(1.0)"><g id="nl-monogram" fill="none" stroke="#63C4FF" stroke-width="7.5" stroke-linecap="square" stroke-linejoin="miter" opacity="1">
-  <path id="n-left" d="M9 83V13"/><path id="n-diagonal" d="M9 13h7l47 58V13"/><path id="n-inner" d="M30 83V13"/>
-  <path id="l-main" d="M63 13v70h27"/><path id="l-inner" d="M77 13v56"/>
-</g></g></svg>
+<svg xmlns="http://www.w3.org/2000/svg" width="128" height="128" viewBox="0 0 128 128" role="img" aria-label="N/L Foundry"><title>N/L Foundry</title><rect width="128" height="128" fill="#020914"/><path fill="#F7FAFE" transform="translate(16 26) scale(0.75)" d="M4 4H20L76 77V4H92V80H124V96H76L20 23V96H4Z"/></svg>

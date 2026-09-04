@@ -1,16 +1,5 @@
 <script is:inline>
-  window.StarlightThemeProvider = (() => {
-    const storedTheme =
-      typeof localStorage !== 'undefined' && localStorage.getItem('starlight-theme');
-    const theme = storedTheme === 'light' || storedTheme === 'dark' ? storedTheme : 'dark';
-    document.documentElement.dataset.theme = theme;
-
-    return {
-      updatePickers(selectedTheme = theme) {
-        document.querySelectorAll('starlight-theme-select select').forEach((select) => {
-          if (select instanceof HTMLSelectElement) select.value = selectedTheme;
-        });
-      },
-    };
-  })();
+  // Keep the framework in light mode, irrespective of old saved preferences.
+  // The light palette is also unconditional in CSS for visitors without JavaScript.
+  document.documentElement.dataset.theme = 'light';
 </script>

@@ -1,90 +1,12 @@
 ---
 title: N/L Foundry
-head: []
-draft: false
-description: Practical software, forged for real environments.
+description: Open-source tools and digital products. Built with care, for the people who use them.
 template: splash
+draft: false
 prev: false
 next: false
 ---
 
-import ForgeHero from '../../components/ForgeHero.astro';
-import LatestWriting from '../../components/LatestWriting.astro';
-import ProjectGrid from '../../components/ProjectGrid.astro';
-import SiteFooter from '../../components/SiteFooter.astro';
+import FoundryHome from '../../components/FoundryHome.astro';
 
-<section class="home-intro" aria-labelledby="home-intro-title">
-  <div class="home-intro__statement">
-    <p class="home-intro__eyebrow">Independent software foundry · Netherlands</p>
-    <h1 id="home-intro-title" class="home-intro__title">Software for systems that need to keep running.</h1>
-    <p class="home-intro__copy">Small, practical software built close to the operational problem.</p>
-    <div class="home-intro__actions">
-      <a class="home-intro__button" href="#current-builds"><span>View current builds</span><span aria-hidden="true">→</span></a>
-      <a class="home-intro__text-link" href="./engineering/">How we work</a>
-    </div>
-  </div>
-  <div class="home-intro__visual">
-    <ForgeHero />
-    <p class="home-intro__visual-note"><span>Studio focus</span> Operational software · Built in the Netherlands</p>
-  </div>
-</section>
-
-<section id="current-builds" class="home-section home-builds" aria-labelledby="current-builds-title">
-  <header class="home-section__header">
-    <p class="home-section__index">01 / Current builds</p>
-    <div>
-      <h2 id="current-builds-title">Software shaped around the work.</h2>
-      <p>Two focused products, each built around operational details generic software tends to miss.</p>
-    </div>
-  </header>
-  <ProjectGrid />
-</section>
-
-<section class="home-section home-method" aria-labelledby="studio-method-title">
-  <header class="home-section__header">
-    <p class="home-section__index">02 / How the studio works</p>
-    <div>
-      <h2 id="studio-method-title">The awkward parts are part of the brief.</h2>
-      <p>Failures, handovers, policy and day-to-day pressure are treated as product requirements—not edge cases.</p>
-    </div>
-  </header>
-  <dl class="method-list">
-    <div>
-      <dt>Boundaries</dt>
-      <dd>Define the operational problem.</dd>
-    </div>
-    <div>
-      <dt>Review</dt>
-      <dd>Make changes inspectable.</dd>
-    </div>
-    <div>
-      <dt>Reproducibility</dt>
-      <dd>Preserve how the system is operated.</dd>
-    </div>
-  </dl>
-  <nav class="home-method__links" aria-label="Studio working method">
-    <a href="./engineering/">How we work <span aria-hidden="true">→</span></a>
-    <a href="./now/">What we’re working on <span aria-hidden="true">→</span></a>
-  </nav>
-</section>
-
-<section class="home-section home-field-notes" aria-labelledby="field-notes-title">
-  <header class="home-section__header">
-    <p class="home-section__index">03 / Field notes</p>
-    <div>
-      <h2 id="field-notes-title">Decisions from the workbench.</h2>
-      <p>Engineering decisions, trade-offs and lessons from software that has to survive outside a clean demo.</p>
-    </div>
-  </header>
-  <LatestWriting />
-</section>
-
-<section class="home-contact" aria-labelledby="home-contact-title">
-  <div>
-    <h2 id="home-contact-title">Have a concrete operational problem?</h2>
-    <p>Send the environment, constraints and desired outcome.</p>
-  </div>
-  <a href="./contact/">Start a conversation <span aria-hidden="true">→</span></a>
-</section>
-
-<SiteFooter />
+<FoundryHome />

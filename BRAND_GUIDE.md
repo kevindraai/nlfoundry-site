@@ -1,91 +1,52 @@
-# N/L Foundry Brand System v2
+# N/L Foundry Brand System v3
 
-This package translates the approved website mockup into a maintainable visual system.
+Approved 5 September 2026 in the N/L Foundry design session. This replaces v2's continuous-line slash monogram, heavy panel styling and default dark homepage. Letter study 03 is the approved logo basis, with modestly stronger strokes. The other studies are not approved logo variants.
 
-## Brand idea
+## Positioning
 
-N/L Foundry is precise, practical and quietly technical. The identity should feel engineered rather than decorated. Literal flames, hammers and industrial theatre are avoided. The foundry metaphor appears through structure, material, depth and controlled light.
+Independent design and software studio making open-source tools and digital products. Primary line: **Software, carefully made.** Personal by origin, practical by design. N/L has a personal origin; Foundry is where ideas take shape. Describe practical outcomes without exaggerated scale, availability or performance claims.
 
-## Logo
+## Logo authority
 
-The primary mark is a continuous-line `N/L` monogram. Both letters must remain visible. Do not crop the L, rotate the mark or replace the slash concept with a standalone N.
+The NL monogram is one filled shape: N and L share a full-height upright. There is no slash or diagonal cutout inside the mark. The full written name is always `N/L Foundry`.
 
-Assets:
+- Master geometry: `M4 4H20L76 77V4H92V80H124V96H76L20 23V96H4Z`, on `0 0 128 100`.
+- `public/brand/nlf-monogram.svg`: midnight vector master.
+- `public/brand/nlf-wordmark-light.svg`: midnight outlined horizontal lockup for light backgrounds.
+- `public/brand/nlf-wordmark-dark.svg`: ice outlined horizontal lockup for dark backgrounds.
+- `BrandLockup.astro`: same master silhouette, with accessible text in locally hosted Inter.
+- `public/favicon.svg` and `public/favicons/`: compact applications.
+- Clear space: at least one stem width (16 design units) on all sides.
+- Minimum: 20 px high / 6 mm for the monogram; 160 px wide / 42 mm for the horizontal lockup. 16 px favicon is a dedicated compact exception.
 
-- `public/brand/nlf-monogram.svg`
-- `public/brand/nlf-wordmark-dark.svg`
-- `public/brand/nlf-wordmark-light.svg`
+Do not redraw, rotate, stretch, add outlines or reconnect the letters differently. Use one colour with strong contrast. AI-generated steel-die imagery is a decorative interpretation, not an engraving master.
 
-Website application roles are deliberately provisional rather than a new brand decision:
+## Palette
 
-- `src/components/BrandLockup.astro` applies the primary wordmark in the header and footer with theme-aware CSS tokens.
-- `public/brand/nlf-monogram.svg` and `public/favicon.svg` remain the compact mark for icons and very small contexts.
-- The forge/anvil is an illustrative homepage accent, not a second primary logo.
+- Night `#020914`: primary dark ink/surface.
+- Steel `#21384A`: supporting text and material.
+- Ice `#F7FAFE`: primary light surface/reversed ink.
+- Electric blue `#63C4FF`: restrained accent and dark-surface controls.
+- Link blue `#215E86`: readable text links on light backgrounds.
 
-Maintain clear space equal to the width of the monogram's vertical stroke. At small sizes use the monogram only.
-
-### Minimum sizes
-
-- Monogram: minimum 20px icon height.
-- N/L wordmark: minimum 120px width.
-- Combined logo in full header: keep at least one base line-height of clear space above and below.
-
-### Minimum clear-space
-
-- Monogram and wordmark require clear space equal to the monogram stroke width.
-- Never place the logo flush against text, controls, or edge geometry.
-- Do not use logo color inversion in logos against gradients or busy photography.
-
-## Colour
-
-The N/L Foundry master brand is blue, steel and ice. Orange is reserved as a product accent for ClubPOS and should not become the generic Foundry colour.
-
-Core tokens live in `src/styles/tokens.css`.
-
-- Night: `#020914`
-- Night 2: `#071523`
-- Steel: `#0B1A2A`
-- Steel 2: `#21384A`
-- Ice: `#F7FAFE`
-- Electric blue: `#63C4FF`
-- ExitLane blue: `#4CB4E8`
-- ClubPOS copper: `#FF7A21`
+Use semantic tokens for interfaces. The website has one fixed light appearance, including without JavaScript. Dark contact sections are an intentional part of that single design. Reversed logo assets remain available for print and dark surfaces. Do not use electric blue for ordinary text on Ice.
 
 ## Typography
 
-Use a system-first stack and do not fetch fonts from a third party. Sora may be used for display copy when it is available locally; Inter and platform fonts provide the deterministic fallback. Headings use tight tracking and strong weight; body text remains neutral and readable.
+Locally hosted Inter Variable, SIL OFL 1.1. Licence: `public/fonts/Inter-LICENSE.txt`; upstream: https://github.com/rsms/inter . No external font requests. Body 400, display and wordmark 600. Use system fallbacks if loading fails. Main body at least 16 px; regular labels 14 px; small metadata 12–13 px. The standalone package's logo wordmarks use fixed letter outlines.
 
-Preferred stacks:
+## Product boundaries
 
-- Display: `Sora`, `Inter`, `ui-sans-serif`, `system-ui`, `sans-serif`
-- Body: `Inter`, `ui-sans-serif`, `system-ui`, `-apple-system`, `BlinkMacSystemFont`, `Segoe UI`, `sans-serif`
+ExitLane remains independently identified as an open-source network tool. ClubPOS uses its newer approved 4 September 2026 identity from `kevindraai/nlfoundry/nl-foundry-design-foundation/products/clubpos`: Night `#172B3A`, Coral `#FF6757`, Fresh White `#F5F7F8`, supplied open-C symbol and outlined Inter Bold wordmark. This supersedes the site's old orange/copper product assets only. Neither product accent becomes Foundry's master colour. Delivery model and development status remain separate and must be accurate.
 
-Use the same stack in light and dark themes for visual stability.
+## Website
 
-## Product accents
+Homepage: precise typographic hero and steel-die photograph; two product presentations; personal studio story; journal; direct contact. Generous whitespace, straight-edged controls, fine dividers. Other routes retain Starlight's content, search, navigation and document structure while sharing the new identity and fixed light appearance. Photography remains subordinate to content. Avoid flames, anvils, neon glow, decorative circuits, fake customer logos and invented product screenshots.
 
-- ExitLane: electric blue and teal
-- ClubPOS: orange, used locally for product identity
-- N/L Foundry: blue, steel, ice and near-black
+Astro, Markdown publication and GitHub Pages remain the existing architecture. Contact uses native POST to the configured Stalwart `/form` endpoint. Preserve name/email/subject/message fields, honeypot, URL validation and disabled fallback. Product information comes from filtered content collections, so drafts remain private.
 
-## Components
+## Accessibility and delivery
 
-Panels use dark layered surfaces, thin steel borders, restrained glow and large radii. Product badges must distinguish delivery model from development status. Animation should be subtle and respect reduced-motion preferences.
+Labels remain visible, controls keyboard operable, focus visible and meaning independent of colour. Use useful alternative text for informative images and empty alt for decorative imagery. Honour reduced motion. Check real rendered components; token contrast alone is not conformance.
 
-Homepage pattern:
-
-- Hero uses left-aligned statement and right-side technical illustration.
-- `src/components/ForgeHero.astro` uses paired, theme-aware N/L anvil assets from `src/assets/brand/`. They are SVG wrappers around embedded raster imagery: a pragmatic hero improvement, not a pure-vector logo or final brand mark. The active Starlight theme selects the matching light or dark asset; the illustration remains decorative and subordinate to the homepage statement. The primary lockup stays authoritative. Hand-vectorisation, social-card work and a final logo family remain a separate brand sprint.
-- Product cards should be separated by sufficient spacing and support mobile stacking.
-- Footer includes products, engineering, journal, about, privacy/AI transparency, GitHub, and copyright.
-- No screenshot mockups are used; composition is structural and native in the DOM.
-
-## Accessibility
-
-Logos need useful alternative text when they communicate identity. Decorative illustrations are hidden from assistive technology. Text and controls must meet WCAG AA contrast and remain usable without animation.
-
-## Prohibited usage
-
-- No literal fire or sparks in master-brand imagery.
-- No generic orange identity usage for N/L Foundry.
-- No proprietary font, cookie-based tracking, or analytics script on the public website by default.
+Required handoff gates remain `npm run check`, production `npm run build` and `npm run verify:build`. Repository publishing and deployment rules remain in AGENTS.md. The standalone Brand Package v3 includes vector masters, PNGs, fonts, templates, approved presentation and a PDF guide.

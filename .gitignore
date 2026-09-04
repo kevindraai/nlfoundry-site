@@ -4,3 +4,6 @@ dist/
 .DS_Store
 /NLFoundry-Brand-Package-*.zip
 /new/
+.env
+.env.*
+!.env.example

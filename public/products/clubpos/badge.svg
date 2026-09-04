@@ -1,2 +1,1 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-labelledby="title desc">
-<title id="title">ClubPOS badge</title><desc id="desc">Original ClubPOS point-of-sale badge.</desc><g id="clubpos-badge" fill="none" stroke="#FF7A21" stroke-width="4"><rect x="11" y="18" width="42" height="33" rx="4"/><path d="M11 27h42M20 12h24M24 36h16M26 43h12"/></g></svg>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="192" height="192" viewBox="0 0 192 192" role="img" aria-label="ClubPOS"><title>ClubPOS</title><g fill="#FF6757" transform="translate(32 32) scale(1.0)"><path d="M116 0H52C20 0 0 20 0 52V76C0 108 20 128 52 128H116V104H52C34 104 24 94 24 76V52C24 34 34 24 52 24H116Z"/><path d="M76 52H128V76H76Z"/></g></svg>

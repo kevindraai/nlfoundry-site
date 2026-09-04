@@ -1,4 +1,6 @@
 ---
+interface Props { compact?: boolean; }
+const { compact = false } = Astro.props;
 const parseStalwartFormUrl = (value: string | undefined, variableName: string) => {
   const normalized = value?.trim();
   if (!normalized) return undefined;
@@ -44,14 +46,14 @@ const formAction = parseStalwartFormUrl(
 );
 const contactEmail = parseEmail(import.meta.env.PUBLIC_CONTACT_EMAIL);
 const privacyMessage = formAction
-  ? 'Your details are used only to deliver this message to the configured local mailbox and reply to you. No account or tracking is used.'
-  : 'Submission is unavailable until a reviewed Stalwart endpoint is configured.';
+  ? 'Your message will be sent to N/L Foundry.'
+  : 'The contact form is currently unavailable. Please use the alternative contact link.';
 ---
 
 <section class="contact-panel" aria-labelledby="contact-form-title">
   <div class="contact-panel__intro">
-    <p class="contact-panel__eyebrow">Direct and intentional</p>
-    <h2 id="contact-form-title">Start a conversation</h2>
+    <p class="contact-panel__eyebrow">{compact ? '04 / Get in touch' : 'Direct and intentional'}</p>
+    <h2 id="contact-form-title">{compact ? 'What are you working on?' : 'Start a conversation'}</h2>
     <p>
       Share the context, the problem and what a useful outcome would look like. No tracking or
       account is required.
@@ -61,7 +63,7 @@ const privacyMessage = formAction
     )}
     {!formAction && !contactEmail && (
       <p class="contact-panel__notice">
-        Form delivery is not configured yet. Public project conversations can start on
+        The contact form is currently unavailable. You can find the studio on
         <a href="https://github.com/kevindraai"> GitHub</a>.
       </p>
     )}
@@ -99,7 +101,7 @@ const privacyMessage = formAction
         {privacyMessage}
       </p>
       <button type="submit" aria-describedby="contact-form-privacy">
-        {formAction ? 'Send message' : 'Form delivery not configured'}
+        {formAction ? 'Send message' : 'Form unavailable'}
       </button>
     </fieldset>
   </form>
