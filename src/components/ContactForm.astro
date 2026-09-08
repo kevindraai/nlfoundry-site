@@ -31,20 +31,10 @@ const parseStalwartFormUrl = (value: string | undefined, variableName: string) =
   return url.toString();
 };
 
-const parseEmail = (value: string | undefined) => {
-  const normalized = value?.trim();
-  if (!normalized) return undefined;
-  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/u.test(normalized)) {
-    throw new Error('PUBLIC_CONTACT_EMAIL must be a valid email address.');
-  }
-  return normalized;
-};
-
 const formAction = parseStalwartFormUrl(
   import.meta.env.PUBLIC_CONTACT_FORM_ACTION,
   'PUBLIC_CONTACT_FORM_ACTION',
 );
-const contactEmail = parseEmail(import.meta.env.PUBLIC_CONTACT_EMAIL || 'info@tunedpixel.nl');
 const privacyMessage = formAction
   ? 'Je bericht komt bij mij terecht. Ik gebruik je gegevens om je te antwoorden.'
   : 'Het formulier is tijdelijk niet beschikbaar. Hieronder vind je een andere manier om contact op te nemen.';
@@ -57,10 +47,7 @@ const privacyMessage = formAction
     <p>
       Een vraag over een project, iets dat beter kan, of een idee waar je over wilt praten? Schrijf me gerust. Het hoeft nog geen uitgewerkt plan te zijn.
     </p>
-    {contactEmail && (
-      <p><a class="contact-panel__fallback" href={`mailto:${contactEmail}`}>Mail naar {contactEmail}</a></p>
-    )}
-    {!formAction && !contactEmail && (
+    {!formAction && (
       <p class="contact-panel__notice">
         Het formulier is tijdelijk niet beschikbaar. Je vindt me ook op
         <a href="https://github.com/kevindraai"> GitHub</a>.

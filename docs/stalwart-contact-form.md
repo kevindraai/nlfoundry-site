@@ -121,4 +121,4 @@ shell history, build variable, issue or pull request.
 
 ## Tuned.pixel publicatie
 
-Gewenste ontvanger: `info@tunedpixel.nl`. De website toont dit als direct mailadres; dat stelt de serverontvanger niet in. Controleer in Stalwart dat het adres als lokaal account of alias bestaat en stel `HttpForm.deliverTo` daarop in. Laad de instellingen opnieuw. De huidige serverontvanger kon vanuit deze repository niet worden uitgelezen of gewijzigd.
+Gewenste ontvanger: `info@tunedpixel.nl`. Dit adres wordt niet zichtbaar in het formulier opgenomen; de website gebruikt uitsluitend de Stalwart-route. Controleer in Stalwart dat het adres als lokaal account of alias bestaat en stel `HttpForm.deliverTo` daarop in. Laad de instellingen opnieuw. De huidige serverontvanger kon vanuit deze repository niet worden uitgelezen of gewijzigd.
