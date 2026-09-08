@@ -1,17 +1,18 @@
 ---
 import '../styles/tokens.css';
+import '../styles/foundry.css';
 
 const base = import.meta.env.BASE_URL;
 const home = base === '/' ? '/' : base.replace(/\/$/, '');
 const favicon = `${base}favicon.svg`;
 ---
 
-<html lang="en">
+<html lang="nl">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
     <meta name="robots" content="noindex" />
-    <title>Page not found | N/L Foundry</title>
+    <title>Pagina niet gevonden | Tuned.pixel</title>
     <link rel="icon" href={favicon} type="image/svg+xml" />
   <style>
       :root {
@@ -78,7 +79,7 @@ const favicon = `${base}favicon.svg`;
         margin-top: 1.25rem;
         padding: 0.8rem 1.1rem;
         border: 1px solid var(--nl-electric_blue);
-        border-radius: 0.5rem;
+        border-radius: 0;
         color: var(--nl-night);
         background: var(--nl-electric_blue);
         text-decoration: none;
@@ -97,12 +98,12 @@ const favicon = `${base}favicon.svg`;
   </head>
   <body>
     <main>
-      <a class="skip" href="#nf404-content">Skip to content</a>
+      <a class="skip" href="#nf404-content">Naar de inhoud</a>
       <div class="mark"></div>
-      <div class="code">404 / NOT FOUND</div>
-      <h1 id="nf404-content">This route left the foundry.</h1>
-      <p>The page may have moved, never existed, or is not ready for public use. The product portfolio and current work remain available from the homepage.</p>
-      <a href={home}>Return to N/L Foundry</a>
+      <div class="code">404 / NIET GEVONDEN</div>
+      <h1 id="nf404-content">Deze pagina is er niet.</h1>
+      <p>Misschien is de pagina verplaatst, of staat er een foutje in de link. Via de homepage vind je de projecten en notities.</p>
+      <a href={home}>Naar de homepage</a>
     </main>
   </body>
 </html>

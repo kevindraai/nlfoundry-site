@@ -11,16 +11,15 @@ const projects = (await getCollection('projects', ({ data }) => !data.draft))
 
 <StarlightPage
   frontmatter={{
-    title: 'Projects',
-    description: 'Software products shaped for infrastructure, operations and real organisational workflows.',
+    title: 'Projecten',
+    description: 'ClubPOS en ExitLane: de digitale producten waar ik aan werk.',
     template: 'splash',
     prev: false,
     next: false,
   }}
 >
   <p class="page-intro">
-    Open-source tools and hosted products are presented with their delivery model and development
-    status made explicit.
+    Dit zijn de producten waar ik aan werk. Op elke projectpagina lees je wat het doet en hoever het is.
   </p>
   <div class="collection-grid">
     {projects.map((project) => (

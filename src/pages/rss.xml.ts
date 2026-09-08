@@ -8,9 +8,9 @@ export async function GET(context: { site?: URL }) {
     .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
 
   return rss({
-    title: 'N/L Foundry Engineering Journal',
-    description: 'Engineering decisions, trade-offs and lessons from N/L Foundry products.',
-    site: context.site ?? new URL('https://nlfoundry.dev'),
+    title: 'Tuned.pixel — Notities',
+    description: 'Notities van Kevin over ontwerp, software en keuzes tijdens het bouwen.',
+    site: context.site ?? new URL('https://tunedpixel.nl'),
     items: posts.map((post) => ({
       title: post.data.title,
       description: post.data.description,
@@ -18,6 +18,6 @@ export async function GET(context: { site?: URL }) {
       pubDate: post.data.date,
       categories: post.data.tags,
     })),
-    customData: '<language>en</language>',
+    customData: '<language>nl</language>',
   });
 }

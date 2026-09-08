@@ -6,16 +6,16 @@ const isHome = Astro.locals.starlightRoute.id === 'index' || Astro.url.pathname 
 ---
 {isHome ? (
   <div class="foundry-header">
-    <a href={`${base}/`} class="foundry-header__brand" aria-label="N/L Foundry home"><BrandLockup /></a>
-    <nav class="foundry-header__nav" aria-label="Main navigation">
-      <a href="#work">Work</a><a href="#studio">Studio</a><a href={`${base}/journal/`}>Journal</a>
-      <a class="foundry-button" href="#contact">Get in touch</a>
+    <a href={`${base}/`} class="foundry-header__brand" aria-label="Tuned.pixel home"><BrandLockup /></a>
+    <nav class="foundry-header__nav" aria-label="Hoofdnavigatie">
+      <a href="#work">Werk</a><a href="#studio">Over Kevin</a><a href={`${base}/journal/`}>Notities</a>
+      <a class="foundry-button" href="#contact">Contact</a>
     </nav>
     <details class="foundry-menu">
-      <summary aria-label="Open navigation">Menu <span aria-hidden="true">☰</span></summary>
-      <nav aria-label="Mobile navigation">
-        <a href="#work">Work</a><a href="#studio">Studio</a><a href={`${base}/journal/`}>Journal</a>
-        <a href={`${base}/engineering/`}>Engineering</a><a href="#contact">Get in touch</a>
+      <summary aria-label="Open menu">Menu <span aria-hidden="true">☰</span></summary>
+      <nav aria-label="Mobiele navigatie">
+        <a href="#work">Werk</a><a href="#studio">Over Kevin</a><a href={`${base}/journal/`}>Notities</a>
+        <a href={`${base}/engineering/`}>Werkwijze</a><a href="#contact">Contact</a>
       </nav>
     </details>
   </div>

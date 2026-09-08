@@ -1,30 +1,35 @@
 ---
 title: ClubPOS
-description: A modern point-of-sale platform for clubs and associations.
+description: Een kassasysteem in ontwikkeling voor clubs en verenigingen, met aandacht voor de mensen achter de bar.
 status: in-development
 startDate: 2026-01-01
 tags:
-  - point-of-sale
-  - clubs
-  - hosted-product
+  - kassa
+  - verenigingen
+  - leden
 links: []
 featured: true
 draft: false
 product: clubpos
 deliveryModel: hosted-product
-focus: Real club workflows, auditable financial behaviour and a managed delivery model.
+focus: Openstaande rekeningen, leden en betrouwbare afhandeling van betalingen.
 ---
 
-ClubPOS is being rebuilt around the workflows that generic retail systems tend to miss: long-running personal tabs, member administration, vouchers, internal budgets and simple operation at a busy bar.
+Aan een verenigingsbar werkt het anders dan in een winkel. Leden laten een rekening openstaan, vrijwilligers wisselen elkaar af en op drukke momenten moet de bediening duidelijk blijven.
 
-## Product direction
+ClubPOS wordt opnieuw opgebouwd rond die praktijk.
 
-- fast touchscreen operation;
-- members, guests and organisational accounts;
-- open tabs and controlled credit;
-- vouchers and stored value;
-- auditable corrections and payments;
-- reporting suited to volunteer-run organisations;
-- hosted delivery as a managed product.
+## Waar ik aan werk
 
-ClubPOS is not positioned as an open-source promise. The product, hosting model and licensing will be published when the commercial shape is sufficiently mature.
+- een kassa die prettig te bedienen is op een touchscreen;
+- rekeningen voor leden, gasten en de vereniging;
+- openstaande bedragen en gecontroleerd krediet;
+- tegoeden en vouchers;
+- betalingen en correcties die achteraf te volgen zijn;
+- rapportages die passen bij een vereniging.
+
+## Stand van zaken
+
+ClubPOS is in ontwikkeling. Het wordt een gehost product. Over beschikbaarheid, hosting en licenties volgt meer zodra die onderdelen vaststaan.
+
+Wil je iets delen over hoe de kassa bij jouw club werkt? [Ik hoor het graag](/contact/).

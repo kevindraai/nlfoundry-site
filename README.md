@@ -1,8 +1,8 @@
-# N/L Foundry
+# Tuned.pixel
 
-Public website, project portfolio and engineering journal for N/L Foundry.
+Public website, project portfolio and engineering journal for Tuned.pixel.
 
-> Practical software, forged for real environments.
+> Digitale producten van Kevin Draai.
 
 The site is a static Astro and Starlight build. Markdown is the publication layer, Git is the
 source of truth and pull requests are the publishing boundary. There is no database, CMS login,
@@ -21,7 +21,7 @@ Run the same production gates used by CI:
 
 ```bash
 npm run check
-PUBLIC_SITE_URL=https://nlfoundry.dev PUBLIC_BASE_PATH=/ npm run build
+PUBLIC_SITE_URL=https://tunedpixel.nl PUBLIC_BASE_PATH=/ npm run build
 npm run verify:build
 ```
 
@@ -110,9 +110,13 @@ applied on the Stalwart host, not by this repository.
 GitHub Pages remains the deployment target. CI and deployment use:
 
 ```bash
-PUBLIC_SITE_URL=https://nlfoundry.dev
+PUBLIC_SITE_URL=https://tunedpixel.nl
 PUBLIC_BASE_PATH=/
 ```
 
 The deploy workflow runs only from `main` or by an explicit manual dispatch and contains no
 deployment secrets.
+
+## Tuned.pixel proposal
+
+See [migration plan](docs/tunedpixel-migration.md) for the reviewed domain transition. GitHub Pages remains the host. Do not change DNS until the proposal has been approved and the Pages setting can be changed in the same transition.

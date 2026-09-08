@@ -21,7 +21,7 @@ const normalizeSiteUrl = (value, fallback) =>
     : fallback;
 
 const base = normalizeBasePath(process.env.PUBLIC_BASE_PATH ?? '/', '/');
-const site = normalizeSiteUrl(process.env.PUBLIC_SITE_URL ?? 'https://nlfoundry.dev', 'https://nlfoundry.dev');
+const site = normalizeSiteUrl(process.env.PUBLIC_SITE_URL ?? 'https://tunedpixel.nl', 'https://tunedpixel.nl');
 
 const withBasePath = (path) => {
   const normalizedPath = path.startsWith('/') ? path : `/${path}`;
@@ -34,9 +34,9 @@ const organizationSchema = JSON.stringify(
     {
       '@context': 'https://schema.org',
       '@type': 'Organization',
-      name: 'N/L Foundry',
+      name: 'Tuned.pixel',
       url: site,
-      logo: publicUrl('/brand/nlf-monogram.svg'),
+      logo: publicUrl('/brand/tp-mark.svg'),
       sameAs: ['https://github.com/kevindraai'],
     },
     {
@@ -46,7 +46,7 @@ const organizationSchema = JSON.stringify(
       applicationCategory: 'UtilitiesApplication',
       operatingSystem: 'Cross-platform',
       url: publicUrl('/projects/exitlane/'),
-      description: 'Practical software for whole-network routing.',
+      description: 'Een VPN-gateway voor je hele netwerk.',
       applicationSubCategory: 'Network tooling',
     },
     {
@@ -56,7 +56,7 @@ const organizationSchema = JSON.stringify(
       applicationCategory: 'BusinessApplication',
       operatingSystem: 'Cross-platform',
       url: publicUrl('/projects/clubpos/'),
-      description: 'Modern point-of-sale platform for clubs and associations.',
+      description: 'Een kassasysteem voor clubs en verenigingen.',
       applicationSubCategory: 'Point-of-sale',
     },
   ],
@@ -70,8 +70,10 @@ export default defineConfig({
   integrations: [
     sitemap(),
     starlight({
-      title: 'N/L Foundry',
-      description: 'Practical software, forged for real environments.',
+      title: 'Tuned.pixel',
+      defaultLocale: 'root',
+      locales: { root: { label: 'Nederlands', lang: 'nl' } },
+      description: 'Digitale producten van Kevin van der Draai. Ontwerp en development onder de naam Tuned.pixel.',
       disable404Route: true,
       favicon: withBasePath('/favicon.svg'),
       social: [
@@ -84,7 +86,7 @@ export default defineConfig({
       head: [
         {
           tag: 'meta',
-          attrs: { property: 'og:site_name', content: 'N/L Foundry' },
+          attrs: { property: 'og:site_name', content: 'Tuned.pixel' },
         },
         {
           tag: 'meta',
@@ -158,7 +160,7 @@ export default defineConfig({
           tag: 'link',
           rel: 'alternate',
           type: 'application/rss+xml',
-          title: 'N/L Foundry Engineering Journal',
+          title: 'Tuned.pixel — Notities',
           href: publicUrl('/rss.xml'),
         },
       ],
@@ -173,16 +175,16 @@ export default defineConfig({
       sidebar: [
         { label: 'Home', link: '/' },
         {
-          label: 'Products',
+          label: 'Projecten',
           items: [
             { label: 'ExitLane', link: '/projects/exitlane/' },
             { label: 'ClubPOS', link: '/projects/clubpos/' },
           ],
         },
-        { label: 'Engineering', link: '/engineering/' },
-        { label: 'Journal', link: '/journal/' },
-        { label: 'Now', link: '/now/' },
-        { label: 'About', link: '/about/' },
+        { label: 'Werkwijze', link: '/engineering/' },
+        { label: 'Notities', link: '/journal/' },
+        { label: 'Nu', link: '/now/' },
+        { label: 'Over Kevin', link: '/about/' },
         { label: 'Contact', link: '/contact/' },
       ],
     }),

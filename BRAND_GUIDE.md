@@ -1,52 +1,27 @@
-# N/L Foundry Brand System v3
+# Tuned.pixel — Tuned point
 
-Approved 5 September 2026 in the N/L Foundry design session. This replaces v2's continuous-line slash monogram, heavy panel styling and default dark homepage. Letter study 03 is the approved logo basis, with modestly stronger strokes. The other studies are not approved logo variants.
+Approved by Kevin in this design session, 8 September 2026. The supplied Tuned.pixel brand package replaces the N/L Foundry identity for this website. The repository remains `kevindraai/nlfoundry-site`; hosting remains GitHub Pages.
 
-## Positioning
+## Identity
 
-Independent design and software studio making open-source tools and digital products. Primary line: **Software, carefully made.** Personal by origin, practical by design. N/L has a personal origin; Foundry is where ideas take shape. Describe practical outcomes without exaggerated scale, availability or performance claims.
+Write `Tuned.pixel`, with capital T and lowercase p, no spaces. Use the outlined wordmark in `public/brand/tp-wordmark.svg` as the primary signature. Its square point is custom geometry; do not replace it with ordinary typeset text. Use `tp-mark.svg` for compact applications and the dedicated favicon at 16 px. Minimum wordmark width 140 px; clear space at least half the capital height. No N/L monogram, enclosing pixel block, glow or industrial imagery in the site layout.
 
-## Logo authority
+The isolated t-sign has a curved foot and a detached square. It is a secondary mark, not a symbol that has to precede every wordmark.
 
-The NL monogram is one filled shape: N and L share a full-height upright. There is no slash or diagonal cutout inside the mark. The full written name is always `N/L Foundry`.
+## Typography and colour
 
-- Master geometry: `M4 4H20L76 77V4H92V80H124V96H76L20 23V96H4Z`, on `0 0 128 100`.
-- `public/brand/nlf-monogram.svg`: midnight vector master.
-- `public/brand/nlf-wordmark-light.svg`: midnight outlined horizontal lockup for light backgrounds.
-- `public/brand/nlf-wordmark-dark.svg`: ice outlined horizontal lockup for dark backgrounds.
-- `BrandLockup.astro`: same master silhouette, with accessible text in locally hosted Inter.
-- `public/favicon.svg` and `public/favicons/`: compact applications.
-- Clear space: at least one stem width (16 design units) on all sides.
-- Minimum: 20 px high / 6 mm for the monogram; 160 px wide / 42 mm for the horizontal lockup. 16 px favicon is a dedicated compact exception.
+Inter locally hosted, with the included SIL OFL licence. Body 400, display 500, controls 600. Body at least 16 px, regular labels at least 14 px. Headlines use restrained negative tracking; paragraphs use standard kerning. Straight-edged controls, visible focus, generous spacing on a 4 px base.
 
-Do not redraw, rotate, stretch, add outlines or reconnect the letters differently. Use one colour with strong contrast. AI-generated steel-die imagery is a decorative interpretation, not an engraving master.
+Night #020914, Ice #F7FAFE, Steel #21384A, Electric Blue #63C4FF and dark Link Blue #215E86 derive from N/L Foundry v3. Light blue is decorative on light surfaces; use dark Link Blue for text and focus on light. On the Night contact panel use Ice text and light blue controls/focus. The light appearance is fixed and remains usable without JavaScript.
 
-## Palette
+## Voice and composition
 
-- Night `#020914`: primary dark ink/surface.
-- Steel `#21384A`: supporting text and material.
-- Ice `#F7FAFE`: primary light surface/reversed ink.
-- Electric blue `#63C4FF`: restrained accent and dark-surface controls.
-- Link blue `#215E86`: readable text links on light backgrounds.
+Dutch, in Kevin's own first-person voice. Describe the actual work: ClubPOS for associations, ExitLane for network-wide VPN routing. Keep status truthful; do not invent customers, testimonials, availability, screenshots or release dates. The return of the older Tuned.pixel name is the personal story, supplied by Kevin.
 
-Use semantic tokens for interfaces. The website has one fixed light appearance, including without JavaScript. Dark contact sections are an intentional part of that single design. Reversed logo assets remain available for print and dark surfaces. Do not use electric blue for ordinary text on Ice.
+Homepage: typographic introduction, actual project identities, personal story, notes and existing contact form. Product accents stay local. Product pages, search, navigation, journal, RSS and content schemas remain functional. Existing routes stay stable for domain redirects.
 
-## Typography
+## Contact and delivery
 
-Locally hosted Inter Variable, SIL OFL 1.1. Licence: `public/fonts/Inter-LICENSE.txt`; upstream: https://github.com/rsms/inter . No external font requests. Body 400, display and wordmark 600. Use system fallbacks if loading fails. Main body at least 16 px; regular labels 14 px; small metadata 12–13 px. The standalone package's logo wordmarks use fixed letter outlines.
+Keep the existing Stalwart native POST integration, field names, honeypot, URL validation and disabled fallback. No third-party tracking or new backend. The proposed copy and domain transition require review before production rollout. All source changes are isolated on the proposal branch.
 
-## Product boundaries
-
-ExitLane remains independently identified as an open-source network tool. ClubPOS uses its newer approved 4 September 2026 identity from `kevindraai/nlfoundry/nl-foundry-design-foundation/products/clubpos`: Night `#172B3A`, Coral `#FF6757`, Fresh White `#F5F7F8`, supplied open-C symbol and outlined Inter Bold wordmark. This supersedes the site's old orange/copper product assets only. Neither product accent becomes Foundry's master colour. Delivery model and development status remain separate and must be accurate.
-
-## Website
-
-Homepage: precise typographic hero and steel-die photograph; two product presentations; personal studio story; journal; direct contact. Generous whitespace, straight-edged controls, fine dividers. Other routes retain Starlight's content, search, navigation and document structure while sharing the new identity and fixed light appearance. Photography remains subordinate to content. Avoid flames, anvils, neon glow, decorative circuits, fake customer logos and invented product screenshots.
-
-Astro, Markdown publication and GitHub Pages remain the existing architecture. Contact uses native POST to the configured Stalwart `/form` endpoint. Preserve name/email/subject/message fields, honeypot, URL validation and disabled fallback. Product information comes from filtered content collections, so drafts remain private.
-
-## Accessibility and delivery
-
-Labels remain visible, controls keyboard operable, focus visible and meaning independent of colour. Use useful alternative text for informative images and empty alt for decorative imagery. Honour reduced motion. Check real rendered components; token contrast alone is not conformance.
-
-Required handoff gates remain `npm run check`, production `npm run build` and `npm run verify:build`. Repository publishing and deployment rules remain in AGENTS.md. The standalone Brand Package v3 includes vector masters, PNGs, fonts, templates, approved presentation and a PDF guide.
+The existing social-preview asset is retained in this proposal; it still reflects the earlier identity. Review replacement separately before the final brand launch. No newly generated image or stock portrait is needed for this design.

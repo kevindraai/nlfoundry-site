@@ -1,19 +1,26 @@
 ---
-title: Engineering
+title: Werkwijze
 head: []
 draft: false
-description: How N/L Foundry builds and maintains software.
+description: Hoe ik van een vraag naar werkende software ga.
 ---
 
-N/L Foundry treats software delivery as an engineering system rather than a stream of isolated prompts or commits.
+Ik begin met de vraag wat iemand probeert te doen. Wat gebeurt er op een drukke avond achter de bar? Wat moet je kunnen zien als een netwerkverbinding wegvalt? Dat bepaalt wat de software nodig heeft.
 
-## Principles
+## Eerst begrijpen
 
-- Start from a real workflow and an explicit problem boundary.
-- Keep responsibilities between people, automation and AI visible.
-- Make deployments reproducible instead of relying on remembered server state.
-- Use small reviewable changes with objective quality gates.
-- Record architectural decisions and lessons where future work can find them.
-- Prefer the simplest operational model that remains safe and maintainable.
+Voor ik iets bouw, wil ik weten waar het nu lastig wordt. Welke stappen kosten tijd? Waar ontstaan fouten? Welke onderdelen werken al goed en kunnen blijven?
 
-The detailed internal engineering playbook is maintained separately from this public website. Public articles will explain relevant decisions without exposing credentials, private infrastructure or product-sensitive implementation details.
+## Klein genoeg om te beoordelen
+
+Ik werk in overzichtelijke stappen. Een scherm, een handeling of een koppeling die je kunt bekijken en proberen. Zo wordt duidelijk of een idee helpt, voordat er van alles omheen is gebouwd.
+
+## Ook de minder leuke gevallen
+
+Niet alleen kijken of iets werkt wanneer alles goed gaat. Ook controleren wat er gebeurt bij een verkeerde invoer, een verbroken verbinding of een betaling die moet worden hersteld.
+
+## Later moet het nog te begrijpen zijn
+
+Ik leg belangrijke keuzes vast, houd wijzigingen terug te vinden en zorg dat een installatie te herhalen is. Dat helpt bij onderhoud, en voorkomt dat kennis alleen in mijn hoofd zit.
+
+In de [notities](/journal/) werk ik zulke onderwerpen verder uit.
