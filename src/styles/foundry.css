@@ -126,3 +126,43 @@ body:has(.foundry-home) main > .content-panel:not(:has(.foundry-home)) { display
 
 .foundry-menu { margin-left: auto; }
 .header .social-icons::after { display: none; }
+
+/* Tuned.pixel — approved Tuned point identity, September 2026. */
+.nlf-brand-lockup img { display: block; width: 10.75rem; height: auto; }
+.foundry-home :is(h1,h2,h3) { font-weight: 500; }
+.foundry-header__nav a { font-size: 1rem; }
+.foundry-header__nav .foundry-button { background: transparent; color: var(--nl-night); border: 0; border-bottom: 1px solid var(--nl-night); padding: .35rem 0; min-height: auto; }
+.foundry-hero { display: block; padding: 5rem 0 5.5rem; }
+.foundry-home .foundry-eyebrow { color: #215E86; font-size: .875rem; letter-spacing: .04em; text-transform: none; }
+.foundry-home .foundry-hero h1 { max-width: 13em; font-size: clamp(3.2rem,7.7vw,7rem); font-weight: 500; line-height: 1.03; letter-spacing: -.045em; margin: 1.75rem 0 2.75rem; }
+.tp-period { display: inline-block; width: .105em; height: .105em; background: currentColor; margin-left: .1em; }
+.tp-hero-bottom { display: flex; justify-content: space-between; align-items: flex-end; gap: 3rem; }
+.foundry-home .foundry-hero__description { max-width: 41rem; font-size: 1.125rem; line-height: 1.65; margin: 0; }
+.foundry-link,.foundry-home .foundry-link { font-size: 1rem; gap: 1.5rem; width: fit-content; }
+.tp-hero-bottom .foundry-link { white-space: nowrap; }
+.tp-section-heading { display:flex; align-items:baseline; justify-content:space-between; gap:1.5rem; }
+.foundry-home .tp-section-heading h2 { margin: 0; font-size: 1.5rem; letter-spacing: -.025em; }
+.tp-section-heading p { margin:0; font-size: .9375rem; color: #21384A; }
+.foundry-work,.foundry-journal { padding-top: 1.5rem; padding-bottom: 5rem; }
+.foundry-projects { gap: 3rem; margin-top: 2rem !important; }
+.foundry-project__visual { position:relative; aspect-ratio: 8 / 5; background: #EEF5FB; }
+.tp-project-caption { position:absolute; top:1.25rem; left:1.5rem; color:#21384A; font-size:.875rem; }
+.foundry-project__heading { display:flex; align-items:baseline; justify-content:space-between; gap:1rem; margin-top:1.5rem !important; }
+.foundry-home .foundry-project h3 { font-size:1.625rem; letter-spacing:-.03em; }
+.foundry-project__status { font-size:.875rem; }
+.foundry-home .tp-project-title { font-size:1.125rem; margin: .75rem 0 .5rem; color:var(--nl-night); }
+.foundry-project__description { color:#21384A; margin:.5rem 0 1.25rem !important; max-width:32rem; }
+.foundry-studio { display:grid; grid-template-columns: .85fr 1.15fr; gap:5rem; border:0; padding:4rem 0 6rem; }
+.tp-personal-mark { min-height:25rem; padding:2rem; background:#020914; color:#F7FAFE; display:flex; flex-direction:column; align-items:center; justify-content:center; position:relative; }
+.tp-personal-mark svg { width:48%; max-width:12rem; }
+.tp-personal-mark span { position:absolute; bottom:1.75rem; left:2rem; font-size:.875rem; }
+.foundry-home .tp-personal-copy h2 { font-size:clamp(2rem,3.5vw,3rem); line-height:1.12; letter-spacing:-.035em; margin:1.25rem 0 1.5rem; }
+.tp-personal-copy p { max-width:34rem; }
+.foundry-contact { margin-inline:0; padding:3.5rem; }
+.foundry-home .foundry-contact .contact-panel { gap:3rem; }
+.foundry-home .foundry-contact .contact-panel h2 { font-weight:500; letter-spacing:-.035em; }
+.foundry-home .foundry-contact .contact-panel__intro p { font-size:1rem; }
+.foundry-contact .contact-form__privacy { font-size:.875rem; }
+.foundry-home .site-footer__links h2 { font-size:.875rem; text-transform:none; letter-spacing:0; }
+@media(max-width:60rem) { .tp-hero-bottom { align-items:flex-start; flex-direction:column; gap:1.5rem; } .foundry-studio{gap:2.5rem;} .tp-section-heading{align-items:flex-start;flex-direction:column;gap:.5rem;} }
+@media(max-width:47rem) { .foundry-hero{padding:2.5rem 0 3.5rem;} .foundry-home .foundry-hero h1{font-size:clamp(2.8rem,10vw,4.5rem);margin:1.5rem 0 2rem;} .foundry-home .foundry-eyebrow{font-size:.875rem;} .foundry-projects{gap:3rem;} .foundry-studio{grid-template-columns:1fr;padding:1rem 0 3.5rem;} .tp-personal-mark{min-height:17rem;max-width:100%;} .tp-personal-mark svg{max-width:8rem;} .foundry-contact{padding:2rem 1.25rem;} .foundry-contact .contact-form__fields{grid-template-columns:1fr;} .foundry-work,.foundry-journal{padding-bottom:3.5rem;} .foundry-header__brand{margin-right:auto;} }

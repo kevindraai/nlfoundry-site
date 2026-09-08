@@ -4,7 +4,7 @@ import { readFileSync, readdirSync, statSync } from 'node:fs';
 import { join, resolve, relative } from 'node:path';
 
 const distDir = resolve(process.argv[2] || 'dist');
-const siteUrl = 'https://nlfoundry.dev';
+const siteUrl = (process.env.PUBLIC_SITE_URL?.trim() || 'https://tunedpixel.nl').replace(/\/+$/, '');
 const socialImage = `${siteUrl}/social/og-image.png`;
 
 const requiredRoutes = [

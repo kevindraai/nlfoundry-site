@@ -1,38 +1,14 @@
 ---
 import BrandLockup from './BrandLockup.astro';
-
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 const withBase = (href: string) => `${base}${href}`;
 ---
-
 <footer class="site-footer">
-  <div class="site-footer__brand">
-    <a class="site-footer__brand-link" href={withBase('/')} aria-label="N/L Foundry home">
-      <BrandLockup />
-    </a>
-    <p>Software, carefully made.</p>
-  </div>
-  <nav class="site-footer__links" aria-label="Footer navigation">
-    <section>
-      <h2>Products</h2>
-      <a href={withBase('/projects/exitlane/')}>ExitLane</a>
-      <a href={withBase('/projects/clubpos/')}>ClubPOS</a>
-    </section>
-    <section>
-      <h2>Engineering</h2>
-      <a href={withBase('/engineering/')}>How we work</a>
-      <a href={withBase('/journal/')}>Engineering Journal</a>
-    </section>
-    <section>
-      <h2>About</h2>
-      <a href={withBase('/about/')}>About N/L Foundry</a>
-      <a href={withBase('/contact/')}>Contact</a>
-      <a href={withBase('/about/#privacy')}>Privacy</a>
-      <a href={withBase('/about/#ai-transparency')}>AI transparency</a>
-    </section>
+  <div class="site-footer__brand"><a class="site-footer__brand-link" href={withBase('/')} aria-label="Tuned.pixel home"><BrandLockup /></a><p>Kevin van der Draai · Ontwerp &amp; development</p></div>
+  <nav class="site-footer__links" aria-label="Voetnavigatie">
+    <section><h2>Projecten</h2><a href={withBase('/projects/clubpos/')}>ClubPOS</a><a href={withBase('/projects/exitlane/')}>ExitLane</a></section>
+    <section><h2>Verder lezen</h2><a href={withBase('/engineering/')}>Werkwijze</a><a href={withBase('/journal/')}>Notities</a><a href={withBase('/now/')}>Nu</a></section>
+    <section><h2>Even kennismaken</h2><a href={withBase('/about/')}>Over Kevin</a><a href={withBase('/contact/')}>Contact</a><a href={withBase('/about/#privacy')}>Privacy</a><a href={withBase('/about/#ai-transparency')}>Gebruik van AI</a></section>
   </nav>
-  <div class="site-footer__bottom">
-    <a href="https://github.com/kevindraai">GitHub</a>
-    <span>Built in the Netherlands · © N/L Foundry</span>
-  </div>
+  <div class="site-footer__bottom"><a href="https://github.com/kevindraai">GitHub ↗</a><span>© {new Date().getFullYear()} Tuned.pixel</span></div>
 </footer>

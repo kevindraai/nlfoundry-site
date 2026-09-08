@@ -1,51 +1,36 @@
 ---
-title: Building for real workflows, not idealised ones
-description: Why N/L Foundry starts with operational behaviour before choosing features or architecture.
+title: Wat er aan de bar gebeurt, bepaalt de kassa
+description: Waarom ik bij ClubSolution Kassa begin met open rekeningen en de praktijk van een vereniging.
 date: 2026-08-04
-updated: 2026-08-04
+updated: 2026-09-08
 draft: false
 tags:
-  - engineering
-  - product-design
+  - software
+  - ontwerp
 ---
 
-Software projects often begin with a list of features. N/L Foundry starts one step earlier: with the behaviour that already exists around the problem.
+Bij een winkelkassa is de volgorde meestal overzichtelijk: producten aanslaan, betalen, klaar. Aan een verenigingsbar loopt dat anders. Iemand bestelt een rondje, laat de rekening openstaan en rekent later op de avond af. Een ander gebruikt een tegoedbon. Ondertussen neemt een volgende vrijwilliger de bardienst over.
 
-A workflow is rarely just the sequence shown in a process diagram. It includes interruptions, informal shortcuts, incomplete information, shared devices, exceptional cases and people who only use the system occasionally. Those details are not noise around the product. They are part of the product boundary.
+Dat zijn voor ClubSolution Kassa geen uitzonderingen. Het zijn handelingen waar het systeem vanaf het begin rekening mee moet houden.
 
-## Start with the awkward cases
+## Begin bij een open rekening
 
-ClubPOS is a useful example. A generic retail checkout assumes that a sale is completed immediately and that the customer leaves with a receipt. A club bar may instead keep a personal tab open for an evening, apply a voucher, charge an organisational budget or move the balance to controlled credit when someone goes home.
+Als je een gewone winkelkassa als uitgangspunt neemt, wordt een open rekening al snel iets dat je er later bij bouwt. Met extra schermen en regels om dat alsnog te laten passen.
 
-Treating those behaviours as extensions of a conventional checkout would produce a growing collection of exceptions. Treating them as the normal operating model leads to a different domain design.
+Ik begin liever met de vragen die aan de bar ontstaan. Van wie is deze rekening? Wie mag er iets op zetten? Wat gebeurt er als iemand vertrekt zonder af te rekenen? En hoe herstel je een fout zonder kwijt te raken wat er eerder is gebeurd?
 
-ExitLane has a similar origin. A consumer VPN application assumes one person selects a location for one device. A network gateway must instead make routing policy visible, preserve safe behaviour during failure and remain understandable to an operator who should not need to reconstruct shell commands.
+De antwoorden bepalen welke gegevens je bewaart en wat iemand op het scherm nodig heeft.
 
-## Architecture follows responsibility
+## Een ander project, dezelfde vraag
 
-Once the real workflow is visible, responsibilities can be assigned deliberately:
+Bij ExitLane speelt iets vergelijkbaars. Een VPN-app op één laptop hoeft niet te laten zien wat er met een heel netwerk gebeurt. Een gateway wel. Als een verbinding uitvalt, wil je kunnen zien wat dat betekent voor het verkeer dat erdoorheen ging.
 
-- which decisions belong to a user;
-- which rules belong to the domain;
-- which state must be auditable;
-- which failures should block an action;
-- which operations must be reproducible;
-- which details should remain hidden during normal use.
+Daarom kijk ik niet alleen naar de instelling die je kunt aanpassen, maar ook naar wat er daarna gebeurt. Vooral wanneer iets misgaat.
 
-This is more useful than beginning with a preferred framework or infrastructure pattern. Technology choices still matter, but they should support those responsibilities instead of defining them.
+## De reden bij de regel bewaren
 
-## Preserve the reason behind a rule
+Een kredietlimiet of een regel voor het afsluiten van een rekening kan in code een klein detail lijken. Toch zit er meestal een praktische afspraak achter.
 
-Operational requirements can look arbitrary after they have been translated into code. A credit limit, a default payment method or a network kill switch may appear to be a small validation rule. In practice each protects a real administrative or safety boundary.
+Ik leg die reden vast bij de uitwerking en de controle van zo’n onderdeel. Dan is later nog te beoordelen of een wijziging klopt voor de vereniging, in plaats van alleen voor de code.
 
-N/L Foundry records those reasons in tests, architecture notes and reviewable work orders. That makes future changes easier to evaluate: not only whether the code still works, but whether the original responsibility is still protected.
-
-## The practical test
-
-A feature is not complete because it works in isolation. It is complete when it fits the environment in which someone must use, operate and maintain it.
-
-That means asking a simple question throughout design and review:
-
-> What happens when this leaves the clean example and meets the actual day?
-
-The answer usually reveals more about the right product than another page of features.
+Dat is voor mij de kern: begrijpen wat mensen doen, en zorgen dat de software daarbij past.

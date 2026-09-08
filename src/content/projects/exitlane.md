@@ -1,10 +1,10 @@
 ---
 title: ExitLane
-description: A manageable whole-network VPN gateway.
+description: Een zelf te hosten VPN-gateway waarmee je het verkeer van je netwerk op één plek regelt.
 status: active
 startDate: 2026-01-01
 tags:
-  - networking
+  - netwerk
   - vpn
   - open-source
 links:
@@ -14,22 +14,23 @@ featured: true
 draft: false
 product: exitlane
 deliveryModel: open-source
-focus: Operational clarity, safe failure behaviour and reproducible deployment.
+focus: Inzicht in verbindingen, voorspelbaar herstel en een herhaalbare installatie.
 ---
 
-ExitLane is a self-hosted VPN gateway for networks that need policy-based routing without turning everyday operation into a command-line exercise.
+Een VPN-app op je laptop regelt de verbinding van die laptop. Maar wat als een heel netwerksegment, een apparaat of een dienst via een andere verbinding moet lopen?
 
-## Why it exists
+ExitLane verplaatst die keuze naar de rand van je netwerk. Je bepaalt centraal welk verkeer via welke VPN-verbinding gaat, zonder op elk apparaat een app in te stellen.
 
-Consumer VPN applications work well for a single device. They are much less useful when an entire VLAN, appliance or service must use a specific exit location. ExitLane puts that routing decision at the network boundary and makes it visible and manageable.
+## Waar ik aan werk
 
-## Direction
+- VPN-routing voor een heel netwerk;
+- inzicht in de status en vertraging van verbindingen;
+- voorspelbaar gedrag als een verbinding uitvalt;
+- een installatie op Debian die te herhalen is;
+- een webinterface voor de dagelijkse bediening.
 
-- whole-network VPN routing;
-- clear health and latency information;
-- safe failure behaviour;
-- reproducible Debian deployment;
-- a focused web interface for operators;
-- open-source distribution.
+## Stand van zaken
 
-ExitLane is under active development. Public installation and release documentation will be added when the release process is ready for external users.
+ExitLane is open source en wordt actief ontwikkeld. Publieke installatie- en release-instructies volgen wanneer de releaseprocedure klaar is voor gebruik door anderen.
+
+De broncode staat op [GitHub](https://github.com/kevindraai/exitlane).

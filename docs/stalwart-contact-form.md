@@ -47,7 +47,7 @@ local to this Stalwart installation:
   "fieldName": "name",
   "defaultName": "Website visitor",
   "fieldSubject": "subject",
-  "defaultSubject": "N/L Foundry website contact"
+  "defaultSubject": "Tuned.pixel website contact"
 }
 ```
 
@@ -118,3 +118,7 @@ shell history, build variable, issue or pull request.
 [proxy-docs]: https://stalw.art/docs/server/reverse-proxy/
 [configuration-docs]: https://stalw.art/docs/configuration/
 [form-source]: https://github.com/stalwartlabs/stalwart/blob/19bcad14452de1e0d1a002567d74fa20a8f4c613/crates/http/src/form/mod.rs
+
+## Tuned.pixel publicatie
+
+Gewenste ontvanger: `info@tunedpixel.nl`. De website toont dit als direct mailadres; dat stelt de serverontvanger niet in. Controleer in Stalwart dat het adres als lokaal account of alias bestaat en stel `HttpForm.deliverTo` daarop in. Laad de instellingen opnieuw. De huidige serverontvanger kon vanuit deze repository niet worden uitgelezen of gewijzigd.

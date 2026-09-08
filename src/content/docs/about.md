@@ -1,22 +1,32 @@
 ---
-title: About N/L Foundry
+title: Over Kevin
 head: []
 draft: false
-description: Practical software shaped by real environments.
+description: Ik ben Kevin van der Draai. Met Tuned.pixel werk ik aan het ontwerp en de techniek van digitale producten.
 ---
 
-N/L Foundry is an independent software studio based in the Netherlands.
+Ik ben Kevin van der Draai. Onder de naam Tuned.pixel ontwerp en bouw ik digitale producten.
 
-The name is a quiet reference to the people closest to its founder and to the idea of a foundry: a place where raw material is deliberately shaped into something useful. The visual identity avoids literal anvils, flames and industrial theatre. The emphasis is on disciplined craft, clear purpose and software that survives contact with reality.
+Ik werk graag aan beide kanten: wat iemand op het scherm ziet en wat er achter dat scherm moet gebeuren. Een duidelijke knop helpt weinig als de stap erna onlogisch is. En een technisch goed systeem moet ook te begrijpen zijn zonder handleiding naast je toetsenbord.
 
-## Portfolio
+## Van idee naar digitale dienst
 
-N/L Foundry may publish open-source tools, operate hosted commercial products and share selected engineering knowledge. Each project will state its own licensing and delivery model clearly.
+Ik ontwerp en bouw websites, applicaties en andere digitale diensten. Dat kan iets nieuws zijn, maar ook een bestaande toepassing die duidelijker, prettiger of eenvoudiger moet worden.
+
+Ik denk mee over wat nodig is en werk aan zowel het ontwerp als de techniek. Zo kunnen keuzes over de bediening en de werking samen worden gemaakt.
+
+## Wat ik maak
+
+[ClubPOS](/projects/clubpos/) wordt een kassasysteem voor clubs en verenigingen. [ExitLane](/projects/exitlane/) is gereedschap om VPN-verkeer voor een heel netwerk te regelen. Twee verschillende toepassingen, waarbij de dagelijkse bediening veel aandacht verdient.
+
+Op deze site kun je volgen hoe ze zich ontwikkelen. In de [notities](/journal/) schrijf ik over keuzes die ik onderweg maak.
 
 ## Privacy
 
-This website does not use advertising cookies or behavioural tracking. If analytics are introduced later, the implementation and purpose will be documented here first.
+Deze website gebruikt geen advertentiecookies of volgsoftware. Stuur je een bericht via het contactformulier, dan gebruik ik de ingevulde gegevens om je bericht te beantwoorden.
 
-## AI transparency
+<h2 id="ai-transparency">Gebruik van AI</h2>
 
-AI-assisted tools are used during research, implementation, testing and documentation. Human review, product decisions and responsibility remain part of the engineering process.
+Ik gebruik AI als hulpmiddel bij onderzoek, programmeren, testen en schrijven. De keuzes, controle en verantwoordelijkheid blijven bij mij.
+
+Heb je een vraag? [Neem contact op](/contact/).

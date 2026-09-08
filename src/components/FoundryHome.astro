@@ -5,55 +5,53 @@ import SiteFooter from './SiteFooter.astro';
 import LatestWriting from './LatestWriting.astro';
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 const projects = (await getCollection('projects', ({ data }) => !data.draft && data.featured))
-  .sort((a, b) => (a.data.product === 'exitlane' ? 0 : 1) - (b.data.product === 'exitlane' ? 0 : 1));
-const status = { active: 'Active development', 'in-development': 'In development', maintenance: 'Maintenance', archived: 'Archived' };
+  .sort((a, b) => (a.data.product === 'clubpos' ? 0 : 1) - (b.data.product === 'clubpos' ? 0 : 1));
+const status = { active: 'In ontwikkeling', 'in-development': 'In ontwikkeling', maintenance: 'Onderhoud', archived: 'Gearchiveerd' };
+const summaries = {
+  clubpos: { label: 'Aan de bar', title: 'Voor de mensen achter de bar.', text: 'Een kassasysteem voor clubs en verenigingen. Met ruimte voor openstaande rekeningen, leden en de drukte van een bardienst.' },
+  exitlane: { label: 'Op je netwerk', title: 'Grip op het verkeer in je netwerk.', text: 'Een VPN-gateway voor je hele netwerk. Je kiest welk verkeer via welke verbinding loopt, op één centrale plek.' },
+};
 ---
 <div class="foundry-home">
   <section class="foundry-hero" aria-labelledby="_top">
-    <div class="foundry-hero__copy">
-      <p class="foundry-eyebrow">Independent design &amp; software studio</p>
-      <h1 id="_top">Software,<br />carefully<br />made.</h1>
-      <p class="foundry-hero__description">Open-source tools and digital products.<br class="wide-break" /> Built with care, for the people who use them.</p>
-      <a class="foundry-button" href="#work">Explore our work <span aria-hidden="true">↗</span></a>
+    <p class="foundry-eyebrow">Tuned.pixel · Ontwerp &amp; development</p>
+    <h1 id="_top">Aandacht voor<br />hoe het werkt<span class="tp-period" aria-hidden="true"></span></h1>
+    <div class="tp-hero-bottom">
+      <p class="foundry-hero__description">Ik ben Kevin. Ik ontwerp en bouw digitale producten.<br class="wide-break" /> Van een kassasysteem voor de vereniging tot gereedschap voor je netwerk.</p>
+      <a class="foundry-link" href="#work">Dit is waar ik aan werk <span aria-hidden="true">↓</span></a>
     </div>
-    <img class="foundry-hero__image" src={`${base}/brand/foundry-die.webp`} alt="" width="1448" height="1086" fetchpriority="high" />
   </section>
   <section id="work" class="foundry-work" aria-labelledby="work-title">
-    <h2 id="work-title" class="foundry-eyebrow">01 / Selected work</h2>
+    <div class="tp-section-heading"><h2 id="work-title">Eigen projecten</h2><p>ClubPOS en ExitLane zijn in ontwikkeling.</p></div>
     <div class="foundry-projects">
       {projects.map(({ id, data }) => (
         <article class={`foundry-project foundry-project--${data.product}`}>
-          <div class="foundry-project__heading">
-            <h3>{data.product === 'exitlane' ? 'exitlane' : data.title}</h3>
-            <p class="foundry-project__type">{data.deliveryModel === 'open-source' ? 'Open source' : 'Hosted product'}</p>
-          </div>
-          <a class="foundry-project__visual" href={`${base}/projects/${id.replace(/\.(md|mdx)$/u, '')}/`} aria-label={`Explore ${data.title}`}>
+          <a class="foundry-project__visual" href={`${base}/projects/${id.replace(/\.(md|mdx)$/u, '')}/`} aria-label={`Bekijk ${data.title}`}>
             <img src={`${base}/products/${data.product}/hero.svg`} width="960" height="600" alt="" loading="lazy" />
+            <span class="tp-project-caption">{summaries[data.product].label}</span>
           </a>
-          <p class="foundry-project__description">{data.description}</p>
-          <div class="foundry-project__bottom">
-            <a class="foundry-link" href={`${base}/projects/${id.replace(/\.(md|mdx)$/u, '')}/`}>Explore {data.product === 'exitlane' ? 'exitlane' : data.title} <span aria-hidden="true">↗</span></a>
-            <span class="foundry-project__status">{status[data.status]}</span>
-          </div>
+          <div class="foundry-project__heading"><h3>{data.title}</h3><span class="foundry-project__status">{status[data.status]}</span></div>
+          <p class="tp-project-title">{summaries[data.product].title}</p>
+          <p class="foundry-project__description">{summaries[data.product].text}</p>
+          <a class="foundry-link" href={`${base}/projects/${id.replace(/\.(md|mdx)$/u, '')}/`}>Meer over {data.title} <span aria-hidden="true">↗</span></a>
         </article>
       ))}
     </div>
   </section>
   <section id="studio" class="foundry-studio" aria-labelledby="studio-title">
-    <p class="foundry-eyebrow">02 / The studio</p>
-    <div class="foundry-studio__columns">
-      <h2 id="studio-title">Personal by origin.<br />Practical by design.</h2>
-      <div>
-        <p>Foundry is where ideas take shape.</p>
-        <p>A small, independent studio bringing design and engineering together. From open-source tools to products built around everyday work.</p>
-        <div class="foundry-studio__links"><a class="foundry-link" href={`${base}/about/`}>Meet the studio <span aria-hidden="true">↗</span></a><a class="foundry-link" href={`${base}/engineering/`}>How we work <span aria-hidden="true">↗</span></a></div>
-      </div>
+    <div class="tp-personal-mark" aria-hidden="true"><svg viewBox="0 0 40 40"><path fill="currentColor" d="M12 6H18V14H24V20H18V27Q18 30 22 30H24V36H21Q12 36 12 27V20H6V14H12Z M28 14H34V20H28Z" /></svg><span>Tuned.pixel / Kevin van der Draai</span></div>
+    <div class="tp-personal-copy">
+      <p class="foundry-eyebrow">Wat ik doe</p>
+      <h2 id="studio-title">Van idee naar<br />digitale dienst.</h2>
+      <p>Ik ben Kevin van der Draai. Ik ontwerp en bouw websites, applicaties en andere digitale diensten. Daarbij werk ik aan wat je ziet én aan de techniek erachter.</p>
+      <p>Heb je iets nieuws in gedachten, of een bestaande toepassing die beter kan? Ik denk met je mee over wat nodig is en werk het uit tot iets dat je kunt gebruiken.</p>
+      <a class="foundry-link" href={`${base}/about/`}>Meer over mij <span aria-hidden="true">↗</span></a>
     </div>
   </section>
   <section class="foundry-journal" aria-labelledby="journal-title">
-    <h2 id="journal-title" class="foundry-eyebrow">03 / From the workbench</h2>
+    <div class="tp-section-heading"><h2 id="journal-title">Notities</h2><p>Wat ik onderweg uitzoek en leer.</p></div>
     <LatestWriting />
   </section>
-  <section id="contact" class="foundry-contact" aria-label="Contact the studio"><ContactForm compact /></section>
+  <section id="contact" class="foundry-contact" aria-label="Contact"><ContactForm compact /></section>
   <SiteFooter />
 </div>

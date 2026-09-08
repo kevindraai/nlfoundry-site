@@ -1,4 +1,4 @@
-/* N/L Foundry Brand Package v3 — authoritative digital tokens. */
+/* Tuned.pixel — palette inherited from N/L Foundry v3; approved Tuned point identity. */
 :root {
   --nl-night: #020914;
   --nl-night_2: #071523;
@@ -13,7 +13,7 @@
   --nl-neutral_700: #5E7284;
   --nl-neutral_300: #C7D3DD;
   --nl-neutral_100: #EEF2F5;
-  --nl-font-display: Sora, Inter, ui-sans-serif, system-ui, sans-serif;
+  --nl-font-display: Inter, ui-sans-serif, system-ui, sans-serif;
   --nl-font-sans: Inter, ui-sans-serif, system-ui, sans-serif;
   --nl-font-mono: "SFMono-Regular", Consolas, monospace;
 
@@ -30,7 +30,7 @@
   --nlf-accent-clubpos: var(--nl-clubpos_copper);
   --nlf-border: var(--nl-steel_2);
   --nlf-border-subtle: color-mix(in srgb, var(--nl-steel_2) 72%, transparent);
-  --nlf-focus-ring: var(--nl-electric_blue);
+  --nlf-focus-ring: #215E86;
   --nlf-logo-foreground: var(--nl-ice);
   --nlf-logo-accent: var(--nl-electric_blue);
   --nlf-shadow-panel: 0 22px 60px rgb(0 0 0 / 0.32);
