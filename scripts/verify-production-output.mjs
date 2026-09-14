@@ -4,7 +4,8 @@ import { readFileSync, readdirSync, statSync } from 'node:fs';
 import { join, resolve, relative } from 'node:path';
 
 const distDir = resolve(process.argv[2] || 'dist');
-const siteUrl = (process.env.PUBLIC_SITE_URL?.trim() || 'https://tunedpixel.nl').replace(/\/+$/, '');
+const canonicalSiteUrl = 'https://www.tunedpixel.nl';
+const siteUrl = (process.env.PUBLIC_SITE_URL?.trim() || 'https://www.tunedpixel.nl').replace(/\/+$/, '');
 const socialImage = `${siteUrl}/social/og-image.png`;
 
 const requiredRoutes = [
@@ -52,6 +53,7 @@ const requiredSocial = [
   'social-card.svg',
 ];
 
+// Compatibility guard: the former repository route must never leak into canonical production URLs.
 const bannedRouteToken = 'kevindraai.github.io/nlfoundry-site';
 const forbiddenUrls = [
   'http://127.0.0.1',
@@ -63,6 +65,19 @@ const forbiddenUrls = [
 ];
 
 const errors = [];
+const legacyIdentityPatterns = [
+  /N[/]L Foundry/iu,
+  /NL ?Foundry/iu,
+  /nlfoundry[.]dev/iu,
+  /--nlf-/iu,
+  /--nl-/iu,
+  /\bnlf[-_]/iu,
+  /\bfoundry-/iu,
+];
+
+if (siteUrl !== canonicalSiteUrl) {
+  errors.push(`PUBLIC_SITE_URL must be the canonical ${canonicalSiteUrl}; received ${siteUrl}`);
+}
 
 const hasRouteFile = (relativePath) => {
   const target = join(distDir, relativePath);
@@ -115,6 +130,12 @@ for (const file of knownPages) {
   for (const token of forbiddenUrls) {
     if (content.includes(token)) {
       errors.push(`Found forbidden URL token "${token}" in ${relativeFile}`);
+    }
+  }
+
+  for (const pattern of legacyIdentityPatterns) {
+    if (pattern.test(content)) {
+      errors.push(`Found active legacy identity matching ${pattern} in ${relativeFile}`);
     }
   }
 }

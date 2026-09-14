@@ -1,34 +1,85 @@
-# Voorstel en overstap naar tunedpixel.nl
+# Migratie naar Tuned.pixel en `www.tunedpixel.nl`
 
-Status: werkend lokaal voorstel, nog niet gepubliceerd. Repo: kevindraai/nlfoundry-site. Voorstelbranch: design/tunedpixel-proposal, gebaseerd op origin/main d3b741f. Geen DNS, GitHub Pages-instelling of productievariabele gewijzigd.
+Status op 14 september 2026: de Tuned.pixel-sitebron staat op `origin/main`; deze branch finaliseert
+de actieve namespace en de canonieke URL. GitHub Pages serveert `https://tunedpixel.nl`, maar de
+canonieke live URL is `https://www.tunedpixel.nl`. De externe DNS/TLS-controle vond voor `www` nog
+geen passend certificaat. Het oude `nlfoundry.dev` retourneerde nog geen redirect. Deze externe
+punten zijn dus migratiewerk, geen afgeronde controles.
 
-## Wat verandert
+De repository heet tijdens deze bronbatch nog `kevindraai/nlfoundry-site`; het migratiedoel is
+`kevindraai/tunedpixel-site`. De oude naam in negatieve routecontroles is een tijdelijke
+compatibiliteitsuitzondering, niet de actieve identiteit.
 
-De site gebruikt de goedgekeurde Tuned point-identiteit: woordmerk, klein t-teken, Inter en het lichte Night/Ice-palet. De teksten zijn Nederlands en vanuit Kevin geschreven. ClubPOS en ExitLane behouden hun eigen identiteit en eerlijke ontwikkelstatus. De eerdere N/L-herkomsttekst is vervangen door Kevins verhaal over de terugkeer van Tuned.pixel. Bestaande routes, zoeken, RSS en het contactformulier blijven behouden.
+## Bronbatch
 
-De bestaande socialkaart is niet vernieuwd als onderdeel van dit websitevoorstel en bevat nog de oude identiteit. Die meenemen in de definitieve publicatieronde. De contactkoppeling bestaat op de huidige publieke website; berichten zijn niet daadwerkelijk ingestuurd tijdens controle.
+De site gebruikt de goedgekeurde Tuned.pixel-identiteit, het `tp`-namespace voor actieve CSS- en
+componentnamen, en `https://www.tunedpixel.nl` voor canonical, sitemap, robots, RSS en social
+metadata. ClubPOS en ExitLane behouden hun eigen productidentiteit. Routes, zoeken, RSS en het
+Stalwart-contactformulier blijven functioneel gelijk.
 
-## Eerst beoordelen
+Valideer vóór integratie:
 
-Bekijk homepage, projectpagina's, Over Kevin, Notities en Contact. Na akkoord kan de wijziging via een pull request in deze bestaande repository worden klaargezet voor productie. Geen verhuizing naar een andere host en geen hernoeming van de repo nodig.
+```bash
+npm run check
+PUBLIC_SITE_URL=https://www.tunedpixel.nl PUBLIC_BASE_PATH=/ npm run build
+npm run verify:build
+```
 
-## Wanneer Cloudflare aanpassen
+Controleer daarnaast dat alleen de hieronder geregistreerde compatibility- en historical-hits van
+de oude identiteit overblijven. Publiceer geen gegenereerde `dist`-bestanden.
 
-Nog niet voor het voorstel. Doe de overstap als de website is goedgekeurd, de productiebuild klaarstaat en de contactkoppeling klaar is voor het nieuwe domein.
+## Repository en Pages
 
-1. Verifieer tunedpixel.nl in de persoonlijke GitHub Pages-instellingen; GitHub geeft daarvoor een TXT-record. Die verificatie kan vooraf, zonder websiteverkeer om te zetten.
-2. Leg huidige Pages-instelling, repositoryvariabelen, DNS en redirectregels vast voor rollback. De broncode kan al op het huidige domein draaien: `PUBLIC_SITE_URL` bepaalt canonical, sitemap, robots en RSS.
-3. Op het afgesproken overstapmoment: wijzig Settings → Pages → Custom domain van de bestaande repository naar `tunedpixel.nl`. De bestaande GitHub Actions-deployment blijft in gebruik. Een CNAME-bestand in de repo is bij deze workflow niet de gezaghebbende instelling.
-4. Pas daarna de webrecords in Cloudflare aan. Gebruik voor @ de vier GitHub Pages A-records: 185.199.108.153, 185.199.109.153, 185.199.110.153 en 185.199.111.153. Voor www: CNAME naar `kevindraai.github.io` (zonder repositorypad). Gebruik DNS only tijdens de GitHub-domein- en certificaatcontrole. Een bestaande Cloudflare-apex-CNAME met flattening kan een alternatief zijn; controleer eerst de aanwezige records. Wijzig geen mailrecords.
-5. Zet repositoryvariabele `PUBLIC_SITE_URL` op `https://tunedpixel.nl`; `PUBLIC_BASE_PATH` blijft `/`. Bouw en deploy de beoordeelde wijziging. Behoud `PUBLIC_CONTACT_FORM_ACTION` en controleer aan Stalwart-zijde of het nieuwe domein is toegestaan. Een eventueel nieuw e-mailadres pas instellen nadat het bestaat.
-6. Wacht op een geldig certificaat en zet Enforce HTTPS aan. Controleer apex en www, project- en journalroutes, assets, RSS, sitemap en één echt contactbericht met toestemming. Certificaat/DNS-propagatie kan tot 24 uur duren; beloof geen onderbrekingsloze omzetting met één Pages-site.
-7. Zodra tunedpixel.nl via HTTPS werkt: maak in de Cloudflare-zone van nlfoundry.dev een 301-redirect voor nlfoundry.dev en www.nlfoundry.dev naar `https://tunedpixel.nl`, met behoud van pad en querystring. Deze oude hostnames moeten via Cloudflare geproxied zijn. Een CNAME op zichzelf is geen HTTP-redirect. Vermijd een wildcard die ook mail- of andere subdomeinen raakt.
+Voer externe wijzigingen als één gecontroleerde batch uit nadat de bronwijziging is beoordeeld:
+
+1. Leg Pages-instelling, repositoryvariabelen, DNS, certificaatstatus en redirectregels vast voor
+   rollback.
+2. Hernoem de repository naar `kevindraai/tunedpixel-site` en verifieer workflows, Pages, remotes en
+   actieve consumenten. Behandel GitHub-repositoryredirects niet als zelfstandig bewijs dat alle
+   consumenten werken.
+3. Zet `PUBLIC_SITE_URL` op `https://www.tunedpixel.nl`; `PUBLIC_BASE_PATH` blijft `/`.
+4. Configureer Pages Custom domain voor `www.tunedpixel.nl` en verifieer dat Pages het domein
+   accepteert voordat verkeer wordt omgezet. De Actions-workflow blijft de deploymentroute.
+5. Laat `www` als CNAME naar `kevindraai.github.io` wijzen. Configureer het apex-domein
+   `tunedpixel.nl` als permanente redirect naar `https://www.tunedpixel.nl`, met behoud van pad en
+   querystring. Wijzig geen mailrecords.
+6. Wacht op een certificaat dat `www.tunedpixel.nl` dekt, schakel Enforce HTTPS in en controleer
+   apex, `www`, project- en journalroutes, assets, RSS, sitemap en één geautoriseerd contactbericht.
+
+DNS- en certificaatpropagatie kan vertraagd zijn. Markeer de batch pas voltooid wanneer de publieke
+HTTPS-observatie klopt; een succesvolle Pages-deployment alleen is onvoldoende bewijs.
+
+## Compatibility-register
+
+| Oude identiteit | Classificatie | Consumenten | Verwijdervoorwaarde | Verificatie |
+| --- | --- | --- | --- | --- |
+| `kevindraai.github.io/nlfoundry-site` en `/nlfoundry-site/` | compatibility | build-verifier, reviewchecklist | alle repository- en Pages-consumenten gebruiken de nieuwe naam en route | negatieve scan van productie-output |
+| `nlfoundry.dev` en `www.nlfoundry.dev` | compatibility | bestaande bookmarks en externe links | expliciet productbesluit na vastgestelde gebruiksperiode | beide hosts geven HTTPS 301/308 naar dezelfde `www.tunedpixel.nl`-route met behoud van query |
+| oorspronkelijke design-handoff | historical | audit/provenance | nooit herschrijven; alleen archiveren volgens repositorybeleid | document is expliciet als historisch gemarkeerd |
+
+Een resterende oude naam buiten dit register is niet automatisch toegestaan en blokkeert de
+identiteits-eindgate.
+
+## Oude domeinredirect
+
+Zodra `www.tunedpixel.nl` via HTTPS werkt, configureer in de DNS/proxy-zone van het oude domein een
+permanente redirect van `nlfoundry.dev` en `www.nlfoundry.dev` naar
+`https://www.tunedpixel.nl`, met behoud van pad en querystring. Beide oude hostnames moeten een
+geldig certificaat houden zolang deze compatibility-route bestaat. Gebruik geen wildcard die mail-
+of andere subdomeinen raakt; een CNAME alleen is geen HTTP-redirect.
 
 ## Rollback
 
-Bewaar de oude DNS-waarden. Bij een probleem: oude Pages Custom domain en PUBLIC_SITE_URL terugzetten, de oude redirect uitschakelen en de vorige werkende versie opnieuw deployen. Controleer daarna HTTPS en een bestaande project-URL. DNS/certificaten kunnen ook bij herstel vertraging geven.
+Bronrollback is het terugdraaien van de migratiecommit via de normale pull-requestprocedure. Voor
+de externe batch: zet bij een fout de vastgelegde Pages Custom domain en `PUBLIC_SITE_URL` terug,
+herstel de vorige DNS-records, schakel de nieuwe redirect uit en deploy de vorige bewezen versie.
+Controleer daarna HTTPS, canonical metadata, een bestaande project-URL en het contactformulier.
+Hernoem de repository alleen terug als concrete consumenten niet via een gerichte configuratiefix
+hersteld kunnen worden; behoud in beide richtingen de geverifieerde remote- en Pages-koppeling.
 
 ## Bronnen
 
-- GitHub: https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site/managing-a-custom-domain-for-your-github-pages-site (8 september 2026 geraadpleegd). Bij Actions is CNAME niet vereist en wordt het genegeerd; configureer de domeinnaam in Pages vóór de DNS-omzetting.
-- Cloudflare: https://developers.cloudflare.com/rules/url-forwarding/examples/redirect-all-another-domain/ (8 september 2026 geraadpleegd). Gebruik een domeinredirect met behoud van pad en querystring.
+- GitHub Pages custom-domain-documentatie:
+  https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site/managing-a-custom-domain-for-your-github-pages-site
+- Cloudflare redirectvoorbeeld:
+  https://developers.cloudflare.com/rules/url-forwarding/examples/redirect-all-another-domain/

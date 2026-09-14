@@ -10,7 +10,7 @@ export async function GET(context: { site?: URL }) {
   return rss({
     title: 'Tuned.pixel — Notities',
     description: 'Notities van Kevin over ontwerp, software en keuzes tijdens het bouwen.',
-    site: context.site ?? new URL('https://tunedpixel.nl'),
+    site: context.site ?? new URL('https://www.tunedpixel.nl'),
     items: posts.map((post) => ({
       title: post.data.title,
       description: post.data.description,

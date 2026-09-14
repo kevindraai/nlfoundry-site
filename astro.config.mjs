@@ -21,7 +21,7 @@ const normalizeSiteUrl = (value, fallback) =>
     : fallback;
 
 const base = normalizeBasePath(process.env.PUBLIC_BASE_PATH ?? '/', '/');
-const site = normalizeSiteUrl(process.env.PUBLIC_SITE_URL ?? 'https://tunedpixel.nl', 'https://tunedpixel.nl');
+const site = normalizeSiteUrl(process.env.PUBLIC_SITE_URL ?? 'https://www.tunedpixel.nl', 'https://www.tunedpixel.nl');
 
 const withBasePath = (path) => {
   const normalizedPath = path.startsWith('/') ? path : `/${path}`;
@@ -164,9 +164,9 @@ export default defineConfig({
           href: publicUrl('/rss.xml'),
         },
       ],
-      customCss: ['./src/styles/custom.css', './src/styles/foundry.css'],
+      customCss: ['./src/styles/custom.css', './src/styles/tunedpixel.css'],
       components: {
-        Header: './src/components/FoundryHeader.astro',
+        Header: './src/components/TunedPixelHeader.astro',
         PageTitle: './src/components/StarlightPageTitle.astro',
         SiteTitle: './src/components/StarlightSiteTitle.astro',
         ThemeProvider: './src/components/StarlightThemeProvider.astro',

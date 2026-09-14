@@ -1,6 +1,6 @@
 ---
 import '../styles/tokens.css';
-import '../styles/foundry.css';
+import '../styles/tunedpixel.css';
 
 const base = import.meta.env.BASE_URL;
 const home = base === '/' ? '/' : base.replace(/\/$/, '');
@@ -17,7 +17,7 @@ const favicon = `${base}favicon.svg`;
   <style>
       :root {
         color-scheme: light dark;
-        font-family: var(--nl-font-display);
+        font-family: var(--tp-font-display);
       }
 
       .skip {
@@ -35,8 +35,8 @@ const favicon = `${base}favicon.svg`;
         margin: 0;
         display: grid;
         place-items: center;
-        background: var(--nl-night);
-        color: var(--nl-ice);
+        background: var(--tp-night);
+        color: var(--tp-ice);
       }
 
       main {
@@ -46,12 +46,12 @@ const favicon = `${base}favicon.svg`;
       .mark {
         width: 5rem;
         height: 0.55rem;
-        background: var(--nl-electric_blue);
+        background: var(--tp-electric_blue);
         margin-bottom: 2rem;
       }
 
       .code {
-        color: var(--nl-electric_blue);
+        color: var(--tp-electric_blue);
         font-weight: 750;
         letter-spacing: 0.12em;
       }
@@ -78,20 +78,20 @@ const favicon = `${base}favicon.svg`;
         display: inline-block;
         margin-top: 1.25rem;
         padding: 0.8rem 1.1rem;
-        border: 1px solid var(--nl-electric_blue);
+        border: 1px solid var(--tp-electric_blue);
         border-radius: 0;
-        color: var(--nl-night);
-        background: var(--nl-electric_blue);
+        color: var(--tp-night);
+        background: var(--tp-electric_blue);
         text-decoration: none;
         font-weight: 700;
       }
 
       a:hover {
-        background: var(--nl-ice);
+        background: var(--tp-ice);
       }
 
       a:focus-visible {
-        outline: 3px solid var(--nl-electric_blue);
+        outline: 3px solid var(--tp-electric_blue);
         outline-offset: 3px;
       }
   </style>
