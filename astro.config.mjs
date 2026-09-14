@@ -1,7 +1,11 @@
 import { defineConfig } from 'astro/config';
+import { readFileSync } from 'node:fs';
 import mdx from '@astrojs/mdx';
 import sitemap from '@astrojs/sitemap';
 import starlight from '@astrojs/starlight';
+
+const identity = JSON.parse(readFileSync(new URL('./identity.json', import.meta.url), 'utf8'));
+const canonicalSiteUrl = identity.canonical_url;
 
 const normalizeBasePath = (value, fallback) => {
   const raw = typeof value === 'string' ? value.trim() : fallback;
@@ -21,7 +25,7 @@ const normalizeSiteUrl = (value, fallback) =>
     : fallback;
 
 const base = normalizeBasePath(process.env.PUBLIC_BASE_PATH ?? '/', '/');
-const site = normalizeSiteUrl(process.env.PUBLIC_SITE_URL ?? 'https://www.tunedpixel.nl', 'https://www.tunedpixel.nl');
+const site = normalizeSiteUrl(process.env.PUBLIC_SITE_URL ?? canonicalSiteUrl, canonicalSiteUrl);
 
 const withBasePath = (path) => {
   const normalizedPath = path.startsWith('/') ? path : `/${path}`;

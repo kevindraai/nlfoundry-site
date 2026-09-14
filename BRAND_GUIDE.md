@@ -32,5 +32,5 @@ Keep the existing Stalwart native POST integration, field names, honeypot, URL v
 disabled fallback. No third-party tracking or new backend. Identity and domain changes follow the
 pull-request and external cutover gates in `docs/tunedpixel-migration.md`.
 
-The social-preview assets use the approved wordmark and canonical `www.tunedpixel.nl` URL. No stock
+The social-preview assets use the approved wordmark and canonical `tunedpixel.nl` URL. No stock
 portrait or generated campaign image is part of the production identity.

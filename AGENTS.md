@@ -37,7 +37,7 @@ Run the relevant gates before handoff:
 
 ```bash
 npm run check
-PUBLIC_SITE_URL=https://www.tunedpixel.nl PUBLIC_BASE_PATH=/ npm run build
+PUBLIC_SITE_URL=https://tunedpixel.nl PUBLIC_BASE_PATH=/ npm run build
 npm run verify:build
 ```
 

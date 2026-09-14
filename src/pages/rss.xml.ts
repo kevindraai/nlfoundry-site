@@ -1,5 +1,6 @@
 import rss from '@astrojs/rss';
 import { getCollection } from 'astro:content';
+import { canonicalSiteUrl } from '../config/identity';
 
 const entrySlug = (id: string) => id.replace(/\.(md|mdx)$/u, '');
 
@@ -10,7 +11,7 @@ export async function GET(context: { site?: URL }) {
   return rss({
     title: 'Tuned.pixel — Notities',
     description: 'Notities van Kevin over ontwerp, software en keuzes tijdens het bouwen.',
-    site: context.site ?? new URL('https://www.tunedpixel.nl'),
+    site: context.site ?? new URL(canonicalSiteUrl),
     items: posts.map((post) => ({
       title: post.data.title,
       description: post.data.description,

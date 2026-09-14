@@ -30,5 +30,5 @@ Thank you for contributing to the public site.
 - Confirm homepage links resolve at `/`.
 - Verify that the former `kevindraai.github.io/nlfoundry-site` repository route does not occur in
   generated output; this compatibility guard remains until all repository redirects are retired.
-- Verify canonical URLs use `https://www.tunedpixel.nl`.
+- Verify canonical URLs use `https://tunedpixel.nl`.
 - Check external links deliberately and provide useful alt text for informative local images.

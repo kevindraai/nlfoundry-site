@@ -1,0 +1,18 @@
+{
+  "schema_version": 1,
+  "brand": "Tuned.pixel",
+  "slug": "tunedpixel",
+  "short": "tp",
+  "primary_domain": "tunedpixel.nl",
+  "canonical_url": "https://tunedpixel.nl",
+  "aliases": [
+    {
+      "host": "www.tunedpixel.nl",
+      "url": "https://www.tunedpixel.nl",
+      "role": "redirect",
+      "target": "https://tunedpixel.nl",
+      "preserve_path": true,
+      "preserve_query": true
+    }
+  ]
+}

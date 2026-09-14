@@ -21,7 +21,7 @@ Run the same production gates used by CI:
 
 ```bash
 npm run check
-PUBLIC_SITE_URL=https://www.tunedpixel.nl PUBLIC_BASE_PATH=/ npm run build
+PUBLIC_SITE_URL=https://tunedpixel.nl PUBLIC_BASE_PATH=/ npm run build
 npm run verify:build
 ```
 
@@ -110,7 +110,7 @@ applied on the Stalwart host, not by this repository.
 GitHub Pages remains the deployment target. CI and deployment use:
 
 ```bash
-PUBLIC_SITE_URL=https://www.tunedpixel.nl
+PUBLIC_SITE_URL=https://tunedpixel.nl
 PUBLIC_BASE_PATH=/
 ```
 

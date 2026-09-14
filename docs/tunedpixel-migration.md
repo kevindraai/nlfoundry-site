@@ -1,10 +1,11 @@
-# Migratie naar Tuned.pixel en `www.tunedpixel.nl`
+# Migratie naar Tuned.pixel en `tunedpixel.nl`
 
 Status op 14 september 2026: de Tuned.pixel-sitebron staat op `origin/main`; deze branch finaliseert
-de actieve namespace en de canonieke URL. GitHub Pages serveert `https://tunedpixel.nl`, maar de
-canonieke live URL is `https://www.tunedpixel.nl`. De externe DNS/TLS-controle vond voor `www` nog
-geen passend certificaat. Het oude `nlfoundry.dev` retourneerde nog geen redirect. Deze externe
-punten zijn dus migratiewerk, geen afgeronde controles.
+de actieve namespace en de canonieke URL. `https://tunedpixel.nl` is de canonieke publieke URL.
+`https://www.tunedpixel.nl` is uitsluitend een alias die permanent naar de overeenkomstige route
+op de apex-host moet verwijzen. De externe DNS/TLS-controle vond voor `www` nog geen passend
+certificaat en het oude `nlfoundry.dev` retourneerde nog geen redirect. Deze externe punten zijn
+dus migratiewerk, geen afgeronde controles.
 
 De repository heet tijdens deze bronbatch nog `kevindraai/nlfoundry-site`; het migratiedoel is
 `kevindraai/tunedpixel-site`. De oude naam in negatieve routecontroles is een tijdelijke
@@ -13,15 +14,19 @@ compatibiliteitsuitzondering, niet de actieve identiteit.
 ## Bronbatch
 
 De site gebruikt de goedgekeurde Tuned.pixel-identiteit, het `tp`-namespace voor actieve CSS- en
-componentnamen, en `https://www.tunedpixel.nl` voor canonical, sitemap, robots, RSS en social
+componentnamen, en `https://tunedpixel.nl` voor canonical, sitemap, robots, RSS en social
 metadata. ClubPOS en ExitLane behouden hun eigen productidentiteit. Routes, zoeken, RSS en het
 Stalwart-contactformulier blijven functioneel gelijk.
+
+De machineleesbare site-identiteit staat in `identity.json`: `tunedpixel.nl` is het primaire
+domein, `https://tunedpixel.nl` de enige canonical URL en `www.tunedpixel.nl` een redirect-alias
+met behoud van pad en querystring.
 
 Valideer vóór integratie:
 
 ```bash
 npm run check
-PUBLIC_SITE_URL=https://www.tunedpixel.nl PUBLIC_BASE_PATH=/ npm run build
+PUBLIC_SITE_URL=https://tunedpixel.nl PUBLIC_BASE_PATH=/ npm run build
 npm run verify:build
 ```
 
@@ -37,14 +42,14 @@ Voer externe wijzigingen als één gecontroleerde batch uit nadat de bronwijzigi
 2. Hernoem de repository naar `kevindraai/tunedpixel-site` en verifieer workflows, Pages, remotes en
    actieve consumenten. Behandel GitHub-repositoryredirects niet als zelfstandig bewijs dat alle
    consumenten werken.
-3. Zet `PUBLIC_SITE_URL` op `https://www.tunedpixel.nl`; `PUBLIC_BASE_PATH` blijft `/`.
-4. Configureer Pages Custom domain voor `www.tunedpixel.nl` en verifieer dat Pages het domein
+3. Behoud `PUBLIC_SITE_URL=https://tunedpixel.nl`; `PUBLIC_BASE_PATH` blijft `/`.
+4. Configureer Pages Custom domain voor `tunedpixel.nl` en verifieer dat Pages het domein
    accepteert voordat verkeer wordt omgezet. De Actions-workflow blijft de deploymentroute.
-5. Laat `www` als CNAME naar `kevindraai.github.io` wijzen. Configureer het apex-domein
-   `tunedpixel.nl` als permanente redirect naar `https://www.tunedpixel.nl`, met behoud van pad en
-   querystring. Wijzig geen mailrecords.
-6. Wacht op een certificaat dat `www.tunedpixel.nl` dekt, schakel Enforce HTTPS in en controleer
-   apex, `www`, project- en journalroutes, assets, RSS, sitemap en één geautoriseerd contactbericht.
+5. Configureer `www.tunedpixel.nl` als permanente aliasredirect naar `https://tunedpixel.nl`, met
+   behoud van pad en querystring. Wijzig geen mailrecords.
+6. Wacht op certificaten die de apex en `www.tunedpixel.nl` dekken, schakel Enforce HTTPS in en
+   controleer apex, de `www`-redirect, project- en journalroutes, assets, RSS, sitemap en één
+   geautoriseerd contactbericht.
 
 DNS- en certificaatpropagatie kan vertraagd zijn. Markeer de batch pas voltooid wanneer de publieke
 HTTPS-observatie klopt; een succesvolle Pages-deployment alleen is onvoldoende bewijs.
@@ -54,7 +59,8 @@ HTTPS-observatie klopt; een succesvolle Pages-deployment alleen is onvoldoende b
 | Oude identiteit | Classificatie | Consumenten | Verwijdervoorwaarde | Verificatie |
 | --- | --- | --- | --- | --- |
 | `kevindraai.github.io/nlfoundry-site` en `/nlfoundry-site/` | compatibility | build-verifier, reviewchecklist | alle repository- en Pages-consumenten gebruiken de nieuwe naam en route | negatieve scan van productie-output |
-| `nlfoundry.dev` en `www.nlfoundry.dev` | compatibility | bestaande bookmarks en externe links | expliciet productbesluit na vastgestelde gebruiksperiode | beide hosts geven HTTPS 301/308 naar dezelfde `www.tunedpixel.nl`-route met behoud van query |
+| `www.tunedpixel.nl` | compatibility alias | bestaande gebruikers die de `www`-host gebruiken | behouden zolang de publieke domeininrichting deze alias ondersteunt | HTTPS 301/308 naar dezelfde `tunedpixel.nl`-route met behoud van query; nooit canonical metadata |
+| `nlfoundry.dev` en `www.nlfoundry.dev` | compatibility | bestaande bookmarks en externe links | expliciet productbesluit na vastgestelde gebruiksperiode | beide hosts geven HTTPS 301/308 naar dezelfde `tunedpixel.nl`-route met behoud van query |
 | oorspronkelijke design-handoff | historical | audit/provenance | nooit herschrijven; alleen archiveren volgens repositorybeleid | document is expliciet als historisch gemarkeerd |
 
 Een resterende oude naam buiten dit register is niet automatisch toegestaan en blokkeert de
@@ -62,9 +68,9 @@ identiteits-eindgate.
 
 ## Oude domeinredirect
 
-Zodra `www.tunedpixel.nl` via HTTPS werkt, configureer in de DNS/proxy-zone van het oude domein een
-permanente redirect van `nlfoundry.dev` en `www.nlfoundry.dev` naar
-`https://www.tunedpixel.nl`, met behoud van pad en querystring. Beide oude hostnames moeten een
+Zodra `tunedpixel.nl` en de `www`-alias via HTTPS werken, configureer in de DNS/proxy-zone van het
+oude domein een permanente redirect van `nlfoundry.dev` en `www.nlfoundry.dev` naar
+`https://tunedpixel.nl`, met behoud van pad en querystring. Beide oude hostnames moeten een
 geldig certificaat houden zolang deze compatibility-route bestaat. Gebruik geen wildcard die mail-
 of andere subdomeinen raakt; een CNAME alleen is geen HTTP-redirect.
 
