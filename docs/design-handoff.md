@@ -1,4 +1,8 @@
-# Approved identity and website handoff
+# Historical identity and website handoff
+
+> Historical evidence, superseded by `BRAND_GUIDE.md` and `docs/tunedpixel-migration.md`. Names,
+> branches and implementation identifiers below describe the 2026-08 delivery and are intentionally
+> not rewritten as current instructions.
 
 ## Outcome
 

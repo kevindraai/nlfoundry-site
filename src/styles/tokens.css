@@ -1,49 +1,49 @@
-/* Tuned.pixel — palette inherited from N/L Foundry v3; approved Tuned point identity. */
+/* Tuned.pixel — approved Tuned point identity. */
 :root {
-  --nl-night: #020914;
-  --nl-night_2: #071523;
-  --nl-steel: #0B1A2A;
-  --nl-steel_2: #21384A;
-  --nl-ice: #F7FAFE;
-  --nl-electric_blue: #63C4FF;
-  --nl-exitlane_blue: #4CB4E8;
-  --nl-clubpos_coral: #FF6757;
-  --nl-clubpos_copper: var(--nl-clubpos_coral); /* Compatibility alias for existing product components. */
-  --nl-neutral_900: #142232;
-  --nl-neutral_700: #5E7284;
-  --nl-neutral_300: #C7D3DD;
-  --nl-neutral_100: #EEF2F5;
-  --nl-font-display: Inter, ui-sans-serif, system-ui, sans-serif;
-  --nl-font-sans: Inter, ui-sans-serif, system-ui, sans-serif;
-  --nl-font-mono: "SFMono-Regular", Consolas, monospace;
+  --tp-night: #020914;
+  --tp-night_2: #071523;
+  --tp-steel: #0B1A2A;
+  --tp-steel_2: #21384A;
+  --tp-ice: #F7FAFE;
+  --tp-electric_blue: #63C4FF;
+  --tp-exitlane_blue: #4CB4E8;
+  --tp-clubpos_coral: #FF6757;
+  --tp-clubpos_copper: var(--tp-clubpos_coral); /* Compatibility alias for existing product components. */
+  --tp-neutral_900: #142232;
+  --tp-neutral_700: #5E7284;
+  --tp-neutral_300: #C7D3DD;
+  --tp-neutral_100: #EEF2F5;
+  --tp-font-display: Inter, ui-sans-serif, system-ui, sans-serif;
+  --tp-font-sans: Inter, ui-sans-serif, system-ui, sans-serif;
+  --tp-font-mono: "SFMono-Regular", Consolas, monospace;
 
   /* Semantic aliases for reusable site components. */
-  --nlf-surface-canvas: var(--nl-night);
-  --nlf-surface-raised: var(--nl-night_2);
-  --nlf-surface-panel: var(--nl-steel);
-  --nlf-surface-panel-strong: var(--nl-neutral_900);
-  --nlf-text-heading: var(--nl-ice);
-  --nlf-text-body: var(--nl-neutral_300);
-  --nlf-text-muted: var(--nl-neutral_300);
-  --nlf-accent: var(--nl-electric_blue);
-  --nlf-accent-exitlane: var(--nl-exitlane_blue);
-  --nlf-accent-clubpos: var(--nl-clubpos_copper);
-  --nlf-border: var(--nl-steel_2);
-  --nlf-border-subtle: color-mix(in srgb, var(--nl-steel_2) 72%, transparent);
-  --nlf-focus-ring: #215E86;
-  --nlf-logo-foreground: var(--nl-ice);
-  --nlf-logo-accent: var(--nl-electric_blue);
-  --nlf-shadow-panel: 0 22px 60px rgb(0 0 0 / 0.32);
-  --nlf-radius-sm: 0.5rem;
-  --nlf-radius-md: 0.75rem;
-  --nlf-radius-lg: 1.125rem;
-  --nlf-content-gutter: 1rem;
-  --nlf-content-gutter-large: 1.5rem;
-  --nlf-space-section: clamp(3rem, 8vw, 6.5rem);
-  --nlf-prose-width: 72ch;
-  --nlf-text-sm: clamp(0.875rem, 0.84rem + 0.15vw, 0.95rem);
-  --nlf-text-base: clamp(1rem, 0.96rem + 0.2vw, 1.08rem);
-  --nlf-text-lg: clamp(1.125rem, 1.05rem + 0.35vw, 1.3rem);
-  --nlf-text-xl: clamp(1.35rem, 1.1rem + 1vw, 1.9rem);
-  --nlf-control-height: 2.875rem;
+  --tp-surface-canvas: var(--tp-night);
+  --tp-surface-raised: var(--tp-night_2);
+  --tp-surface-panel: var(--tp-steel);
+  --tp-surface-panel-strong: var(--tp-neutral_900);
+  --tp-text-heading: var(--tp-ice);
+  --tp-text-body: var(--tp-neutral_300);
+  --tp-text-muted: var(--tp-neutral_300);
+  --tp-accent: var(--tp-electric_blue);
+  --tp-accent-exitlane: var(--tp-exitlane_blue);
+  --tp-accent-clubpos: var(--tp-clubpos_copper);
+  --tp-border: var(--tp-steel_2);
+  --tp-border-subtle: color-mix(in srgb, var(--tp-steel_2) 72%, transparent);
+  --tp-focus-ring: #215E86;
+  --tp-logo-foreground: var(--tp-ice);
+  --tp-logo-accent: var(--tp-electric_blue);
+  --tp-shadow-panel: 0 22px 60px rgb(0 0 0 / 0.32);
+  --tp-radius-sm: 0.5rem;
+  --tp-radius-md: 0.75rem;
+  --tp-radius-lg: 1.125rem;
+  --tp-content-gutter: 1rem;
+  --tp-content-gutter-large: 1.5rem;
+  --tp-space-section: clamp(3rem, 8vw, 6.5rem);
+  --tp-prose-width: 72ch;
+  --tp-text-sm: clamp(0.875rem, 0.84rem + 0.15vw, 0.95rem);
+  --tp-text-base: clamp(1rem, 0.96rem + 0.2vw, 1.08rem);
+  --tp-text-lg: clamp(1.125rem, 1.05rem + 0.35vw, 1.3rem);
+  --tp-text-xl: clamp(1.35rem, 1.1rem + 1vw, 1.9rem);
+  --tp-control-height: 2.875rem;
 }

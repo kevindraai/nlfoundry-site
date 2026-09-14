@@ -1,6 +1,6 @@
 # Code of Conduct
 
-N/L Foundry welcomes contributions that are respectful, inclusive, and professional.
+Tuned.pixel welcomes contributions that are respectful, inclusive, and professional.
 
 ## Expected behavior
 
@@ -18,4 +18,3 @@ N/L Foundry welcomes contributions that are respectful, inclusive, and professio
 ## Enforcement
 
 Community moderators may remove abusive comments and ask disruptive participants to stop. Violations may result in loss of contribution privileges.
-

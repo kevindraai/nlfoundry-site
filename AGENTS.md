@@ -1,4 +1,4 @@
-# N/L Foundry site agent contract
+# Tuned.pixel site agent contract
 
 This contract applies to the entire repository. Current user or work-order instructions take
 precedence, followed by this file, accepted project standards, current implementation/tests and
@@ -37,7 +37,7 @@ Run the relevant gates before handoff:
 
 ```bash
 npm run check
-PUBLIC_SITE_URL=https://nlfoundry.dev PUBLIC_BASE_PATH=/ npm run build
+PUBLIC_SITE_URL=https://tunedpixel.nl PUBLIC_BASE_PATH=/ npm run build
 npm run verify:build
 ```
 

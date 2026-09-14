@@ -4,7 +4,10 @@ import { readFileSync, readdirSync, statSync } from 'node:fs';
 import { join, resolve, relative } from 'node:path';
 
 const distDir = resolve(process.argv[2] || 'dist');
-const siteUrl = (process.env.PUBLIC_SITE_URL?.trim() || 'https://tunedpixel.nl').replace(/\/+$/, '');
+const identity = JSON.parse(readFileSync(new URL('../identity.json', import.meta.url), 'utf8'));
+const canonicalSiteUrl = 'https://tunedpixel.nl';
+const canonicalOrigin = new URL(canonicalSiteUrl).origin;
+const siteUrl = (process.env.PUBLIC_SITE_URL?.trim() || canonicalSiteUrl).replace(/\/+$/, '');
 const socialImage = `${siteUrl}/social/og-image.png`;
 
 const requiredRoutes = [
@@ -21,6 +24,7 @@ const requiredRoutes = [
   'rss.xml',
   'robots.txt',
   'sitemap-index.xml',
+  'sitemap-0.xml',
   'site.webmanifest',
   '404.html',
   'social-card.svg',
@@ -52,6 +56,7 @@ const requiredSocial = [
   'social-card.svg',
 ];
 
+// Compatibility guard: the former repository route must never leak into canonical production URLs.
 const bannedRouteToken = 'kevindraai.github.io/nlfoundry-site';
 const forbiddenUrls = [
   'http://127.0.0.1',
@@ -63,6 +68,39 @@ const forbiddenUrls = [
 ];
 
 const errors = [];
+const legacyIdentityPatterns = [
+  /N[/]L Foundry/iu,
+  /NL ?Foundry/iu,
+  /nlfoundry[.]dev/iu,
+  /--nlf-/iu,
+  /--nl-/iu,
+  /\bnlf[-_]/iu,
+  /\bfoundry-/iu,
+];
+
+if (siteUrl !== canonicalSiteUrl) {
+  errors.push(`PUBLIC_SITE_URL must be the canonical ${canonicalSiteUrl}; received ${siteUrl}`);
+}
+
+if (identity.canonical_url !== canonicalSiteUrl) {
+  errors.push(`identity.json canonical_url must be ${canonicalSiteUrl}`);
+}
+
+if (identity.primary_domain !== new URL(canonicalSiteUrl).hostname) {
+  errors.push('identity.json primary_domain does not match canonical_url');
+}
+
+const wwwAlias = identity.aliases?.find((alias) => alias.host === 'www.tunedpixel.nl');
+if (
+  !wwwAlias
+  || wwwAlias.url !== 'https://www.tunedpixel.nl'
+  || wwwAlias.role !== 'redirect'
+  || wwwAlias.target !== canonicalSiteUrl
+  || wwwAlias.preserve_path !== true
+  || wwwAlias.preserve_query !== true
+) {
+  errors.push('identity.json must define www.tunedpixel.nl only as a redirect to the canonical URL');
+}
 
 const hasRouteFile = (relativePath) => {
   const target = join(distDir, relativePath);
@@ -117,6 +155,12 @@ for (const file of knownPages) {
       errors.push(`Found forbidden URL token "${token}" in ${relativeFile}`);
     }
   }
+
+  for (const pattern of legacyIdentityPatterns) {
+    if (pattern.test(content)) {
+      errors.push(`Found active legacy identity matching ${pattern} in ${relativeFile}`);
+    }
+  }
 }
 
 for (const route of requiredHtmlRoutes) {
@@ -124,8 +168,15 @@ for (const route of requiredHtmlRoutes) {
   const source = readFileSync(target, 'utf8');
 
   const canonical = source.match(/<link rel="canonical" href="([^"]+)"/i);
-  if (!canonical || !canonical[1].startsWith(siteUrl)) {
+  const routePath = route === 'index.html' ? '/' : `/${route.replace(/index[.]html$/u, '')}`;
+  const expectedRouteUrl = new URL(routePath, `${siteUrl}/`).toString();
+  if (!canonical || canonical[1] !== expectedRouteUrl) {
     errors.push(`Canonical URL missing/invalid in ${route}`);
+  }
+
+  const openGraphUrl = source.match(/<meta property="og:url" content="([^"]+)"/i);
+  if (!openGraphUrl || openGraphUrl[1] !== expectedRouteUrl) {
+    errors.push(`OpenGraph URL missing/invalid in ${route}`);
   }
 
   if (!source.includes(`<meta name="description"`)) {
@@ -154,6 +205,25 @@ for (const route of requiredHtmlRoutes) {
 const index = readFileSync(join(distDir, 'index.html'), 'utf8');
 if (!index.includes('application/ld+json') || !/"@type"\s*:\s*"Organization"/u.test(index)) {
   errors.push('Structured data (Organization schema) missing from homepage');
+}
+
+const structuredData = index.match(/<script type="application[/]ld[+]json">([\s\S]*?)<[/]script>/u)?.[1];
+if (structuredData) {
+  try {
+    const entries = JSON.parse(structuredData);
+    for (const [entryIndex, entry] of entries.entries()) {
+      for (const field of ['url', 'logo']) {
+        if (!entry[field]) {
+          continue;
+        }
+        if (new URL(entry[field]).origin !== canonicalOrigin) {
+          errors.push(`Structured data entry ${entryIndex} uses a non-canonical ${field}`);
+        }
+      }
+    }
+  } catch (_err) {
+    errors.push('Structured data on homepage is not valid JSON');
+  }
 }
 
 const contact = readFileSync(join(distDir, 'contact/index.html'), 'utf8');
@@ -232,12 +302,17 @@ if (!robots.includes(`${siteUrl}/sitemap-index.xml`)) {
   errors.push('robots.txt missing canonical sitemap URL');
 }
 
-const sitemap = readFileSync(join(distDir, 'sitemap-index.xml'), 'utf8');
-if (!sitemap.includes(siteUrl)) {
-  errors.push('sitemap-index.xml does not include canonical domain');
+for (const sitemapFile of ['sitemap-index.xml', 'sitemap-0.xml']) {
+  const sitemap = readFileSync(join(distDir, sitemapFile), 'utf8');
+  const sitemapLocations = [...sitemap.matchAll(/<loc>([^<]+)<[/]loc>/gu)].map((match) => match[1]);
+  if (sitemapLocations.length === 0 || sitemapLocations.some((location) => new URL(location).origin !== canonicalOrigin)) {
+    errors.push(`${sitemapFile} contains a missing or non-canonical URL`);
+  }
 }
 
-if (!readFileSync(join(distDir, 'rss.xml'), 'utf8').includes(siteUrl)) {
+const rssFeed = readFileSync(join(distDir, 'rss.xml'), 'utf8');
+const rssSiteUrls = [...rssFeed.matchAll(/https:\/\/(?:www[.])?tunedpixel[.]nl[^<\s]*/gu)].map((match) => match[0]);
+if (rssSiteUrls.length === 0 || rssSiteUrls.some((url) => new URL(url).origin !== canonicalOrigin)) {
   errors.push('rss.xml is not using canonical domain');
 }
 

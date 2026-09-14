@@ -5,13 +5,13 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 const isHome = Astro.locals.starlightRoute.id === 'index' || Astro.url.pathname === `${base}/`;
 ---
 {isHome ? (
-  <div class="foundry-header">
-    <a href={`${base}/`} class="foundry-header__brand" aria-label="Tuned.pixel home"><BrandLockup /></a>
-    <nav class="foundry-header__nav" aria-label="Hoofdnavigatie">
+  <div class="tp-header">
+    <a href={`${base}/`} class="tp-header__brand" aria-label="Tuned.pixel home"><BrandLockup /></a>
+    <nav class="tp-header__nav" aria-label="Hoofdnavigatie">
       <a href="#work">Werk</a><a href="#studio">Over Kevin</a><a href={`${base}/journal/`}>Notities</a>
-      <a class="foundry-button" href="#contact">Contact</a>
+      <a class="tp-button" href="#contact">Contact</a>
     </nav>
-    <details class="foundry-menu">
+    <details class="tp-menu">
       <summary aria-label="Open menu">Menu <span aria-hidden="true">☰</span></summary>
       <nav aria-label="Mobiele navigatie">
         <a href="#work">Werk</a><a href="#studio">Over Kevin</a><a href={`${base}/journal/`}>Notities</a>
@@ -21,7 +21,7 @@ const isHome = Astro.locals.starlightRoute.id === 'index' || Astro.url.pathname 
   </div>
 ) : <DefaultHeader />}
 <script>
-  const menu = document.querySelector<HTMLDetailsElement>('.foundry-menu');
+  const menu = document.querySelector<HTMLDetailsElement>('.tp-menu');
   menu?.querySelectorAll('a').forEach((link) => link.addEventListener('click', () => { menu.open = false; }));
   menu?.addEventListener('keydown', (event) => {
     if (event.key === 'Escape') { menu.open = false; menu.querySelector('summary')?.focus(); }

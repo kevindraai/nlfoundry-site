@@ -5,8 +5,8 @@ Briefly describe what this PR changes and why.
 ## Routing and deployment
 
 - [ ] Root route resolves at `/` in production build output.
-- [ ] No generated URL references `kevindraai.github.io/nlfoundry-site`.
-- [ ] Canonical URLs point to `https://nlfoundry.dev`.
+- [ ] No generated URL references the former `kevindraai.github.io/nlfoundry-site` route.
+- [ ] Canonical URLs point to `https://tunedpixel.nl`.
 - [ ] `dist/index.html` exists.
 
 ## Checks

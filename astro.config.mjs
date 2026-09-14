@@ -1,7 +1,11 @@
 import { defineConfig } from 'astro/config';
+import { readFileSync } from 'node:fs';
 import mdx from '@astrojs/mdx';
 import sitemap from '@astrojs/sitemap';
 import starlight from '@astrojs/starlight';
+
+const identity = JSON.parse(readFileSync(new URL('./identity.json', import.meta.url), 'utf8'));
+const canonicalSiteUrl = identity.canonical_url;
 
 const normalizeBasePath = (value, fallback) => {
   const raw = typeof value === 'string' ? value.trim() : fallback;
@@ -21,7 +25,7 @@ const normalizeSiteUrl = (value, fallback) =>
     : fallback;
 
 const base = normalizeBasePath(process.env.PUBLIC_BASE_PATH ?? '/', '/');
-const site = normalizeSiteUrl(process.env.PUBLIC_SITE_URL ?? 'https://tunedpixel.nl', 'https://tunedpixel.nl');
+const site = normalizeSiteUrl(process.env.PUBLIC_SITE_URL ?? canonicalSiteUrl, canonicalSiteUrl);
 
 const withBasePath = (path) => {
   const normalizedPath = path.startsWith('/') ? path : `/${path}`;
@@ -164,9 +168,9 @@ export default defineConfig({
           href: publicUrl('/rss.xml'),
         },
       ],
-      customCss: ['./src/styles/custom.css', './src/styles/foundry.css'],
+      customCss: ['./src/styles/custom.css', './src/styles/tunedpixel.css'],
       components: {
-        Header: './src/components/FoundryHeader.astro',
+        Header: './src/components/TunedPixelHeader.astro',
         PageTitle: './src/components/StarlightPageTitle.astro',
         SiteTitle: './src/components/StarlightSiteTitle.astro',
         ThemeProvider: './src/components/StarlightThemeProvider.astro',

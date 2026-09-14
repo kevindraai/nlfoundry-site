@@ -117,6 +117,7 @@ PUBLIC_BASE_PATH=/
 The deploy workflow runs only from `main` or by an explicit manual dispatch and contains no
 deployment secrets.
 
-## Tuned.pixel proposal
+## Identity migration
 
-See [migration plan](docs/tunedpixel-migration.md) for the reviewed domain transition. GitHub Pages remains the host. Do not change DNS until the proposal has been approved and the Pages setting can be changed in the same transition.
+See the [migration runbook](docs/tunedpixel-migration.md) for the identity and domain transition,
+including the externally managed DNS, TLS and legacy-domain checks. GitHub Pages remains the host.
