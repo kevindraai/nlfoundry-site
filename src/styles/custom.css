@@ -499,8 +499,8 @@ h4,
   color: var(--tp-accent-exitlane);
 }
 
-.build-record--clubpos .build-record__product-link {
-  color: var(--tp-accent-clubpos);
+.build-record--clubsolution .build-record__product-link {
+  color: var(--tp-accent-clubsolution);
 }
 
 .build-record__product-link:hover,
@@ -773,8 +773,8 @@ h4,
   border-top-color: var(--tp-accent-exitlane);
 }
 
-.collection-card--clubpos {
-  border-top-color: var(--tp-accent-clubpos);
+.collection-card--clubsolution {
+  border-top-color: var(--tp-accent-clubsolution);
 }
 
 .collection-card__eyebrow,
@@ -1049,8 +1049,8 @@ h4,
   color: var(--tp-accent-exitlane);
 }
 
-.product-surface--clubpos .product-surface__eyebrow {
-  color: var(--tp-accent-clubpos);
+.product-surface--clubsolution .product-surface__eyebrow {
+  color: var(--tp-accent-clubsolution);
 }
 
 .card {
@@ -1292,8 +1292,8 @@ button:focus-visible,
   color: color-mix(in srgb, var(--tp-accent-exitlane) 55%, var(--tp-night));
 }
 
-:root .build-record--clubpos .build-record__product-link {
-  color: color-mix(in srgb, var(--tp-accent-clubpos) 55%, var(--tp-night));
+:root .build-record--clubsolution .build-record__product-link {
+  color: color-mix(in srgb, var(--tp-accent-clubsolution) 55%, var(--tp-night));
 }
 
 :root .build-record,

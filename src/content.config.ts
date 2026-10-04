@@ -39,7 +39,7 @@ const projects = defineCollection({
       .default([]),
     featured: z.boolean().default(false),
     draft: z.boolean().default(true),
-    product: z.enum(['exitlane', 'clubpos']),
+    product: z.enum(['exitlane', 'clubsolution']),
     deliveryModel: z.enum(['open-source', 'hosted-product']),
     focus: z.string().min(1),
   }),

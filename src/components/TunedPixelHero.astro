@@ -1,0 +1,323 @@
+---
+// Homepage-hero: het t-teken opgebouwd uit pixels. Bezoekers kunnen het aanraken; de pixels
+// raken van slag en stemmen zichzelf weer af. De vorm komt uit public/brand/tp-mark.svg,
+// zodat een aanpassing aan het teken vanzelf in de hero terechtkomt.
+import markSvg from '../../public/brand/tp-mark.svg?raw';
+
+interface Props {
+  projects: { title: string; href: string; label: string; summary: string }[];
+}
+
+const { projects } = Astro.props;
+const markPaths = [...markSvg.matchAll(/<path d="([^"]+)"/gu)].map((match) => match[1]);
+if (markPaths.length !== 2) {
+  throw new Error('tp-mark.svg must contain exactly two paths: the t and the pixel.');
+}
+const [tPath, pointPath] = markPaths;
+---
+
+<section class="tp-hero" aria-labelledby="_top" data-t={tPath} data-point={pointPath}>
+  <canvas class="tp-hero__field" aria-hidden="true"></canvas>
+  <span class="tp-hero__label tp-hero__label--t" aria-hidden="true">Van Tuned<span class="tp-hero__tick"></span><b>de t</b></span>
+  <span class="tp-hero__label tp-hero__label--point" aria-hidden="true"><span class="tp-hero__tick"></span>Het detail dat klopt<b>de pixel</b></span>
+
+  <div class="tp-hero__inner">
+    <div class="tp-hero__mark-space" aria-hidden="true">
+    <svg class="tp-hero__still" viewBox="2 2 28 30" aria-hidden="true" focusable="false">
+      <path d={tPath} fill="currentColor" />
+      <path d={pointPath} class="tp-hero__still-point" />
+    </svg>
+    </div>
+    <div class="tp-hero__copy">
+      <p class="tp-hero__eyebrow">Ontwerp &amp; development · Kevin van der Draai</p>
+      <h1 id="_top" class="tp-hero__title"><span class="tp-hero__line"><span>Aandacht voor</span></span> <span class="tp-hero__line"><span>hoe het werkt<span class="tp-hero__point" aria-hidden="true"></span></span></span></h1>
+      <p class="tp-hero__lead">Ik ben Kevin. Ik ontwerp en bouw digitale producten, <strong>van het scherm tot de techniek erachter.</strong></p>
+      <div class="tp-hero__actions">
+        <a class="tp-hero__button" href="#work">Bekijk mijn werk <span aria-hidden="true">↓</span></a>
+        <a class="tp-hero__button tp-hero__button--line" href="#contact">Vertel wat je van plan bent</a>
+      </div>
+    </div>
+    <ul class="tp-hero__scale" aria-label="Waar ik nu aan werk">
+      {projects.map((project) => (
+        <li>
+          <a class="tp-hero__cell" href={project.href}>
+            <span class="tp-hero__key">{project.label}</span>
+            <b>{project.title}</b>
+            <span>{project.summary}</span>
+          </a>
+        </li>
+      ))}
+      <li class="tp-hero__cell tp-hero__tuned" aria-hidden="true">
+        <span class="tp-hero__key">Afgestemd</span>
+        <b><span data-tuned-pct>100%</span><span class="tp-hero__bar"><i data-tuned-bar></i></span></b>
+        <span data-tuned-count>Alle pixels op hun plek</span>
+      </li>
+    </ul>
+  </div>
+</section>
+<div class="tp-cursor" aria-hidden="true"></div>
+
+<script>
+  const hero = document.querySelector<HTMLElement>('.tp-hero');
+  const canvas = hero?.querySelector<HTMLCanvasElement>('.tp-hero__field');
+  const ctx = canvas?.getContext('2d');
+
+  if (hero && canvas && ctx) {
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const narrowQuery = window.matchMedia('(max-width: 56rem)');
+    const T = new Path2D(hero.dataset.t);
+    const POINT = new Path2D(hero.dataset.point);
+    const probe = document.createElement('canvas').getContext('2d')!;
+    const inner = hero.querySelector<HTMLElement>('.tp-hero__inner')!;
+    const markSpace = hero.querySelector<HTMLElement>('.tp-hero__mark-space')!;
+    const labelT = hero.querySelector<HTMLElement>('.tp-hero__label--t')!;
+    const labelPoint = hero.querySelector<HTMLElement>('.tp-hero__label--point')!;
+    const pctEl = hero.querySelector<HTMLElement>('[data-tuned-pct]')!;
+    const barEl = hero.querySelector<HTMLElement>('[data-tuned-bar]')!;
+    const countEl = hero.querySelector<HTMLElement>('[data-tuned-count]')!;
+    const colors = { pixel: '#F7FAFE', point: '#63C4FF', raster: 'rgba(247, 250, 254, 0.07)' };
+
+    type Pixel = { tx: number; ty: number; x: number; y: number; vx: number; vy: number; point: boolean; delay: number };
+    let width = 0;
+    let height = 0;
+    let dpr = 1;
+    let size = 9;
+    let pixels: Pixel[] = [];
+    let raster: HTMLCanvasElement | null = null;
+    let lastPct = -1;
+    let motion = 0;
+    let pending = false;
+    let running = false;
+    let visible = true;
+    const pointer = { x: -1e4, y: -1e4, active: false };
+
+    const layout = (intro: boolean) => {
+      width = hero.clientWidth;
+      height = hero.clientHeight;
+      dpr = Math.min(window.devicePixelRatio || 1, 2);
+      canvas.width = width * dpr;
+      canvas.height = height * dpr;
+
+      const heroBox = hero.getBoundingClientRect();
+      const innerBox = inner.getBoundingClientRect();
+      const edge = innerBox.right - heroBox.left - parseFloat(getComputedStyle(inner).paddingRight);
+      const narrow = narrowQuery.matches;
+      let markHeight: number;
+      let top: number;
+      if (narrow) {
+        const space = markSpace.getBoundingClientRect();
+        markHeight = Math.min(width * 0.56, space.height - 24);
+        top = space.top - heroBox.top + (space.height - markHeight) / 2;
+      } else {
+        markHeight = Math.min(height * 0.62, width * 0.34, 560);
+        top = Math.max(48, height * 0.1);
+      }
+      // The mark spans 28 × 30 units (x 2–30, y 2–32).
+      const unit = markHeight / 30;
+      // Desktop: aligned to the right edge of the content column. Narrow: centred above the copy.
+      const innerLeft = innerBox.left - heroBox.left + parseFloat(getComputedStyle(inner).paddingLeft);
+      const left = narrow ? (innerLeft + edge) / 2 - 14 * unit : edge - 28 * unit;
+      const pitch = Math.max(7, Math.round(markHeight / 34));
+      size = pitch - Math.max(2, Math.round(pitch * 0.2));
+
+      pixels = [];
+      let pointLeft = Infinity;
+      let pointBottom = -Infinity;
+      const now = performance.now();
+      for (let row = 0; row * pitch < height; row++) {
+        for (let col = 0; col * pitch < width; col++) {
+          const cx = col * pitch + pitch / 2;
+          const cy = row * pitch + pitch / 2;
+          const mx = (cx - left) / unit + 2;
+          const my = (cy - top) / unit + 2;
+          if (mx < 0 || mx > 32 || my < 0 || my > 34) continue;
+          const inT = probe.isPointInPath(T, mx, my);
+          const inPoint = !inT && probe.isPointInPath(POINT, mx, my);
+          if (!inT && !inPoint) continue;
+          if (inPoint) {
+            pointLeft = Math.min(pointLeft, cx - size / 2);
+            pointBottom = Math.max(pointBottom, cy + size / 2);
+          }
+          const pixel: Pixel = { tx: cx, ty: cy, x: cx, y: cy, vx: 0, vy: 0, point: inPoint, delay: 0 };
+          if (intro && !reduce) {
+            // Start as noise across the hero, then lock in from left to right.
+            pixel.x = Math.random() * width;
+            pixel.y = cy + (Math.random() - 0.5) * height * 0.6;
+            pixel.delay = now + 150 + (cx - left) * 1.1 + Math.random() * 260 + (inPoint ? 420 : 0);
+          }
+          pixels.push(pixel);
+        }
+      }
+
+      labelT.style.right = `${width - left + 18}px`;
+      labelT.style.top = `${top + 8 * unit - 18}px`;
+      if (Number.isFinite(pointLeft)) {
+        labelPoint.style.left = `${pointLeft - 34}px`;
+        labelPoint.style.top = `${pointBottom + 18}px`;
+      }
+
+      raster = document.createElement('canvas');
+      raster.width = width * dpr;
+      raster.height = height * dpr;
+      const rasterCtx = raster.getContext('2d')!;
+      rasterCtx.scale(dpr, dpr);
+      rasterCtx.fillStyle = colors.raster;
+      const step = pitch * 2;
+      for (let y = step / 2; y < height; y += step) {
+        for (let x = step / 2; x < width; x += step) rasterCtx.fillRect(Math.round(x), Math.round(y), 1.5, 1.5);
+      }
+      countEl.textContent = `${pixels.length.toLocaleString('nl-NL')} pixels op hun plek`;
+      hero.classList.add('is-live');
+      kick();
+    };
+
+    const step = (now: number) => {
+      const radius = narrowQuery.matches ? 70 : 110;
+      let settled = 0;
+      motion = 0;
+      pending = false;
+      for (const p of pixels) {
+        if (p.delay && now < p.delay) {
+          pending = true;
+          continue;
+        }
+        p.delay = 0;
+        let ax = (p.tx - p.x) * 0.075;
+        let ay = (p.ty - p.y) * 0.075;
+        if (pointer.active) {
+          const dx = p.x - pointer.x;
+          const dy = p.y - pointer.y;
+          const d2 = dx * dx + dy * dy;
+          if (d2 < radius * radius) {
+            const d = Math.sqrt(d2) || 1;
+            const force = (1 - d / radius) ** 2 * 7;
+            ax += (dx / d) * force;
+            ay += (dy / d) * force;
+          }
+        }
+        p.vx = (p.vx + ax) * 0.8;
+        p.vy = (p.vy + ay) * 0.8;
+        p.x += p.vx;
+        p.y += p.vy;
+        motion += Math.abs(p.vx) + Math.abs(p.vy);
+        if (Math.abs(p.x - p.tx) < 0.6 && Math.abs(p.y - p.ty) < 0.6 && Math.abs(p.vx) < 0.05 && Math.abs(p.vy) < 0.05) settled++;
+      }
+      return settled;
+    };
+
+    const draw = () => {
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      ctx.clearRect(0, 0, width, height);
+      if (raster) ctx.drawImage(raster, 0, 0, width, height);
+      const half = size / 2;
+      ctx.fillStyle = colors.pixel;
+      for (const p of pixels) if (!p.point) ctx.fillRect(p.x - half, p.y - half, size, size);
+      ctx.fillStyle = colors.point;
+      for (const p of pixels) if (p.point) ctx.fillRect(p.x - half, p.y - half, size, size);
+    };
+
+    const report = (settled: number) => {
+      const pct = pixels.length ? Math.floor((settled / pixels.length) * 100) : 100;
+      if (pct !== lastPct) {
+        lastPct = pct;
+        pctEl.textContent = `${pct}%`;
+        barEl.style.width = `${pct}%`;
+      }
+    };
+
+    const frame = (now: number) => {
+      if (!visible) {
+        running = false;
+        return;
+      }
+      const settled = step(now);
+      draw();
+      report(settled);
+      // Stop when everything is in place, or when the pixels have come to rest around a pointer that stays still.
+      if (!pending && (settled === pixels.length || motion < 0.02 * pixels.length)) {
+        running = false;
+        return;
+      }
+      requestAnimationFrame(frame);
+    };
+
+    function kick() {
+      if (reduce) {
+        for (const p of pixels) {
+          p.x = p.tx;
+          p.y = p.ty;
+          p.delay = 0;
+        }
+        draw();
+        report(pixels.length);
+        return;
+      }
+      if (!running) {
+        running = true;
+        requestAnimationFrame(frame);
+      }
+    }
+
+    const local = (event: PointerEvent) => {
+      const box = hero.getBoundingClientRect();
+      return { x: event.clientX - box.left, y: event.clientY - box.top };
+    };
+
+    if (!reduce) {
+      hero.addEventListener('pointermove', (event) => {
+        Object.assign(pointer, local(event), { active: true });
+        kick();
+      });
+      hero.addEventListener('pointerleave', () => {
+        pointer.active = false;
+        pointer.x = pointer.y = -1e4;
+        kick();
+      });
+      hero.addEventListener('pointerdown', (event) => {
+        if ((event.target as Element).closest('a, button')) return;
+        const origin = local(event);
+        for (const p of pixels) {
+          const dx = p.x - origin.x;
+          const dy = p.y - origin.y;
+          const d = Math.hypot(dx, dy) || 1;
+          if (d < 260) {
+            const force = (1 - d / 260) * 22;
+            p.vx += (dx / d) * force + (Math.random() - 0.5) * 4;
+            p.vy += (dy / d) * force + (Math.random() - 0.5) * 4;
+          }
+        }
+        kick();
+      });
+    }
+
+    let lastWidth = 0;
+    let lastHeight = 0;
+    new ResizeObserver(() => {
+      if (hero.clientWidth === lastWidth && hero.clientHeight === lastHeight) return;
+      const first = lastWidth === 0;
+      lastWidth = hero.clientWidth;
+      lastHeight = hero.clientHeight;
+      layout(first);
+    }).observe(hero);
+    new IntersectionObserver(([entry]) => {
+      visible = entry.isIntersecting;
+      if (visible) kick();
+    }).observe(hero);
+
+    // A pixel that follows the pointer and snaps to the 8 px grid.
+    const cursor = document.querySelector<HTMLElement>('.tp-cursor');
+    if (cursor && !reduce && window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
+      window.addEventListener('pointermove', (event) => {
+        const s = cursor.classList.contains('is-large') ? 32 : 8;
+        cursor.style.opacity = '1';
+        cursor.style.transform = `translate(${Math.round(event.clientX / 8) * 8 - s / 2}px, ${Math.round(event.clientY / 8) * 8 - s / 2}px)`;
+      });
+      document.addEventListener('pointerover', (event) => {
+        cursor.classList.toggle('is-large', Boolean((event.target as Element).closest('a, button, summary, input, textarea, select')));
+      });
+      document.documentElement.addEventListener('pointerleave', () => {
+        cursor.style.opacity = '0';
+      });
+    }
+  }
+</script>

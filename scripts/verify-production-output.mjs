@@ -19,7 +19,7 @@ const requiredRoutes = [
   'now/index.html',
   'projects/index.html',
   'projects/exitlane/index.html',
-  'projects/clubpos/index.html',
+  'projects/clubsolution/index.html',
   'journal/building-for-real-workflows/index.html',
   'rss.xml',
   'robots.txt',
@@ -48,7 +48,7 @@ const requiredHtmlRoutes = [
   'now/index.html',
   'projects/index.html',
   'projects/exitlane/index.html',
-  'projects/clubpos/index.html',
+  'projects/clubsolution/index.html',
 ];
 
 const requiredSocial = [
@@ -199,6 +199,19 @@ for (const route of requiredHtmlRoutes) {
   const hasDescription = /<meta name="description"[^>]+content="[^"]+"/.test(source);
   if (!hasDescription) {
     errors.push(`Missing description content in ${route}`);
+  }
+}
+
+// ClubPOS heet nu ClubSolution: het oude adres moet blijven bestaan en doorverwijzen.
+const legacyClubRoute = 'projects/clubpos/index.html';
+if (!hasRouteFile(legacyClubRoute)) {
+  errors.push(`Missing redirect page: /${legacyClubRoute}`);
+} else {
+  const rawBase = (process.env.PUBLIC_BASE_PATH ?? '/').trim().replace(/^\/*/u, '/').replace(/\/+$/u, '');
+  const expectedTarget = `${rawBase}/projects/clubsolution/`;
+  const refreshTarget = readFileSync(join(distDir, legacyClubRoute), 'utf8').match(/http-equiv="refresh" content="0;url=([^"]+)"/u)?.[1];
+  if (refreshTarget !== expectedTarget) {
+    errors.push(`/projects/clubpos/ redirects to ${refreshTarget ?? 'nothing'} instead of ${expectedTarget}`);
   }
 }
 

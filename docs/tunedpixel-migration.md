@@ -15,7 +15,7 @@ compatibiliteitsuitzondering, niet de actieve identiteit.
 
 De site gebruikt de goedgekeurde Tuned.pixel-identiteit, het `tp`-namespace voor actieve CSS- en
 componentnamen, en `https://tunedpixel.nl` voor canonical, sitemap, robots, RSS en social
-metadata. ClubPOS en ExitLane behouden hun eigen productidentiteit. Routes, zoeken, RSS en het
+metadata. ClubSolution (voorheen ClubPOS) en ExitLane behouden hun eigen productidentiteit. Routes, zoeken, RSS en het
 Stalwart-contactformulier blijven functioneel gelijk.
 
 De machineleesbare site-identiteit staat in `identity.json`: `tunedpixel.nl` is het primaire

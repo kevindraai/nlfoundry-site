@@ -3,55 +3,98 @@ import { getCollection } from 'astro:content';
 import ContactForm from './ContactForm.astro';
 import SiteFooter from './SiteFooter.astro';
 import LatestWriting from './LatestWriting.astro';
+import TunedPixelHero from './TunedPixelHero.astro';
+
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+const projectHref = (id: string) => `${base}/projects/${id.replace(/\.(md|mdx)$/u, '')}/`;
+const order = { clubsolution: 0, exitlane: 1 };
 const projects = (await getCollection('projects', ({ data }) => !data.draft && data.featured))
-  .sort((a, b) => (a.data.product === 'clubpos' ? 0 : 1) - (b.data.product === 'clubpos' ? 0 : 1));
-const status = { active: 'In ontwikkeling', 'in-development': 'In ontwikkeling', maintenance: 'Onderhoud', archived: 'Gearchiveerd' };
-const summaries = {
-  clubpos: { label: 'Aan de bar', title: 'Voor de mensen achter de bar.', text: 'Een kassasysteem voor clubs en verenigingen. Met ruimte voor openstaande rekeningen, leden en de drukte van een bardienst.' },
-  exitlane: { label: 'Op je netwerk', title: 'Grip op het verkeer in je netwerk.', text: 'Een VPN-gateway voor je hele netwerk. Je kiest welk verkeer via welke verbinding loopt, op één centrale plek.' },
+  .sort((a, b) => order[a.data.product] - order[b.data.product]);
+const scale = {
+  clubsolution: { label: 'Aan de bar', summary: 'Kassa wordt getest · meer modules volgen' },
+  exitlane: { label: 'Op je netwerk', summary: 'VPN-gateway voor je hele netwerk · open source' },
 };
+const heroProjects = projects.map(({ id, data }) => ({ title: data.title, href: projectHref(id), ...scale[data.product] }));
+const clubsolution = projects.find(({ data }) => data.product === 'clubsolution');
+const others = projects.filter(({ data }) => data.product !== 'clubsolution');
+const otherCopy = {
+  exitlane: { status: 'Open source', text: 'Een VPN-gateway voor je hele netwerk. Je kiest op één plek welk verkeer via welke verbinding loopt.' },
+};
+const modules = [
+  { name: 'ClubSolution Kassa', state: 'Wordt getest', now: true },
+  { name: 'ClubSolution Basis', state: 'Volgt', now: false },
+  { name: 'ClubSolution Boekhouden', state: 'Volgt', now: false },
+];
 ---
 <div class="tp-home">
-  <section class="tp-hero" aria-labelledby="_top">
-    <p class="tp-eyebrow">Tuned.pixel · Ontwerp &amp; development</p>
-    <h1 id="_top">Aandacht voor<br />hoe het werkt<span class="tp-period" aria-hidden="true"></span></h1>
-    <div class="tp-hero-bottom">
-      <p class="tp-hero__description">Ik ben Kevin. Ik ontwerp en bouw digitale producten.<br class="wide-break" /> Van een kassasysteem voor de vereniging tot gereedschap voor je netwerk.</p>
-      <a class="tp-link" href="#work">Dit is waar ik aan werk <span aria-hidden="true">↓</span></a>
+  <TunedPixelHero projects={heroProjects} />
+
+  <section id="studio" class="tp-about" aria-labelledby="studio-title">
+    <div>
+      <h2 class="tp-kicker" id="studio-title">Wat ik doe</h2>
+      <blockquote class="tp-about__quote">Een duidelijke knop helpt weinig als de stap erna onlogisch is. En een goed systeem moet te begrijpen zijn <em>zonder handleiding naast je toetsenbord.</em></blockquote>
+      <a class="tp-link" href={`${base}/about/`}>Meer over mij <span aria-hidden="true">↗</span></a>
     </div>
+    <dl class="tp-about__sides">
+      <div><dt>Ontwerp</dt><dd>Wat je ziet: schermen, bediening en de woorden erop.</dd></div>
+      <div><dt>Development</dt><dd>Wat erachter zit: de techniek, de gegevens en wat er gebeurt als het misgaat.</dd></div>
+      <div><dt>Samen</dt><dd>Eén aanspreekpunt, zodat keuzes over hoe het eruitziet en hoe het werkt tegelijk worden gemaakt.</dd></div>
+    </dl>
   </section>
+
   <section id="work" class="tp-work" aria-labelledby="work-title">
-    <div class="tp-section-heading"><h2 id="work-title">Eigen projecten</h2><p>ClubPOS en ExitLane zijn in ontwikkeling.</p></div>
-    <div class="tp-projects">
-      {projects.map(({ id, data }) => (
-        <article class={`tp-project tp-project--${data.product}`}>
-          <a class="tp-project__visual" href={`${base}/projects/${id.replace(/\.(md|mdx)$/u, '')}/`} aria-label={`Bekijk ${data.title}`}>
-            <img src={`${base}/products/${data.product}/hero.svg`} width="960" height="600" alt="" loading="lazy" />
-            <span class="tp-project-caption">{summaries[data.product].label}</span>
-          </a>
-          <div class="tp-project__heading"><h3>{data.title}</h3><span class="tp-project__status">{status[data.status]}</span></div>
-          <p class="tp-project-title">{summaries[data.product].title}</p>
-          <p class="tp-project__description">{summaries[data.product].text}</p>
-          <a class="tp-link" href={`${base}/projects/${id.replace(/\.(md|mdx)$/u, '')}/`}>Meer over {data.title} <span aria-hidden="true">↗</span></a>
-        </article>
+    <div class="tp-work__head">
+      <p class="tp-kicker">Eigen werk</p>
+      <h2 id="work-title">Wat ik nu bouw.</h2>
+    </div>
+    {clubsolution && (
+      <a class="tp-feature" href={projectHref(clubsolution.id)}>
+        <div class="tp-feature__visual" aria-hidden="true">
+          <img class="tp-feature__logo" src={`${base}/products/clubsolution/wordmark-light.svg`} width="928" height="192" alt="" />
+          <img class="tp-feature__symbol" src={`${base}/products/clubsolution/icon.svg`} width="192" height="192" alt="" />
+          <div class="tp-feature__bon">
+            <div class="tp-feature__bon-head"><span>Bon op naam</span><span>21:20</span></div>
+            <div class="tp-feature__bon-name">Jeroen V.</div>
+            <div class="tp-feature__bon-row"><span>2× Koffie</span><span>€ 3,00</span></div>
+            <div class="tp-feature__bon-row"><span>1× Tosti</span><span>€ 3,50</span></div>
+            <div class="tp-feature__bon-row tp-feature__bon-total"><span>Totaal</span><span>€ 6,50</span></div>
+          </div>
+        </div>
+        <div class="tp-feature__text">
+          <span class="tp-status">Kassa wordt getest bij onze eigen club</span>
+          <h3>{clubsolution.data.title}</h3>
+          <p>Software voor verenigingen met een eigen bar, opgebouwd uit modules. Je begint met wat je nodig hebt en zet de rest aan wanneer jullie eraan toe zijn.</p>
+          <ul class="tp-modules">
+            {modules.map((module) => (
+              <li class={module.now ? 'is-now' : undefined}><b>{module.name}</b><span>{module.state}</span></li>
+            ))}
+          </ul>
+          <span class="tp-more">Meer over {clubsolution.data.title} <span aria-hidden="true">→</span></span>
+        </div>
+      </a>
+    )}
+    <div class="tp-others">
+      {others.map(({ id, data }) => (
+        <a class="tp-other" href={projectHref(id)}>
+          <img src={`${base}/products/${data.product}/hero.svg`} width="960" height="600" alt="" loading="lazy" />
+          <div>
+            <span class="tp-status">{otherCopy[data.product as keyof typeof otherCopy]?.status}</span>
+            <h3>{data.title}</h3>
+            <p>{otherCopy[data.product as keyof typeof otherCopy]?.text ?? data.description}</p>
+          </div>
+        </a>
       ))}
     </div>
   </section>
-  <section id="studio" class="tp-studio" aria-labelledby="studio-title">
-    <div class="tp-personal-mark" aria-hidden="true"><svg viewBox="0 0 40 40"><path fill="currentColor" d="M12 6H18V14H24V20H18V27Q18 30 22 30H24V36H21Q12 36 12 27V20H6V14H12Z M28 14H34V20H28Z" /></svg><span>Tuned.pixel / Kevin van der Draai</span></div>
-    <div class="tp-personal-copy">
-      <p class="tp-eyebrow">Wat ik doe</p>
-      <h2 id="studio-title">Van idee naar<br />digitale dienst.</h2>
-      <p>Ik ben Kevin van der Draai. Ik ontwerp en bouw websites, applicaties en andere digitale diensten. Daarbij werk ik aan wat je ziet én aan de techniek erachter.</p>
-      <p>Heb je iets nieuws in gedachten, of een bestaande toepassing die beter kan? Ik denk met je mee over wat nodig is en werk het uit tot iets dat je kunt gebruiken.</p>
-      <a class="tp-link" href={`${base}/about/`}>Meer over mij <span aria-hidden="true">↗</span></a>
-    </div>
-  </section>
+
   <section class="tp-journal" aria-labelledby="journal-title">
     <div class="tp-section-heading"><h2 id="journal-title">Notities</h2><p>Wat ik onderweg uitzoek en leer.</p></div>
     <LatestWriting />
   </section>
-  <section id="contact" class="tp-contact" aria-label="Contact"><ContactForm compact /></section>
+
+  <section id="contact" class="tp-contact" aria-label="Contact">
+    <ContactForm compact />
+    <div class="tp-contact__mark" aria-hidden="true"><img src={`${base}/brand/tp-wordmark-ice.svg`} width="408" height="94" alt="" /></div>
+  </section>
   <SiteFooter />
 </div>

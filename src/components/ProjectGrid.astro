@@ -6,7 +6,7 @@ const withBase = (href: string) => `${base}${href}`;
 const entrySlug = (id: string) => id.replace(/\.(md|mdx)$/u, '');
 const productAssets = {
   exitlane: `${base}/products/exitlane/badge.svg`,
-  clubpos: `${base}/products/clubpos/badge.svg`,
+  clubsolution: `${base}/products/clubsolution/badge.svg`,
 };
 const statusLabels = {
   active: 'Active development',
@@ -20,11 +20,11 @@ const deliveryLabels = {
 };
 const domainLabels = {
   exitlane: 'Networking / VPN',
-  clubpos: 'Point of sale / clubs',
+  clubsolution: 'Point of sale / clubs',
 };
 const productOrder = {
   exitlane: 0,
-  clubpos: 1,
+  clubsolution: 1,
 };
 const projects = (await getCollection('projects', ({ data }) => !data.draft && data.featured))
   .sort((a, b) => productOrder[a.data.product] - productOrder[b.data.product]);

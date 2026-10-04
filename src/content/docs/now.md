@@ -5,11 +5,11 @@ draft: false
 description: Waar ik op dit moment aan werk.
 ---
 
-_Laatst bijgewerkt: 8 september 2026_
+_Laatst bijgewerkt: 4 oktober 2026_
 
-## ClubPOS
+## ClubSolution
 
-Ik werk aan de basis van een kassasysteem voor clubs en verenigingen. Denk aan openstaande rekeningen, leden, producteenheden en correcties die je later kunt terugvinden. Het product is nog in ontwikkeling.
+ClubSolution Kassa wordt getest bij onze eigen club: bonnen op naam, rondjes, tegoed en de kas. Daarna volgen modules als ClubSolution Basis en ClubSolution Boekhouden. Het product is nog in ontwikkeling.
 
 ## ExitLane
 
