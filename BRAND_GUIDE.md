@@ -22,9 +22,9 @@ light appearance is fixed and remains usable without JavaScript.
 
 ## Voice and composition
 
-Dutch, in Kevin's own first-person voice. Describe the actual work: ClubPOS for associations, ExitLane for network-wide VPN routing. Keep status truthful; do not invent customers, testimonials, availability, screenshots or release dates. The return of the older Tuned.pixel name is the personal story, supplied by Kevin.
+Dutch, in Kevin's own first-person voice. Describe the actual work: ClubSolution for associations (a modular product: ClubSolution Kassa, Basis, Boekhouden and so on), ExitLane for network-wide VPN routing. Keep status truthful; do not invent customers, testimonials, availability, screenshots or release dates. The return of the older Tuned.pixel name is the personal story, supplied by Kevin.
 
-Homepage: typographic introduction, actual project identities, personal story, notes and existing contact form. Product accents stay local. Product pages, search, navigation, journal, RSS and content schemas remain functional. Existing routes stay stable for domain redirects.
+Homepage: a Night hero in which the t-sign is built from pixels that visitors can disturb and that tune themselves back into place, with labels for the t and the pixel and a ruler-style bar listing current projects. The shape is read from `tp-mark.svg`; with reduced motion the sign stands still. Below the hero the page is light and calm: what I do, actual project identities, notes and the existing contact form, closed by the full-width wordmark. Product accents stay local. Product pages, search, navigation, journal, RSS and content schemas remain functional. Existing routes stay stable for domain redirects.
 
 ## Contact and delivery
 

@@ -1,6 +1,6 @@
 ---
 interface Props {
-  product: 'exitlane' | 'clubpos';
+  product: 'exitlane' | 'clubsolution';
 }
 
 const { product } = Astro.props;
@@ -14,13 +14,13 @@ const productDetails = {
     icon: `${base}/products/exitlane/icon.svg`,
     imageAlt: 'Schematische netwerkverbindingen van ExitLane',
   },
-  clubpos: {
-    name: 'ClubPOS',
-    eyebrow: 'Kassa voor verenigingen',
-    summary: 'Gemaakt voor de praktijk achter de verenigingsbar.',
-    image: `${base}/products/clubpos/hero.svg`,
-    icon: `${base}/products/clubpos/icon.svg`,
-    imageAlt: 'ClubPOS-woordmerk',
+  clubsolution: {
+    name: 'ClubSolution',
+    eyebrow: 'Software voor verenigingen',
+    summary: 'Modulair, gemaakt voor de praktijk achter de verenigingsbar.',
+    image: `${base}/products/clubsolution/hero.svg`,
+    icon: `${base}/products/clubsolution/icon.svg`,
+    imageAlt: 'ClubSolution-woordmerk',
   },
 } as const;
 const details = productDetails[product];

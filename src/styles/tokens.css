@@ -7,8 +7,8 @@
   --tp-ice: #F7FAFE;
   --tp-electric_blue: #63C4FF;
   --tp-exitlane_blue: #4CB4E8;
-  --tp-clubpos_coral: #FF6757;
-  --tp-clubpos_copper: var(--tp-clubpos_coral); /* Compatibility alias for existing product components. */
+  --tp-clubsolution_coral: #FF6757;
+  --tp-clubsolution_copper: var(--tp-clubsolution_coral); /* Compatibility alias for existing product components. */
   --tp-neutral_900: #142232;
   --tp-neutral_700: #5E7284;
   --tp-neutral_300: #C7D3DD;
@@ -27,7 +27,7 @@
   --tp-text-muted: var(--tp-neutral_300);
   --tp-accent: var(--tp-electric_blue);
   --tp-accent-exitlane: var(--tp-exitlane_blue);
-  --tp-accent-clubpos: var(--tp-clubpos_copper);
+  --tp-accent-clubsolution: var(--tp-clubsolution_copper);
   --tp-border: var(--tp-steel_2);
   --tp-border-subtle: color-mix(in srgb, var(--tp-steel_2) 72%, transparent);
   --tp-focus-ring: #215E86;

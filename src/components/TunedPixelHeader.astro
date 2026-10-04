@@ -1,12 +1,11 @@
 ---
 import DefaultHeader from '@astrojs/starlight/components/Header.astro';
-import BrandLockup from './BrandLockup.astro';
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 const isHome = Astro.locals.starlightRoute.id === 'index' || Astro.url.pathname === `${base}/`;
 ---
 {isHome ? (
   <div class="tp-header">
-    <a href={`${base}/`} class="tp-header__brand" aria-label="Tuned.pixel home"><BrandLockup /></a>
+    <a href={`${base}/`} class="tp-header__brand" aria-label="Tuned.pixel home"><span class="tp-brand-lockup" translate="no"><img src={`${base}/brand/tp-wordmark-ice.svg`} width="191" height="44" alt="Tuned.pixel" /></span></a>
     <nav class="tp-header__nav" aria-label="Hoofdnavigatie">
       <a href="#work">Werk</a><a href="#studio">Over Kevin</a><a href={`${base}/journal/`}>Notities</a>
       <a class="tp-button" href="#contact">Contact</a>

@@ -56,11 +56,11 @@ const organizationSchema = JSON.stringify(
     {
       '@context': 'https://schema.org',
       '@type': 'SoftwareApplication',
-      name: 'ClubPOS',
+      name: 'ClubSolution',
       applicationCategory: 'BusinessApplication',
       operatingSystem: 'Cross-platform',
-      url: publicUrl('/projects/clubpos/'),
-      description: 'Een kassasysteem voor clubs en verenigingen.',
+      url: publicUrl('/projects/clubsolution/'),
+      description: 'Software voor verenigingen met een eigen bar, opgebouwd uit modules.',
       applicationSubCategory: 'Point-of-sale',
     },
   ],
@@ -71,6 +71,10 @@ const organizationSchema = JSON.stringify(
 export default defineConfig({
   site,
   base,
+  // ClubPOS heet nu ClubSolution; het oude adres blijft werken voor bestaande links.
+  redirects: {
+    '/projects/clubpos': '/projects/clubsolution/',
+  },
   integrations: [
     sitemap(),
     starlight({
@@ -182,7 +186,7 @@ export default defineConfig({
           label: 'Projecten',
           items: [
             { label: 'ExitLane', link: '/projects/exitlane/' },
-            { label: 'ClubPOS', link: '/projects/clubpos/' },
+            { label: 'ClubSolution', link: '/projects/clubsolution/' },
           ],
         },
         { label: 'Werkwijze', link: '/engineering/' },

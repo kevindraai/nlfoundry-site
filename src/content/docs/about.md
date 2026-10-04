@@ -17,7 +17,7 @@ Ik denk mee over wat nodig is en werk aan zowel het ontwerp als de techniek. Zo 
 
 ## Wat ik maak
 
-[ClubPOS](/projects/clubpos/) wordt een kassasysteem voor clubs en verenigingen. [ExitLane](/projects/exitlane/) is gereedschap om VPN-verkeer voor een heel netwerk te regelen. Twee verschillende toepassingen, waarbij de dagelijkse bediening veel aandacht verdient.
+[ClubSolution](/projects/clubsolution/) is software voor verenigingen met een eigen bar, opgebouwd uit modules zoals ClubSolution Kassa. [ExitLane](/projects/exitlane/) is gereedschap om VPN-verkeer voor een heel netwerk te regelen. Twee verschillende toepassingen, waarbij de dagelijkse bediening veel aandacht verdient.
 
 Op deze site kun je volgen hoe ze zich ontwikkelen. In de [notities](/journal/) schrijf ik over keuzes die ik onderweg maak.
 

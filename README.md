@@ -67,7 +67,7 @@ focus: The practical outcome this project is designed around.
 ---
 ```
 
-The current `product` field uses the two existing visual identities: `exitlane` and `clubpos`.
+The current `product` field uses the two existing visual identities: `exitlane` and `clubsolution`. The former `/projects/clubpos/` route redirects to `/projects/clubsolution/`.
 Extending that enum requires reviewed visual assets and schema changes.
 
 ## Publishing workflow
