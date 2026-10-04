@@ -206,8 +206,13 @@ for (const route of requiredHtmlRoutes) {
 const legacyClubRoute = 'projects/clubpos/index.html';
 if (!hasRouteFile(legacyClubRoute)) {
   errors.push(`Missing redirect page: /${legacyClubRoute}`);
-} else if (!/http-equiv="refresh"[^>]*\/projects\/clubsolution\//u.test(readFileSync(join(distDir, legacyClubRoute), 'utf8'))) {
-  errors.push('/projects/clubpos/ does not redirect to /projects/clubsolution/');
+} else {
+  const rawBase = (process.env.PUBLIC_BASE_PATH ?? '/').trim().replace(/^\/*/u, '/').replace(/\/+$/u, '');
+  const expectedTarget = `${rawBase}/projects/clubsolution/`;
+  const refreshTarget = readFileSync(join(distDir, legacyClubRoute), 'utf8').match(/http-equiv="refresh" content="0;url=([^"]+)"/u)?.[1];
+  if (refreshTarget !== expectedTarget) {
+    errors.push(`/projects/clubpos/ redirects to ${refreshTarget ?? 'nothing'} instead of ${expectedTarget}`);
+  }
 }
 
 const index = readFileSync(join(distDir, 'index.html'), 'utf8');

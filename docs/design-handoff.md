@@ -10,7 +10,7 @@ The approved letter-study-03 NL mark replaces the old interwoven slash logo. The
 
 User review refinements: omit children's names from the public website; shorten form copy to “Your message will be sent to N/L Foundry.”; use one fixed light website appearance, including without JavaScript. The dark contact section is a designed section, not a second theme.
 
-ClubPOS's product-owner-approved September identity is imported from the design-foundation repository (night/coral, open-C symbol, outlined wordmark). Product text and development states come from existing filtered collections. Existing project, engineering, journal, about, now, search and contact routes remain available.
+ClubSolution's (formerly ClubPOS) product-owner-approved September identity is imported from the design-foundation repository (night/coral, open-C symbol, outlined wordmark). Product text and development states come from existing filtered collections. Existing project, engineering, journal, about, now, search and contact routes remain available.
 
 ## Implementation
 

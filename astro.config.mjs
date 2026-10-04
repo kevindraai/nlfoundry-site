@@ -73,7 +73,7 @@ export default defineConfig({
   base,
   // ClubPOS heet nu ClubSolution; het oude adres blijft werken voor bestaande links.
   redirects: {
-    '/projects/clubpos': '/projects/clubsolution/',
+    '/projects/clubpos': withBasePath('/projects/clubsolution/'),
   },
   integrations: [
     sitemap(),
